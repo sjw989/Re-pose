@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/testFragment">
+
+    <fragment
+        android:id="@+id/frag_main"
+        android:name="org.techtown.repose.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/frag_main">
+        <action
+            android:id="@+id/action_frag_main_to_frag_select_pose"
+            app:destination="@id/frag_select_pose"
+            app:enterAnim="@anim/from_right_to_left" />
+        <action
+            android:id="@+id/action_frag_main_to_frag_show_exercise"
+            app:destination="@id/frag_show_exercise"
+            app:enterAnim="@anim/from_right_to_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/frag_select_pose"
+        android:name="org.techtown.repose.SelectPoseFragment"
+        android:label="frag_select_pose"
+        tools:layout="@layout/frag_select_pose" >
+        <action
+            android:id="@+id/action_frag_select_pose_to_frag_disease"
+            app:destination="@id/frag_disease"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_frag_select_pose_to_frag_main"
+            app:destination="@id/frag_main"
+            app:popUpTo="@id/frag_main"
+            app:popExitAnim="@anim/from_left_to_right"
+            app:enterAnim="@anim/from_left_to_right"
+            app:exitAnim="@anim/from_left_to_right"
+            app:popEnterAnim="@anim/from_left_to_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/frag_disease"
+        android:name="org.techtown.repose.DiseaseFragment"
+        android:label="frag_disease"
+        tools:layout="@layout/frag_disease" >
+        <action
+            android:id="@+id/action_frag_disease_to_frag_select_pose"
+            app:destination="@id/frag_select_pose"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/frag_select_pose" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/frag_show_exercise"
+        android:name="org.techtown.repose.ShowExerciseFragment"
+        android:label="frag_exercise"
+        tools:layout="@layout/frag_show_exercise">
+        <action
+            android:id="@+id/action_frag_show_exercise_to_frag_main"
+            app:destination="@id/frag_main"
+            app:exitAnim="@anim/from_left_to_right"
+            app:popEnterAnim="@anim/from_left_to_right"
+            app:popUpTo="@id/frag_main" />
+    </fragment>
+    <fragment
+        android:id="@+id/testFragment"
+        android:name="org.techtown.repose.TestFragment"
+        android:label="fragment_test"
+        tools:layout="@layout/fragment_test" >
+        <action
+            android:id="@+id/action_testFragment_to_frag_main"
+            app:destination="@id/frag_main"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+
+
+</navigation>
+
+
