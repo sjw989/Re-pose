@@ -1,0 +1,14 @@
+org/techtown/repose/BuildConfig.java
+ org.techtown.repose.BuildConfig
+org/techtown/repose/databinding/FragSelectPoseBinding.java
+ org.techtown.repose.databinding.FragSelectPoseBinding
+org/techtown/repose/databinding/ActivityMainBinding.java
+ org.techtown.repose.databinding.ActivityMainBinding
+org/techtown/repose/databinding/FragPoseBinding.java
+ org.techtown.repose.databinding.FragPoseBinding
+org/techtown/repose/databinding/FragGuideBinding.java
+ org.techtown.repose.databinding.FragGuideBinding
+org/techtown/repose/databinding/FragDiseaseBinding.java
+ org.techtown.repose.databinding.FragDiseaseBinding
+org/techtown/repose/databinding/FragMainBinding.java
+ org.techtown.repose.databinding.FragMainBinding
