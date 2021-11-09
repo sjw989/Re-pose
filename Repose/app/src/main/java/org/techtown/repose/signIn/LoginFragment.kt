@@ -1,4 +1,4 @@
-package org.techtown.repose
+package org.techtown.repose.signIn
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,17 +9,8 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.frag_login.*
 import kotlinx.android.synthetic.main.fragment_test.*
+import org.techtown.repose.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 
 class LoginFragment : Fragment() {
     lateinit var  navController : NavController// 네비게이션 컨트롤러
@@ -35,10 +26,11 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         login_btn.setOnClickListener{
+            //로그인을 했을 때 서버에서 아이디랑 비밀번호 일치여부 -> 가져와서 룸DB에 저장한 뒤 main fragment로 이동
             findNavController().navigate(R.id.action_frag_login_to_frag_main)
         }
         find_id_pw_btn.setOnClickListener{
-            findNavController().navigate(R.id.action_frag_login_to_frag_find_id_pw)
+            findNavController().navigate(R.id.action_frag_login_to_frag_find_id)
         }
     }
 }

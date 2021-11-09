@@ -82,7 +82,7 @@
 
     <fragment
         android:id="@+id/frag_start"
-        android:name="org.techtown.repose.StartFragment"
+        android:name="org.techtown.repose.signIn.StartFragment"
         tools:layout="@layout/frag_start" >
         <action
             android:id="@+id/action_frag_start_to_frag_login"
@@ -93,23 +93,34 @@
     </fragment>
     <fragment
         android:id="@+id/frag_login"
-        android:name="org.techtown.repose.LoginFragment"
+        android:name="org.techtown.repose.signIn.LoginFragment"
         tools:layout="@layout/frag_login" >
         <action
-            android:id="@+id/action_frag_login_to_frag_find_id_pw"
-            app:destination="@id/frag_find_id_pw" />
+            android:id="@+id/action_frag_login_to_frag_find_id"
+            app:destination="@id/frag_find_id" />
         <action
             android:id="@+id/action_frag_login_to_frag_main"
             app:destination="@id/frag_main" />
     </fragment>
     <fragment
-        android:id="@+id/frag_find_id_pw"
-        android:name="org.techtown.repose.FindIdPwFragment"
-        tools:layout="@layout/frag_find_id_pw" >
+        android:id="@+id/frag_find_id"
+        android:name="org.techtown.repose.signIn.FindIdFragment"
+        tools:layout="@layout/frag_find_id" >
+    <action
+        android:id="@+id/action_frag_find_id_to_frag_find_success"
+        app:destination="@id/frag_find_success" />
+    </fragment>
+    <fragment
+        android:id="@+id/frag_find_success"
+        android:name="org.techtown.repose.signIn.FindSuccessFragment"
+        tools:layout="@layout/frag_find_success" >
+        <action
+            android:id="@+id/action_frag_find_success_to_frag_login"
+            app:destination="@id/frag_login" />
     </fragment>
     <fragment
         android:id="@+id/frag_account_setting"
-        android:name="org.techtown.repose.AccountSettingFragment"
+        android:name="org.techtown.repose.signIn.AccountSettingFragment"
         tools:layout="@layout/frag_account_setting" >
     </fragment>
 

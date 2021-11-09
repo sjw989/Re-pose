@@ -1,5 +1,6 @@
 package org.techtown.repose
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,13 +11,15 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.room.Database
+import androidx.room.Room
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var navController:NavController // 네비게이션 컨트롤러
-
+    lateinit var db:AppDatabase
 
     companion object{
         // pose 리스트
@@ -44,7 +47,17 @@ class MainActivity : AppCompatActivity() {
         // 임의로 user 객체 하나 만듦
         navController = nav_host_fragment.findNavController()
 
+//        db = AppDatabase.getInstance(applicationContext)!!
+//        mc.db = AppDatabase.getInstance(this)!!
+//        val newUserData = UserData(123,"chae","kijung")
+//        mc.db.userDao().insertUserData(newUserData)
+
+
+
+
     }
+
+
 
 
 

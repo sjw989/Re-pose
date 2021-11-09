@@ -27,12 +27,16 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24375" />
         <entry key="app/src/main/res/layout/frag_account_setting.xml" value="0.25" />
         <entry key="app/src/main/res/layout/frag_exercise.xml" value="0.2552083333333333" />
+        <entry key="app/src/main/res/layout/frag_find_id.xml" value="0.25477630153051406" />
         <entry key="app/src/main/res/layout/frag_find_id_pw.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/frag_find_pw.xml" value="0.21080863970929598" />
+        <entry key="app/src/main/res/layout/frag_find_success.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/frag_login.xml" value="0.2552083333333333" />
         <entry key="app/src/main/res/layout/frag_main.xml" value="0.2552083333333333" />
         <entry key="app/src/main/res/layout/frag_start.xml" value="0.24114583333333334" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.2296875" />
         <entry key="app/src/main/res/layout/fragment_test.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/fragt_find_id.xml" value="0.159375" />
       </map>
     </option>
   </component>

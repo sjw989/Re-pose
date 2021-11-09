@@ -3,10 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccountSettingFragment">
+    android:background="@color/white"
+    android:theme="@style/Theme.MaterialComponents.Light"
+    tools:context="signIn.AccountSettingFragment">
 
     <TextView
         android:id="@+id/title_textview"
@@ -24,7 +25,7 @@
         android:id="@+id/id_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:layout_marginStart="20dp"
         android:text="아이디"
         android:textSize="20dp"
@@ -80,9 +81,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:hint="비밀번호를 한번  입력해 주세요"
+        android:hint="비밀번호를 한번 더 입력해 주세요"
         android:textColorHint="@color/transparent"
         app:layout_constraintTop_toBottomOf="@id/pw_confirm_textview"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+        android:id="@+id/email_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="20dp"
+        android:text="E - mail"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/pw_confirm_edittext"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/email_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:hint="E-mail을 입력해 주세요"
+        android:textColorHint="@color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/email_textview"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <Button
