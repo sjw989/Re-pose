@@ -20,6 +20,11 @@
             app:destination="@id/frag_show_exercise"
             app:enterAnim="@anim/ani_from_right_to_left"
             app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_frag_main_to_frag_select_tmer"
+            app:destination="@id/frag_select_tmer"
+            app:enterAnim="@anim/ani_from_left_to_right"
+            app:popExitAnim="@anim/ani_from_right_to_left2" />
     </fragment>
 
     <fragment
@@ -45,17 +50,6 @@
         android:name="org.techtown.repose.ShowExerciseFragment"
         android:label="frag_exercise"
         tools:layout="@layout/frag_show_exercise"/>
-    <fragment
-        android:id="@+id/testFragment"
-        android:name="org.techtown.repose.TestFragment"
-        android:label="fragment_test"
-        tools:layout="@layout/fragment_test" >
-        <action
-            android:id="@+id/action_testFragment_to_frag_main"
-            app:destination="@id/frag_main"
-            app:enterAnim="@anim/ani_from_right_to_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
-    </fragment>
     <fragment
         android:id="@+id/frag_start"
         android:name="org.techtown.repose.signIn.StartFragment"
@@ -98,6 +92,13 @@
         android:id="@+id/frag_account_setting"
         android:name="org.techtown.repose.signIn.AccountSettingFragment"
         tools:layout="@layout/frag_account_setting" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/frag_select_tmer"
+        android:name="org.techtown.repose.SelectTimerFragment"
+        android:label="frag_select_tmer">
+
     </fragment>
 
 

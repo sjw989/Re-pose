@@ -6,13 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 
 import org.techtown.repose.databinding.FragSelectPoseBinding
 
-class SelectPoseFragment : Fragment(), IOnbackPressed {
+class SelectPoseFragment : Fragment(){
     lateinit var  navController : NavController// 네비게이션 컨트롤러
     private var _binding : FragSelectPoseBinding? = null // 뷰바인딩
     private val binding get() = _binding!! // 뷰바인딩
@@ -29,9 +30,7 @@ class SelectPoseFragment : Fragment(), IOnbackPressed {
         setInit() // 초기 버튼 상태 설정
         setButton() // 버튼으로 자세 선택
         selected() // 사용자가 Disease화면에서 자세를 선택한 경우 처리
-        binding.fbtnSelectPostToMain.setOnClickListener{
-            navController.popBackStack()
-        }
+        back_pressed() // 뒤로가기 버튼
     }
 
     // Disease화면에서 자세가 선택버튼을 누른경우 처리
@@ -111,9 +110,13 @@ class SelectPoseFragment : Fragment(), IOnbackPressed {
         super.onDestroyView()
     }
 
-    // back키
-    override fun onBackPressed():Boolean{
-        navController.popBackStack()
-        return false
+    // 뒤로가기 버튼
+    fun back_pressed(){
+        requireActivity().onBackPressedDispatcher.addCallback(object :
+            OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                navController.popBackStack()
+            }
+        })
     }
 }

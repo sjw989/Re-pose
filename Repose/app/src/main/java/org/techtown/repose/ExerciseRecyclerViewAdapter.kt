@@ -19,6 +19,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ExerciseRecyclerViewAdapter(private val context : Context, private val data : List<String>,
                                   private val idx : Int, private val pose_name:String, private val view:View) :
@@ -72,6 +74,15 @@ class ExerciseRecyclerViewAdapter(private val context : Context, private val dat
 
             // 운동완료버튼 이벤트 리스너
             btn.setOnClickListener{
+                val long_now = System.currentTimeMillis()
+                // 현재 시간을 Date 타입으로 변환
+                val t_date = Date(long_now)
+                val t_dateHour = SimpleDateFormat("kk", Locale("ko","KR"))
+                val time_hour : Int = t_dateHour.format(t_date).toString().toInt()
+                val time_idx: Int = time_hour.toString().toInt() / 2 // 현재시간이 몇번째 인덱스인지
+                MainFragment.is_exercise_complete[time_idx] = true
+                MainFragment.is_countDown = false
+
                 val dialog = make_dialog(context)
 
                 val nav = it
@@ -80,7 +91,7 @@ class ExerciseRecyclerViewAdapter(private val context : Context, private val dat
                 dialog.setOnDismissListener {
                     Handler(Looper.getMainLooper()).postDelayed({
                         nav.findNavController().popBackStack()
-                    },1000)
+                    },700)
                 }
             }
         }

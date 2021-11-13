@@ -36,6 +36,9 @@ class PoseFragment : Fragment() {
         binding.btnGoGuide.setOnClickListener{
             var bundle = Bundle()
             bundle.putString("pose_name",pose_name)
+            if(MainFragment.is_countDown){
+                MainFragment.countDown.cancel()
+            }
             findNavController().navigate(R.id.action_frag_main_to_frag_show_exercise,bundle)
         }
     }

@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.frag_login.*
-import kotlinx.android.synthetic.main.fragment_test.*
 import org.techtown.repose.R
 
 
