@@ -13,11 +13,13 @@
         <action
             android:id="@+id/action_frag_main_to_frag_select_pose"
             app:destination="@id/frag_select_pose"
-            app:enterAnim="@anim/from_right_to_left" />
+            app:enterAnim="@anim/ani_from_right_to_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
         <action
             android:id="@+id/action_frag_main_to_frag_show_exercise"
             app:destination="@id/frag_show_exercise"
-            app:enterAnim="@anim/from_right_to_left" />
+            app:enterAnim="@anim/ani_from_right_to_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -28,47 +30,21 @@
         <action
             android:id="@+id/action_frag_select_pose_to_frag_disease"
             app:destination="@id/frag_disease"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@android:anim/slide_in_left"
+            app:enterAnim="@anim/ani_from_right_to_left"
             app:popExitAnim="@android:anim/slide_out_right" />
-        <action
-            android:id="@+id/action_frag_select_pose_to_frag_main"
-            app:destination="@id/frag_main"
-            app:popUpTo="@id/frag_main"
-            app:popExitAnim="@anim/from_left_to_right"
-            app:enterAnim="@anim/from_left_to_right"
-            app:exitAnim="@anim/from_left_to_right"
-            app:popEnterAnim="@anim/from_left_to_right" />
     </fragment>
 
     <fragment
         android:id="@+id/frag_disease"
         android:name="org.techtown.repose.DiseaseFragment"
         android:label="frag_disease"
-        tools:layout="@layout/frag_disease" >
-        <action
-            android:id="@+id/action_frag_disease_to_frag_select_pose"
-            app:destination="@id/frag_select_pose"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@android:anim/slide_in_left"
-            app:popExitAnim="@android:anim/slide_out_right"
-            app:popUpTo="@id/frag_select_pose" />
-    </fragment>
+        tools:layout="@layout/frag_disease" />
 
     <fragment
         android:id="@+id/frag_show_exercise"
         android:name="org.techtown.repose.ShowExerciseFragment"
         android:label="frag_exercise"
-        tools:layout="@layout/frag_show_exercise">
-        <action
-            android:id="@+id/action_frag_show_exercise_to_frag_main"
-            app:destination="@id/frag_main"
-            app:exitAnim="@anim/from_left_to_right"
-            app:popEnterAnim="@anim/from_left_to_right"
-            app:popUpTo="@id/frag_main" />
-    </fragment>
+        tools:layout="@layout/frag_show_exercise"/>
     <fragment
         android:id="@+id/testFragment"
         android:name="org.techtown.repose.TestFragment"
@@ -77,6 +53,7 @@
         <action
             android:id="@+id/action_testFragment_to_frag_main"
             app:destination="@id/frag_main"
+            app:enterAnim="@anim/ani_from_right_to_left"
             app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
 

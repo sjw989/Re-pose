@@ -33,14 +33,13 @@ class MainActivity : AppCompatActivity() {
 
         var user_pose = arrayListOf<String>()
         var user = User("sjw989","1q2w3e4r",user_pose)
+
     }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
         // 임의로 user 객체 하나 만듦
         navController = nav_host_fragment.findNavController()
 

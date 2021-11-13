@@ -9,8 +9,6 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_test.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
 class TestFragment : Fragment() {
     lateinit var  navController : NavController// 네비게이션 컨트롤러

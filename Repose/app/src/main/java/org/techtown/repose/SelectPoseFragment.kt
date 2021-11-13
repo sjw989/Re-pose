@@ -30,7 +30,6 @@ class SelectPoseFragment : Fragment(), IOnbackPressed {
         setButton() // 버튼으로 자세 선택
         selected() // 사용자가 Disease화면에서 자세를 선택한 경우 처리
         binding.fbtnSelectPostToMain.setOnClickListener{
-            findNavController().navigate(R.id.action_frag_select_pose_to_frag_main)
             navController.popBackStack()
         }
     }
@@ -115,6 +114,6 @@ class SelectPoseFragment : Fragment(), IOnbackPressed {
     // back키
     override fun onBackPressed():Boolean{
         navController.popBackStack()
-        return true
+        return false
     }
 }

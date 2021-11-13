@@ -1,7 +1,6 @@
 package org.techtown.repose
 
 import android.app.AlertDialog
-import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -14,23 +13,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.Toast
 import androidx.core.view.marginBottom
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.frag_show_exercise.view.*
-import org.techtown.repose.databinding.FragShowExerciseBinding
-import kotlinx.coroutines.delay as delay1
 
 class ExerciseRecyclerViewAdapter(private val context : Context, private val data : List<String>,
                                   private val idx : Int, private val pose_name:String, private val view:View) :
                                     RecyclerView.Adapter<ExerciseRecyclerViewAdapter.ViewHolder>() {
     lateinit var  navController : NavController// 네비게이션 컨트롤러
-    private var _binding : FragShowExerciseBinding? = null // 뷰바인딩
-    private val binding get() = _binding!! // 뷰바인딩
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tv: TextView
@@ -76,28 +69,28 @@ class ExerciseRecyclerViewAdapter(private val context : Context, private val dat
             btn.marginBottom
             holder.xml_recyclerview_component.addView(btn)
             navController = Navigation.findNavController(view) // 네비게이션 컨트롤러 view로 부터 가져오기
+
             // 운동완료버튼 이벤트 리스너
             btn.setOnClickListener{
-                val dialog = CompleteDialog(context)
-                Handler(Looper.getMainLooper()).postDelayed({
-                    dialog.show()
-                },1000)
+                val dialog = make_dialog(context)
 
-                Handler(Looper.getMainLooper()).postDelayed({
-                    dialog.dismiss()
-                },3000)
-                Handler(Looper.getMainLooper()).postDelayed({
-                    it.findNavController().navigate(R.id.action_frag_show_exercise_to_frag_main)
-                    navController.popBackStack()
-                },4000)
+                val nav = it
+                dialog.show()
+                Log.e("a","0")
+                dialog.setOnDismissListener {
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        nav.findNavController().popBackStack()
+                    },1000)
+                }
             }
         }
     }
-    class CompleteDialog constructor(context: Context) : Dialog(context){
-        init {
-            setCanceledOnTouchOutside(false)
-            window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            setContentView(R.layout.dialog_exercise_complete)
-        }
+    fun make_dialog(context :Context) : AlertDialog{
+        val layoutInflater = LayoutInflater.from(context)
+        val view  = layoutInflater.inflate(R.layout.dialog_exercise_complete,null)
+        val alertDialog = AlertDialog.Builder(context).setView(view).create()
+        alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        alertDialog.window!!.setWindowAnimations(R.style.ani_dialog)
+        return alertDialog
     }
 }
