@@ -40,12 +40,17 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         // 임의로 user 객체 하나 만듦
         navController = nav_host_fragment.findNavController()
+
+        user_timer[2] = true
+        user_days[6] = true
+        user.pose_list.add("다리꼬기")
 
 
 //        db = AppDatabase.getInstance(applicationContext)!!
