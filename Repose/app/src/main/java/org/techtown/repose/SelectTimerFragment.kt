@@ -10,7 +10,8 @@ import android.widget.CompoundButton
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import kotlinx.android.synthetic.main.frag_select_timer.*
+import org.techtown.repose.MainActivity.Companion.user_days
+import org.techtown.repose.MainActivity.Companion.user_timer
 import org.techtown.repose.databinding.FragSelectTimerBinding
 
 
@@ -34,135 +35,135 @@ class SelectTimerFragment : Fragment(){
         back_pressed() // 뒤로가기 버튼
     }
     fun set_init(){
-        if(MainActivity.user.days_list[0]){
+        if(user_days[0]){
             binding.btnMonday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
         }
-        if(MainActivity.user.days_list[1]){
+        if(user_days[1]){
             binding.btnTuesday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
         }
-        if(MainActivity.user.days_list[2]){
+        if(user_days[2]){
             binding.btnWednesday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
         }
-        if(MainActivity.user.days_list[3]){
+        if(user_days[3]){
             binding.btnThursday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
         }
-        if(MainActivity.user.days_list[4]){
+        if(user_days[4]){
             binding.btnFriday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
         }
-        if(MainActivity.user.days_list[5]){
+        if(user_days[5]){
             binding.btnSaturday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
         }
-        if(MainActivity.user.days_list[6]){
+        if(user_days[6]){
             binding.btnSunday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
         }
-        if(MainActivity.user.timer_list[0]){
+        if(user_timer[0]){
             binding.switch1.isChecked = true
         }
-        if(MainActivity.user.timer_list[1]){
+        if(user_timer[1]){
             binding.switch2.isChecked = true
         }
-        if(MainActivity.user.timer_list[2]){
+        if(user_timer[2]){
             binding.switch3.isChecked = true
         }
-        if(MainActivity.user.timer_list[3]){
+        if(user_timer[3]){
             binding.switch4.isChecked = true
         }
-        if(MainActivity.user.timer_list[4]){
+        if(user_timer[4]){
             binding.switch5.isChecked = true
         }
-        if(MainActivity.user.timer_list[5]){
+        if(user_timer[5]){
             binding.switch6.isChecked = true
         }
-        if(MainActivity.user.timer_list[6]){
+        if(user_timer[6]){
             binding.switch7.isChecked = true
         }
-        if(MainActivity.user.timer_list[7]){
+        if(user_timer[7]){
             binding.switch8.isChecked = true
         }
-        if(MainActivity.user.timer_list[8]){
+        if(user_timer[8]){
             binding.switch9.isChecked = true
         }
-        if(MainActivity.user.timer_list[9]){
+        if(user_timer[9]){
             binding.switch10.isChecked = true
         }
-        if(MainActivity.user.timer_list[10]){
+        if(user_timer[10]){
             binding.switch11.isChecked = true
         }
-        if(MainActivity.user.timer_list[11]){
+        if(user_timer[11]){
             binding.switch12.isChecked = true
         }
     }
     fun set_days(){
         binding.btnMonday.setOnClickListener{
-            if(!MainActivity.user.days_list[0]){
+            if(!user_days[0]){
                 binding.btnMonday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
-                MainActivity.user.days_list[0] = true
+                user_days[0] = true
             }
             else{
-                MainActivity.user.days_list[0] = false
+                user_days[0] = false
                 binding.btnMonday.setBackgroundColor(Color.parseColor("#FF636363"))
             }
         }
 
         binding.btnTuesday.setOnClickListener{
-            if(!MainActivity.user.days_list[1]){
+            if(!user_days[1]){
                 binding.btnTuesday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
-                MainActivity.user.days_list[1] = true
+                user_days[1] = true
             }
             else{
                 binding.btnTuesday.setBackgroundColor(Color.parseColor("#FF636363"))
-                MainActivity.user.days_list[1] = false
+                user_days[1] = false
             }
         }
 
         binding.btnWednesday.setOnClickListener{
-            if(!MainActivity.user.days_list[2]){
+            if(!user_days[2]){
                 binding.btnWednesday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
-                MainActivity.user.days_list[2] = true
+                user_days[2] = true
             }
             else{
-                MainActivity.user.days_list[2] = false
+                user_days[2] = false
                 binding.btnWednesday.setBackgroundColor(Color.parseColor("#FF636363"))
             }
         }
         binding.btnThursday.setOnClickListener{
-            if(!MainActivity.user.days_list[3]){
+            if(!user_days[3]){
                 binding.btnThursday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
-                MainActivity.user.days_list[3] = true
+                user_days[3] = true
             }
             else{
-                MainActivity.user.days_list[3] = false
+                user_days[3] = false
                 binding.btnThursday.setBackgroundColor(Color.parseColor("#FF636363"))
             }
         }
         binding.btnFriday.setOnClickListener{
-            if(!MainActivity.user.days_list[4]){
+            if(!user_days[4]){
                 binding.btnFriday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
-                MainActivity.user.days_list[4] = true
+                user_days[4] = true
             }
             else{
-                MainActivity.user.days_list[4] = false
+                user_days[4] = false
                 binding.btnFriday.setBackgroundColor(Color.parseColor("#FF636363"))
             }
         }
         binding.btnSaturday.setOnClickListener{
-            if(!MainActivity.user.days_list[5]){
+            if(!user_days[5]){
                 binding.btnSaturday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
-                MainActivity.user.days_list[5] = true
+                user_days[5] = true
             }
             else{
-                MainActivity.user.days_list[5] = false
+                user_days[5] = false
                 binding.btnSaturday.setBackgroundColor(Color.parseColor("#FF636363"))
             }
         }
 
         binding.btnSunday.setOnClickListener{
-            if(!MainActivity.user.days_list[6]){
+            if(!user_days[6]){
                 binding.btnSunday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
-                MainActivity.user.days_list[6] = true
+                user_days[6] = true
             }
             else{
-                MainActivity.user.days_list[6] = false
+                user_days[6] = false
                 binding.btnSunday.setBackgroundColor(Color.parseColor("#FF636363"))
             }
         }
@@ -200,7 +201,7 @@ class timeSwitch_Listener : CompoundButton.OnCheckedChangeListener{
         this.idx = idx
     }
     override fun onCheckedChanged(btn : CompoundButton?, isChecked: Boolean) {
-        MainActivity.user.timer_list[idx] = isChecked
+        user_timer[idx] = isChecked
     }
 
 }

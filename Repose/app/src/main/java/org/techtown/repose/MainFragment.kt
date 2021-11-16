@@ -13,6 +13,9 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import org.techtown.repose.MainActivity.Companion.user_days
+import org.techtown.repose.MainActivity.Companion.user_pose
+import org.techtown.repose.MainActivity.Companion.user_timer
 import org.techtown.repose.databinding.FragMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -22,7 +25,6 @@ class MainFragment : Fragment(){
     lateinit var  navController : NavController// 네비게이션 컨트롤러
     private var _binding : FragMainBinding? = null // 뷰바인딩
     private val binding get() = _binding!! // 뷰바인딩
-    private var doubleTap : Boolean = false
     private var exit_time : Long = 0
 
     companion object{
@@ -40,10 +42,11 @@ class MainFragment : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view) // 네비게이션 컨트롤러 view로 부터 가져오기
         select_pose() // 자세선택 버튼
+        show_medal() // 메달 보여주기 화면
         select_time() // 요일, 시간 선택
         connect_viewPager() // 뷰페이저 연결
         countTimer() // 카운트다운 타이머
-        back_pressed()
+        back_pressed() // 뒤로가기 버튼
     }
 
     // 카운트다운 타이머
@@ -70,13 +73,11 @@ class MainFragment : Fragment(){
         val time_day : String = t_dateDay.format(t_date).toString()
         val time_minutes : Int = t_dateMinute.format(t_date).toString().toInt()
         val time_seconds : Int = t_dateSeconds.format(t_date).toString().toInt()
+        
+        if(time_day == "월"){
+            if (user_days[0]) {
+                if (user_timer[time_idx] && user_pose.contains(true)) { // user가 현재 시간을 선택해놨으면 && 선택한 자세가 있으면
 
-        if(t_dateDay.toString() == "월"){
-            if (MainActivity.user.days_list[0]) {
-                println("토요일")
-                println(time_idx.toString())
-                println(MainActivity.user.timer_list[time_idx].toString())
-                if (MainActivity.user.timer_list[time_idx] && MainActivity.user.pose_list.size > 0) { // user가 현재 시간을 선택해놨으면 && 선택한 자세가 있으면
                     if(time_hour < time_idx * 2 + 1  ){ // 2시간 단위니까 예를 들어 2~4시면 3시 이전에만 카운트다운이 돌아야함.
                         if(!is_exercise_complete[time_idx]){ // 해당 시간에 운동을 안헀으면
                             is_countDown = true // 카운트다운 on
@@ -99,12 +100,9 @@ class MainFragment : Fragment(){
                 }
             }
         }
-        if(t_dateDay.toString() == "화"){
-            if (MainActivity.user.days_list[1]) {
-                println("토요일")
-                println(time_idx.toString())
-                println(MainActivity.user.timer_list[time_idx].toString())
-                if (MainActivity.user.timer_list[time_idx] && MainActivity.user.pose_list.size > 0) { // user가 현재 시간을 선택해놨으면 && 선택한 자세가 있으면
+        if(time_day == "화"){
+            if (user_days[1]) {
+                if (user_timer[time_idx] && user_pose.contains(true)) { // user가 현재 시간을 선택해놨으면 && 선택한 자세가 있으면
                     if(time_hour < time_idx * 2 + 1  ){ // 2시간 단위니까 예를 들어 2~4시면 3시 이전에만 카운트다운이 돌아야함.
                         if(!is_exercise_complete[time_idx]){ // 해당 시간에 운동을 안헀으면
                             is_countDown = true // 카운트다운 on
@@ -127,12 +125,9 @@ class MainFragment : Fragment(){
                 }
             }
         }
-        if(t_dateDay.toString() == "수"){
-            if (MainActivity.user.days_list[2]) {
-                println("토요일")
-                println(time_idx.toString())
-                println(MainActivity.user.timer_list[time_idx].toString())
-                if (MainActivity.user.timer_list[time_idx] && MainActivity.user.pose_list.size > 0) { // user가 현재 시간을 선택해놨으면 && 선택한 자세가 있으면
+        if(time_day == "수"){
+            if (user_days[2]) {
+                if (user_timer[time_idx] && user_pose.contains(true)) { // user가 현재 시간을 선택해놨으면 && 선택한 자세가 있으면
                     if(time_hour < time_idx * 2 + 1  ){ // 2시간 단위니까 예를 들어 2~4시면 3시 이전에만 카운트다운이 돌아야함.
                         if(!is_exercise_complete[time_idx]){ // 해당 시간에 운동을 안헀으면
                             is_countDown = true // 카운트다운 on
@@ -155,12 +150,9 @@ class MainFragment : Fragment(){
                 }
             }
         }
-        if(t_dateDay.toString() == "목"){
-            if (MainActivity.user.days_list[3]) {
-                println("토요일")
-                println(time_idx.toString())
-                println(MainActivity.user.timer_list[time_idx].toString())
-                if (MainActivity.user.timer_list[time_idx] && MainActivity.user.pose_list.size > 0) { // user가 현재 시간을 선택해놨으면 && 선택한 자세가 있으면
+        if(time_day == "목"){
+            if (user_days[3]) {
+                if (user_timer[time_idx] && user_pose.contains(true)) { // user가 현재 시간을 선택해놨으면 && 선택한 자세가 있으면
                     if(time_hour < time_idx * 2 + 1  ){ // 2시간 단위니까 예를 들어 2~4시면 3시 이전에만 카운트다운이 돌아야함.
                         if(!is_exercise_complete[time_idx]){ // 해당 시간에 운동을 안헀으면
                             is_countDown = true // 카운트다운 on
@@ -183,12 +175,9 @@ class MainFragment : Fragment(){
                 }
             }
         }
-        if(t_dateDay.toString() == "금"){
-            if (MainActivity.user.days_list[4]) {
-                println("토요일")
-                println(time_idx.toString())
-                println(MainActivity.user.timer_list[time_idx].toString())
-                if (MainActivity.user.timer_list[time_idx] && MainActivity.user.pose_list.size > 0) { // user가 현재 시간을 선택해놨으면 && 선택한 자세가 있으면
+        if(time_day == "금"){
+            if (user_days[4]) {
+                if (user_timer[time_idx] && user_pose.contains(true)) { // user가 현재 시간을 선택해놨으면 && 선택한 자세가 있으면
                     if(time_hour < time_idx * 2 + 1  ){ // 2시간 단위니까 예를 들어 2~4시면 3시 이전에만 카운트다운이 돌아야함.
                         if(!is_exercise_complete[time_idx]){ // 해당 시간에 운동을 안헀으면
                             is_countDown = true // 카운트다운 on
@@ -212,11 +201,8 @@ class MainFragment : Fragment(){
             }
         }
         if(time_day == "토") {
-            if (MainActivity.user.days_list[5]) {
-                println("토요일")
-                println(time_idx.toString())
-                println(MainActivity.user.timer_list[time_idx].toString())
-                if (MainActivity.user.timer_list[time_idx] && MainActivity.user.pose_list.size > 0) { // user가 현재 시간을 선택해놨으면 && 선택한 자세가 있으면
+            if (user_days[5]) {
+                if (user_timer[time_idx] && user_pose.contains(true)) { // user가 현재 시간을 선택해놨으면 && 선택한 자세가 있으면
                     if(time_hour < time_idx * 2 + 1  ){ // 2시간 단위니까 예를 들어 2~4시면 3시 이전에만 카운트다운이 돌아야함.
                         if(!is_exercise_complete[time_idx]){ // 해당 시간에 운동을 안헀으면
                             is_countDown = true // 카운트다운 on
@@ -240,8 +226,8 @@ class MainFragment : Fragment(){
             }
         }
         if (time_day == "일") {
-            if (MainActivity.user.days_list[6]) {
-                if (MainActivity.user.timer_list[time_idx] && MainActivity.user.pose_list.size > 0) { // user가 현재 시간을 선택해놨으면 && 선택한 자세가 있으면
+            if (user_days[6]) {
+                if (user_timer[time_idx] && user_pose.contains(true)) { // user가 현재 시간을 선택해놨으면 && 선택한 자세가 있으면
                     if (time_hour < time_idx * 2 + 1) { // 2시간 단위니까 예를 들어 2~4시면 3시 이전에만 카운트다운이 돌아야함.
                         if (!is_exercise_complete[time_idx]) { // 해당 시간에 운동을 안헀으면
                             is_countDown = true // 카운트다운 on
@@ -269,6 +255,7 @@ class MainFragment : Fragment(){
         }
 
     }
+
     // 뒤로가기 버튼
     fun back_pressed(){
         requireActivity().onBackPressedDispatcher.addCallback(object :
@@ -290,12 +277,17 @@ class MainFragment : Fragment(){
         })
     }
 
+    // 메달 화면
+    fun show_medal(){
+        binding.btnMedal.setOnClickListener{
+            findNavController().navigate(R.id.action_frag_main_to_medalFragment)
+        }
+    }
 
     // 자세선택 버튼
     private fun select_pose(){
         binding.btnSelectPose.setOnClickListener{
             if(is_countDown){
-                println("cancled")
                 countDown.cancel()
             }
             findNavController().navigate(R.id.action_frag_main_to_frag_select_pose)
@@ -308,7 +300,7 @@ class MainFragment : Fragment(){
             if(is_countDown){
                 countDown.cancel()
             }
-            findNavController().navigate(R.id.action_frag_main_to_frag_select_tmer)
+            findNavController().navigate(R.id.action_frag_main_to_selectTimerFragment)
         }
     }
 
@@ -361,13 +353,13 @@ class MainFragment : Fragment(){
     // 뷰페이저 연결
     private fun connect_viewPager(){
         val fmList = arrayListOf<Fragment>()
-        if(!MainActivity.user.pose_list.isEmpty()){
-            for(i in 0 until MainActivity.user.pose_list.size){ // user의 pose_list를 가져와서 newInstance 만들어줌
-                fmList.add(PoseFragment.newInstance(MainActivity.pose_list.indexOf(MainActivity.user.pose_list[i]),MainActivity.user.pose_list[i]))
+        for(i in 0..user_pose.size - 1){
+            if(user_pose[i]){ // 선택되어있는 자세라면
+                fmList.add(PoseFragment.newInstance(i,MainActivity.pose_list[i])) // fmList에 추가
             }
         }
-        else{
-            fmList.add(EmptyPoseFragment.newInstance())
+        if(fmList.size == 0){ // 선택된 자세가 하나도 없다면
+            fmList.add(EmptyPoseFragment.newInstance()) // 자세없음 fragment
         }
         vpAdapter = PosePagerAdapter(fmList,this) // 어댑터 설정
         binding.vpPoseViewPager.adapter = vpAdapter // 어댑터 연결

@@ -21,10 +21,13 @@
             app:enterAnim="@anim/ani_from_right_to_left"
             app:popExitAnim="@android:anim/slide_out_right" />
         <action
-            android:id="@+id/action_frag_main_to_frag_select_tmer"
-            app:destination="@id/frag_select_tmer"
+            android:id="@+id/action_frag_main_to_selectTimerFragment"
+            app:destination="@id/selectTimerFragment"
             app:enterAnim="@anim/ani_from_left_to_right"
             app:popExitAnim="@anim/ani_from_right_to_left2" />
+        <action
+            android:id="@+id/action_frag_main_to_medalFragment"
+            app:destination="@id/medalFragment" />
     </fragment>
 
     <fragment
@@ -95,11 +98,15 @@
     </fragment>
 
     <fragment
-        android:id="@+id/frag_select_tmer"
+        android:id="@+id/medalFragment"
+        android:name="org.techtown.repose.MedalFragment"
+        android:label="frag_medal"
+        tools:layout="@layout/frag_medal" />
+    <fragment
+        android:id="@+id/selectTimerFragment"
         android:name="org.techtown.repose.SelectTimerFragment"
-        android:label="frag_select_tmer">
-
-    </fragment>
+        android:label="frag_select_timer"
+        tools:layout="@layout/frag_select_timer" />
 
 
 </navigation>

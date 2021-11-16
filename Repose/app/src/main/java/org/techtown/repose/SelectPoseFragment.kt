@@ -10,6 +10,8 @@ import androidx.activity.OnBackPressedCallback
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import org.techtown.repose.MainActivity.Companion.pose_list
+import org.techtown.repose.MainActivity.Companion.user_pose
 
 import org.techtown.repose.databinding.FragSelectPoseBinding
 
@@ -36,11 +38,11 @@ class SelectPoseFragment : Fragment(){
     // Disease화면에서 자세가 선택버튼을 누른경우 처리
     fun selected(){
         navController.currentBackStackEntry?.savedStateHandle?.getLiveData<String>("pose")?.observe(viewLifecycleOwner){
-            MainActivity.user.pose_list.add(it)
+            user_pose[pose_list.indexOf(it)] = true
             when(it){
                 "다리꼬기"->binding.SelectBtnPose1.setImageResource(R.drawable.pose1_on)
-                "양반다리"->binding.SelectBtnPose2.setImageResource(R.drawable.pose2_on)
-                "한 쪽으로 짐 들기"->binding.SelectBtnPose3.setImageResource(R.drawable.pose3_on)
+                "한 쪽으로 짐 들기"->binding.SelectBtnPose2.setImageResource(R.drawable.pose2_on)
+                "장시간 앉아 있기"->binding.SelectBtnPose3.setImageResource(R.drawable.pose3_on)
             }
         }
     }
@@ -48,35 +50,36 @@ class SelectPoseFragment : Fragment(){
     // 버튼으로 자세 선택
     fun setButton(){
         binding.SelectBtnPose1.setOnClickListener(){
-            if(MainActivity.user.pose_list.contains("다리꼬기")){
-                MainActivity.user.pose_list.remove("다리꼬기")
+            if(user_pose[pose_list.indexOf("다리꼬기")]){
+                user_pose[pose_list.indexOf("다리꼬기")] = false
                 binding.SelectBtnPose1.setImageResource(R.drawable.pose1_off)
             }
-            else if(!MainActivity.user.pose_list.contains("다리꼬기")){
+            else if(!user_pose[pose_list.indexOf("다리꼬기")]){
                 val bundle = Bundle()
                 bundle.putString("pose","다리꼬기")
                 findNavController().navigate(R.id.action_frag_select_pose_to_frag_disease,bundle)
             }
         }
         binding.SelectBtnPose2.setOnClickListener(){
-            if(MainActivity.user.pose_list.contains("양반다리")){
-                MainActivity.user.pose_list.remove("양반다리")
+            if(user_pose[pose_list.indexOf("한 쪽으로 짐 들기")]){
+                user_pose[pose_list.indexOf("한 쪽으로 짐 들기")] = false
                 binding.SelectBtnPose2.setImageResource(R.drawable.pose2_off)
             }
-            else if(!MainActivity.user.pose_list.contains("양반다리")){
+            else if(!user_pose[pose_list.indexOf("한 쪽으로 짐 들기")]){
                 val bundle = Bundle()
-                bundle.putString("pose","양반다리")
+                bundle.putString("pose","한 쪽으로 짐 들기")
                 findNavController().navigate(R.id.action_frag_select_pose_to_frag_disease,bundle)
             }
         }
+
         binding.SelectBtnPose3.setOnClickListener(){
-            if(MainActivity.user.pose_list.contains("한 쪽으로 짐 들기")){
-                MainActivity.user.pose_list.remove("한 쪽으로 짐 들기")
+            if(user_pose[pose_list.indexOf("장시간 앉아 있기")]){
+                user_pose[pose_list.indexOf("장시간 앉아 있기")] = false
                 binding.SelectBtnPose3.setImageResource(R.drawable.pose3_off)
             }
-            else if(!MainActivity.user.pose_list.contains("한 쪽으로 짐 들기")){
+            else if(!user_pose[pose_list.indexOf("장시간 앉아 있기")]){
                 val bundle = Bundle()
-                bundle.putString("pose","한 쪽으로 짐 들기")
+                bundle.putString("pose","장시간 앉아 있기")
                 findNavController().navigate(R.id.action_frag_select_pose_to_frag_disease,bundle)
             }
         }
@@ -84,19 +87,19 @@ class SelectPoseFragment : Fragment(){
 
     // 초기 버튼 상태
     fun setInit(){
-        if(MainActivity.user.pose_list.contains("다리꼬기")){
+        if(user_pose[pose_list.indexOf("다리꼬기")]){
             binding.SelectBtnPose1.setImageResource(R.drawable.pose1_on)
         }
         else{
             binding.SelectBtnPose1.setImageResource(R.drawable.pose1_off)
         }
-        if(MainActivity.user.pose_list.contains("양반다리")){
+        if(user_pose[pose_list.indexOf("한 쪽으로 짐 들기")]){
             binding.SelectBtnPose2.setImageResource(R.drawable.pose2_on)
         }
         else{
             binding.SelectBtnPose2.setImageResource(R.drawable.pose2_off)
         }
-        if(MainActivity.user.pose_list.contains("한 쪽으로 짐 들기")){
+        if(user_pose[pose_list.indexOf("장시간 앉아 있기")]){
             binding.SelectBtnPose3.setImageResource(R.drawable.pose3_on)
         }
         else{

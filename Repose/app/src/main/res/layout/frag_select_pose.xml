@@ -34,24 +34,12 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="양반다리"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="#000000"
-                app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose2"
-                app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose2"
-                app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose2" />
-
                 <TextView
                     android:id="@+id/textView10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="한 쪽으로 짐 들기"
+                    android:text="장시간 앉아 있기"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="#000000"
                     android:textSize="22sp"
@@ -128,7 +116,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="자세4"
+                    android:text="장시간 서 있기"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="#000000"
                     android:textSize="22sp"
@@ -141,7 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="양반다리"
+                    android:text="한 쪽으로 짐 들기"
                     android:textColor="#000000"
                     android:textSize="22sp"
                     app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose2"
@@ -177,7 +165,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="자세5"
+                    android:text="장시간 전자기기 사용"
                     android:textColor="#000000"
                     android:textSize="22sp"
                     app:layout_constraintEnd_toEndOf="@+id/imageButton"
@@ -189,7 +177,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="자세6"
+                    android:text="장시간 독서"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     app:layout_constraintEnd_toEndOf="@+id/imageButton9"
@@ -226,7 +214,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="자세7"
+                    android:text="장시간 필기"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     app:layout_constraintEnd_toEndOf="@+id/imageButton10"
@@ -251,11 +239,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="30dp"
-                    android:text="자세9"
+                    android:text="팔자걸음"
                     android:textColor="@color/black"
                     android:textSize="22sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/imageButton11"
                     app:layout_constraintHorizontal_bias="0.51"
                     app:layout_constraintStart_toStartOf="@+id/imageButton11"
@@ -266,7 +252,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="자세8"
+                    android:text="장시간 운전"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     app:layout_constraintEnd_toEndOf="@+id/imageButton12"
@@ -290,12 +276,62 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="자세10"
+                    android:text="안짱걸음"
                     android:textColor="@color/black"
                     android:textSize="22sp"
                     app:layout_constraintEnd_toEndOf="@+id/imageButton13"
                     app:layout_constraintStart_toStartOf="@+id/imageButton13"
                     app:layout_constraintTop_toBottomOf="@+id/imageButton13" />
+
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="30dp"
+                    android:background="#FFFFFF"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/alarm"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButton11"
+                    app:layout_constraintStart_toStartOf="@+id/imageButton11"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+                <ImageButton
+                    android:id="@+id/imageButton3"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="30dp"
+                    android:background="#FFFFFF"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/direction"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButton13"
+                    app:layout_constraintStart_toStartOf="@+id/imageButton13"
+                    app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="30dp"
+                    android:text="양반다리"
+                    android:textColor="#000000"
+                    android:textSize="22sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButton2"
+                    app:layout_constraintStart_toStartOf="@+id/imageButton2"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="엎드려자기"
+                    android:textColor="#000000"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toEndOf="@+id/imageButton3"
+                    app:layout_constraintStart_toStartOf="@+id/imageButton3"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -343,5 +379,7 @@
         app:layout_constraintHorizontal_bias="0.018"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
