@@ -9,6 +9,8 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.navigation.fragment.findNavController
 import org.techtown.repose.R
 import org.techtown.repose.databinding.FragAccountSettingBinding
 
@@ -26,8 +28,17 @@ class AccountSettingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        back_pressed() // 뒤로가기 버튼
         //버튼눌렀을 때 network api 사용
 
+    }
+
+    fun back_pressed(){
+        requireActivity().onBackPressedDispatcher.addCallback(object :
+            OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                findNavController().popBackStack()
+            }
+        })
     }
 }

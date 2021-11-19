@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/frag_start">
+    app:startDestination="@id/frag_splash">
 
     <fragment
         android:id="@+id/frag_main"
@@ -107,6 +107,15 @@
         android:name="org.techtown.repose.SelectTimerFragment"
         android:label="frag_select_timer"
         tools:layout="@layout/frag_select_timer" />
+    <fragment
+        android:id="@+id/frag_splash"
+        android:name="org.techtown.repose.SplashFragment"
+        android:label="frag_splash"
+        tools:layout="@layout/frag_splash" >
+        <action
+            android:id="@+id/action_frag_splash_to_frag_start"
+            app:destination="@id/frag_start" />
+    </fragment>
 
 
 </navigation>

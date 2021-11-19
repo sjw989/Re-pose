@@ -71,5 +71,11 @@ class MedalFragment : Fragment() {
         
     }
 
+    // 뷰바인딩 destroy
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
+
 
 }
