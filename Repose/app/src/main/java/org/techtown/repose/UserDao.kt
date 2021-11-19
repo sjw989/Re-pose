@@ -16,10 +16,9 @@ interface UserDao {
 //    @Query("SELECT * FROM user WHERE first_name LIKE :first AND " +
 //            "last_name LIKE :last LIMIT 1")
 //    fun findByName(first: String, last: String): UserData
-
-    @Insert
-    fun insertAll(vararg users: UserData)
-
+//
+//    @Insert
+//    fun insertAll(vararg users: UserData)
 
     @Insert
     fun insertUserData(user: UserData)

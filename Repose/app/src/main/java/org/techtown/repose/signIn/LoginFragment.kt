@@ -29,6 +29,10 @@ class LoginFragment : Fragment() {
             //로그인을 했을 때 서버에서 아이디랑 비밀번호 일치여부 -> 가져와서 룸DB에 저장한 뒤 main fragment로 이동
             findNavController().navigate(R.id.action_frag_login_to_frag_main)
         }
+//        login_btn.setOnClickListener{
+//            //로그인을 했을 때 서버에서 아이디랑 비밀번호 일치여부 -> 가져와서 룸DB에 저장한 뒤 main fragment로 이동
+//            findNavController().navigate(R.id.action_frag_login_to_fragment_retrofit_test)
+//        }
         find_id_pw_btn.setOnClickListener{
             findNavController().navigate(R.id.action_frag_login_to_frag_find_id)
         }
