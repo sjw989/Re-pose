@@ -19,6 +19,9 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import org.techtown.repose.MainActivity.Companion.user_confirmNum
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ExerciseRecyclerViewAdapter(private val context : Context, private val data : List<String>,
                                   private val idx : Int, private val pose_name:String, private val view:View) :
@@ -72,15 +75,27 @@ class ExerciseRecyclerViewAdapter(private val context : Context, private val dat
 
             // 운동완료버튼 이벤트 리스너
             btn.setOnClickListener{
+                val long_now = System.currentTimeMillis()
+                // 현재 시간을 Date 타입으로 변환
+                val t_date = Date(long_now)
+                val t_dateHour = SimpleDateFormat("kk", Locale("ko","KR"))
+                val time_hour : Int = t_dateHour.format(t_date).toString().toInt()
+                val time_idx: Int = time_hour.toString().toInt() / 2 // 현재시간이 몇번째 인덱스인지
+                MainFragment.is_exercise_complete[time_idx] = true // 해당 시간에 운동 헀음을 표시 -> Timer 안뜨게 하기위함
+
+                if(MainFragment.is_countDown){ // 버튼을 눌렀는데 현재 카운트다운 중이라면
+                    MainFragment.is_countDown = false
+                    user_confirmNum++ // 운동완료 버튼 누른 횟수 ++
+                }
+
                 val dialog = make_dialog(context)
 
                 val nav = it
                 dialog.show()
-                Log.e("a","0")
                 dialog.setOnDismissListener {
                     Handler(Looper.getMainLooper()).postDelayed({
                         nav.findNavController().popBackStack()
-                    },1000)
+                    },700)
                 }
             }
         }

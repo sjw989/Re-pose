@@ -6,13 +6,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import org.techtown.repose.databinding.FragShowExerciseBinding
 
 
-class ShowExerciseFragment : Fragment(), IOnbackPressed {
+class ShowExerciseFragment : Fragment(){
     lateinit var  navController : NavController// 네비게이션 컨트롤러
     private var _binding : FragShowExerciseBinding? = null // 뷰바인딩
     private val binding get() = _binding!! // 뷰바인딩
@@ -38,6 +39,7 @@ class ShowExerciseFragment : Fragment(), IOnbackPressed {
         navController = Navigation.findNavController(view) // 네비게이션 컨트롤러 view로 부터 가져오기
         set_pose_name() // 운동을 보여줄 자세 이름을 PoseFragment로부터 받아옴
         connect_viewPager() // 뷰페이저 연결
+        back_pressed() // 뒤로가기 버튼
     }
 
 
@@ -79,8 +81,12 @@ class ShowExerciseFragment : Fragment(), IOnbackPressed {
         binding.tvExercisePoseName.text = pose_name
     }
 
-    //뒤로가기버튼
-    override fun onBackPressed():Boolean{
-        return true
+    fun back_pressed(){
+        requireActivity().onBackPressedDispatcher.addCallback(object :
+            OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                navController.popBackStack()
+            }
+        })
     }
 }

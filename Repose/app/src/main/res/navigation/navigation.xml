@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/frag_start">
+    app:startDestination="@id/frag_splash">
 
     <fragment
         android:id="@+id/frag_main"
@@ -20,6 +20,14 @@
             app:destination="@id/frag_show_exercise"
             app:enterAnim="@anim/ani_from_right_to_left"
             app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_frag_main_to_selectTimerFragment"
+            app:destination="@id/selectTimerFragment"
+            app:enterAnim="@anim/ani_from_left_to_right"
+            app:popExitAnim="@anim/ani_from_right_to_left2" />
+        <action
+            android:id="@+id/action_frag_main_to_medalFragment"
+            app:destination="@id/medalFragment" />
     </fragment>
 
     <fragment
@@ -45,17 +53,6 @@
         android:name="org.techtown.repose.ShowExerciseFragment"
         android:label="frag_exercise"
         tools:layout="@layout/frag_show_exercise"/>
-    <fragment
-        android:id="@+id/testFragment"
-        android:name="org.techtown.repose.TestFragment"
-        android:label="fragment_test"
-        tools:layout="@layout/fragment_test" >
-        <action
-            android:id="@+id/action_testFragment_to_frag_main"
-            app:destination="@id/frag_main"
-            app:enterAnim="@anim/ani_from_right_to_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
-    </fragment>
     <fragment
         android:id="@+id/frag_start"
         android:name="org.techtown.repose.signIn.StartFragment"
@@ -106,8 +103,27 @@
     <fragment
         android:id="@+id/fragment_retrofit_test"
         android:name="org.techtown.repose.server.RetrofitTestFragment"
-        tools:layout="@layout/fragment_retrofit_test" >
+        tools:layout="@layout/fragment_retrofit_test" />
+    <fragment
+        android:id="@+id/selectTimerFragment"
+        android:name="org.techtown.repose.SelectTimerFragment"
+        android:label="frag_select_timer"
+        tools:layout="@layout/frag_select_timer" />
+    <fragment
+        android:id="@+id/frag_splash"
+        android:name="org.techtown.repose.SplashFragment"
+        android:label="frag_splash"
+        tools:layout="@layout/frag_splash" >
+        <action
+            android:id="@+id/action_frag_splash_to_frag_start"
+            app:destination="@id/frag_start" />
+
     </fragment>
+    <fragment
+        android:id="@+id/medalFragment"
+        android:name="org.techtown.repose.MedalFragment"
+        android:label="frag_medal"
+        tools:layout="@layout/frag_medal" />
 
 
 </navigation>

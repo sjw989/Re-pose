@@ -5,16 +5,16 @@ import com.google.gson.Gson
 
 @Entity
 data class UserData(
-    @PrimaryKey val id: String,
-    @ColumnInfo val pw: String?,
-    @ColumnInfo val email: String?,
-    @ColumnInfo val pose: List<Boolean>,
-    @ColumnInfo val medal: List<Boolean>,
-    @ColumnInfo val weekday: List<Boolean>,
-    @ColumnInfo val hour: List<Boolean>,
-    @ColumnInfo val confirmNum: Int,
-    @ColumnInfo val primium: Boolean,
-    @ColumnInfo val joinDate: String,
+    @PrimaryKey var id: String,
+    @ColumnInfo var pw: String?,
+    @ColumnInfo var email: String?,
+    @ColumnInfo var pose: List<Boolean>,
+    @ColumnInfo var medal: List<Boolean>,
+    @ColumnInfo var weekday: List<Boolean>,
+    @ColumnInfo var hour: List<Boolean>,
+    @ColumnInfo var confirmNum: Int, // 운동 완료 버튼 누른 횟수
+    @ColumnInfo var primium: Boolean,
+    @ColumnInfo var joinDate: String, // 가입한 날짜
 )
 
 
