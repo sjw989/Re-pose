@@ -95,7 +95,7 @@ class ExerciseRecyclerViewAdapter(private val context : Context, private val dat
                 dialog.setOnDismissListener {
                     Handler(Looper.getMainLooper()).postDelayed({
                         nav.findNavController().popBackStack()
-                    },700)
+                    },1500)
                 }
             }
         }

@@ -98,6 +98,9 @@
         android:id="@+id/frag_account_setting"
         android:name="org.techtown.repose.signIn.AccountSettingFragment"
         tools:layout="@layout/frag_account_setting" >
+        <action
+            android:id="@+id/action_frag_account_setting_to_guideFragment"
+            app:destination="@id/frag_guide" />
     </fragment>
 
     <fragment
@@ -124,6 +127,16 @@
         android:name="org.techtown.repose.MedalFragment"
         android:label="frag_medal"
         tools:layout="@layout/frag_medal" />
+    <fragment
+        android:id="@+id/frag_guide"
+        android:name="org.techtown.repose.GuideFragment"
+        android:label="frag_guide"
+        tools:layout="@layout/frag_guide" >
+        <action
+            android:id="@+id/action_frag_guide_to_frag_main"
+            app:destination="@id/frag_main"
+            app:enterAnim="@anim/ani_dialog_open" />
+    </fragment>
 
 
 </navigation>

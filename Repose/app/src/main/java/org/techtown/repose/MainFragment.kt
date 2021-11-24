@@ -280,7 +280,7 @@ class MainFragment : Fragment(){
     // 메달 화면
     fun show_medal(){
         binding.btnMedal.setOnClickListener{
-            findNavController().navigate(R.id.action_frag_main_to_medalFragment)
+            navController.navigate(R.id.action_frag_main_to_medalFragment)
         }
     }
 
@@ -290,7 +290,7 @@ class MainFragment : Fragment(){
             if(is_countDown){
                 countDown.cancel()
             }
-            findNavController().navigate(R.id.action_frag_main_to_frag_select_pose)
+            navController.navigate(R.id.action_frag_main_to_frag_select_pose)
         }
     }
 

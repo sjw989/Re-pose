@@ -74,5 +74,4 @@ class MainActivity : AppCompatActivity() {
         supplementService = retrofit.create(RetrofitService::class.java)
     }
 
-
 }
