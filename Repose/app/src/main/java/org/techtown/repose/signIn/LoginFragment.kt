@@ -20,9 +20,10 @@ import org.techtown.repose.*
 import org.techtown.repose.databinding.FragFindSuccessBinding
 import org.techtown.repose.databinding.FragLoginBinding
 
-
 class LoginFragment : Fragment() {
     lateinit var viewbinding:FragLoginBinding
+    var mc : MainActivity = MainActivity()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +35,7 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var mc : MainActivity = MainActivity()
+        mc.initRetrofit()
 
         //외부 노드서버랑 연동하기 전 임시 데이터
         val tmpUserId = viewbinding.idEdittext.text.toString()

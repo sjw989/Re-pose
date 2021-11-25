@@ -20,10 +20,7 @@ import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.techtown.repose.BeforeParsingUserData
-import org.techtown.repose.MainActivity
-import org.techtown.repose.R
-import org.techtown.repose.UserData
+import org.techtown.repose.*
 import org.techtown.repose.databinding.FragAccountSettingBinding
 import retrofit2.Call
 import retrofit2.Response
@@ -31,7 +28,9 @@ import java.time.LocalDate
 
 class AccountSettingFragment : Fragment() {
     lateinit var viewbinding: FragAccountSettingBinding
-    lateinit var  navController : NavController// 네비게이션 컨트롤러
+    lateinit var navController : NavController// 네비게이션 컨트롤러
+    var mc : MainActivity = MainActivity()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,16 +45,11 @@ class AccountSettingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //init
-        var mc : MainActivity = MainActivity()
+        mc.initRetrofit()
         navController = Navigation.findNavController(view) // 네비게이션 컨트롤러 view로 부터 가져오기
         back_pressed() // 뒤로가기 버튼
         //
 
-
-        //버튼눌렀을 때 network api 사용
-        viewbinding.backBtn.setOnClickListener{
-            back_pressed()
-        }
         viewbinding.signUpBtn.setOnClickListener{
             val tmpUserId = viewbinding.idEdittext.text.toString()
             val tmpUserPw = viewbinding.pwEdittext.text.toString()
@@ -87,22 +81,12 @@ class AccountSettingFragment : Fragment() {
                 tmpJoinDate
             )
 
-            when(ApiCallInsertUserData(newBeforeParsingUserData,mc)){
-                200 -> { //유저 생성 성공
-                    Toast.makeText(requireContext(),"회원가입 처리 되었습니다!", Toast.LENGTH_SHORT).show()
-                    CoroutineScope(Dispatchers.IO).launch {
-                        RoomDBInsertUserData(mc, newUserData)
-                        MoveGuideFragment()
-                    }
-                }
-                504 -> { //아이디 중복
-                    Toast.makeText(requireContext(),"아이디가 중복되었습니다. 다시 입력해주세요.", Toast.LENGTH_SHORT).show()
-                    viewbinding.idRedundancyTextview.visibility = View.VISIBLE
-                }
-                else -> { //다른 에러 발생(서버)
-                    Toast.makeText(requireContext(),"서버 에러가 발생하였습니다!", Toast.LENGTH_SHORT).show()
-                }
-            }
+            ApiCallInsertUserData(newBeforeParsingUserData,newUserData,mc)
+
+        }
+        //버튼눌렀을 때 network api 사용
+        viewbinding.backBtn.setOnClickListener{
+            back_pressed()
         }
     }
 
@@ -116,6 +100,7 @@ class AccountSettingFragment : Fragment() {
     }
 
     suspend fun RoomDBInsertUserData(mc: MainActivity, newUserData: UserData){
+        mc.db = AppDatabase.getInstance(requireContext())!!
         mc.db.userDao().insertUserData(newUserData)
     }
 
@@ -131,7 +116,7 @@ class AccountSettingFragment : Fragment() {
         return LocalDate.now().toString()
     }
 
-    private fun ApiCallInsertUserData(beforeParasingUserData: BeforeParsingUserData, mc: MainActivity):Int {
+    private fun ApiCallInsertUserData(beforeParasingUserData: BeforeParsingUserData,newUserData: UserData, mc: MainActivity):Int {
         var responseCode: Int = 0
         mc.supplementService.post_user(beforeParasingUserData).enqueue(object: retrofit2.Callback<BeforeParsingUserData> {
             override fun onResponse(call: Call<BeforeParsingUserData>, response: Response<BeforeParsingUserData>) {
@@ -141,6 +126,29 @@ class AccountSettingFragment : Fragment() {
                 Log.e("response : ", response.body().toString())
                 Log.e("responsecode : ", response.code().toString())
                 responseCode = response.code().toInt()
+
+                when(responseCode){
+                    200 -> { //유저 생성 성공
+                        CoroutineScope(Dispatchers.Main).launch {
+                            Toast.makeText(requireContext(),"회원가입 처리 되었습니다!", Toast.LENGTH_SHORT).show()
+                        }
+                        CoroutineScope(Dispatchers.IO).launch {
+                            RoomDBInsertUserData(mc, newUserData)
+                            MoveGuideFragment()
+                        }
+                    }
+                    503 -> { //아이디 중복
+                        CoroutineScope(Dispatchers.Main).launch {
+                            Toast.makeText(requireContext(),"아이디가 중복되었습니다. 다시 입력해주세요.", Toast.LENGTH_SHORT).show()
+                        }
+                        viewbinding.idRedundancyTextview.visibility = View.VISIBLE
+                    }
+                    else -> { //다른 에러 발생(서버)
+                        CoroutineScope(Dispatchers.Main).launch {
+                            Toast.makeText(requireContext(),"서버 에러가 발생하였습니다!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
             }
             override fun onFailure(call: Call<BeforeParsingUserData>, t: Throwable) {
                 Log.e("server","fail...")
@@ -148,6 +156,8 @@ class AccountSettingFragment : Fragment() {
                 Log.e("server_call",call.toString())
             }
         })
+
+        Log.e("fun code",responseCode.toString())
         return responseCode
     }
 }
