@@ -17,16 +17,19 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.techtown.repose.*
+import org.techtown.repose.databinding.FragFindSuccessBinding
+import org.techtown.repose.databinding.FragLoginBinding
 
 
 class LoginFragment : Fragment() {
+    lateinit var viewbinding:FragLoginBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.frag_login, container, false)
+        viewbinding = FragLoginBinding.inflate(inflater, container, false)
+        return viewbinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,9 +37,21 @@ class LoginFragment : Fragment() {
         var mc : MainActivity = MainActivity()
 
         //외부 노드서버랑 연동하기 전 임시 데이터
-        val newUserData = UserData("testuser","pw","email", mutableListOf<Boolean>(false,false,false,false,false,false,false),
-            mutableListOf<Boolean>(false,false,false,false,false,false,false), mutableListOf<Boolean>(false,false,false,false,false,false,false),
-            mutableListOf<Boolean>(false,false,false,false,false,false,false),0,false,"20211125")
+        val tmpUserId = viewbinding.idEdittext.text.toString()
+        val tmpUserPw = viewbinding.pwEdittext.text.toString()
+        val tmpUserEmail = "testEmail"
+        val tmpJoinDate = "testLocalDate"
+        val newUserData = UserData(tmpUserId,
+            tmpUserPw,
+            tmpUserEmail,
+            mutableListOf<Boolean>(false,false,false,false,false,false,false,false,false,false,false,false),
+            mutableListOf<Boolean>(false,false,false,false,false,false,false),
+            mutableListOf<Boolean>(false,false,false,false,false,false,false,false),
+            mutableListOf<Boolean>(false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false),
+            0,
+            false,
+            tmpJoinDate
+        )
 
         mc.db = AppDatabase.getInstance(requireContext())!!
         back_pressed() // 뒤로가기 버튼
@@ -76,6 +91,5 @@ class LoginFragment : Fragment() {
             // room DB 체크해서 넘어갈지 말지
             findNavController().navigate(R.id.action_frag_login_to_frag_main)
         }
-
     }
 }

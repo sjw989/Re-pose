@@ -42,6 +42,20 @@
         android:textColorHint="@color/transparent"
         app:layout_constraintTop_toBottomOf="@id/id_textview"
         app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/id_redundancy_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:visibility="invisible"
+        android:text="중복된 아이디 입니다. 다시 입력해주세요."
+        android:textSize="15dp"
+        android:textColor="@color/teal_200"
+        app:layout_constraintTop_toBottomOf="@id/id_edittext"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
     <TextView
         android:id="@+id/pw_textview"
         android:layout_width="wrap_content"
@@ -89,7 +103,7 @@
         android:id="@+id/email_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:text="E - mail"
         android:textSize="20dp"
@@ -120,7 +134,7 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <ImageView
-        android:id="@+id/cancel_btn"
+        android:id="@+id/back_btn"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/direction"
