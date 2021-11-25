@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.techtown.repose.server.APIInterface
 import org.techtown.repose.server.RetrofitClient
 import org.techtown.repose.server.RetrofitService
+import org.techtown.repose.server.testService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var navController:NavController // 네비게이션 컨트롤러
     lateinit var db:AppDatabase
     lateinit var retrofit: Retrofit
-    lateinit var supplementService : RetrofitService
+    lateinit var supplementService : testService
 
     companion object{
         // pose 리스트
@@ -67,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 
     fun initRetrofit() {
         retrofit = RetrofitClient.getInstance()
-        supplementService = retrofit.create(RetrofitService::class.java)
+        supplementService = retrofit.create(testService::class.java)
     }
 
 

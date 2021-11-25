@@ -20,6 +20,7 @@ import javax.security.auth.callback.Callback
 class RetrofitTestFragment : Fragment() {
     lateinit var viewbinding : FragmentRetrofitTestBinding
     var mc : MainActivity = MainActivity()
+    val user1: testUser = testUser("id5","pw","email")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,30 +37,52 @@ class RetrofitTestFragment : Fragment() {
 
         //버튼눌렀을 때 network api 사용 << coroutine?
 
-        viewbinding.getBtn.setOnClickListener {
+//        viewbinding.getBtn.setOnClickListener {
+//            Log.e("server","btn click")
+//            CoroutineScope(Dispatchers.IO).launch{
+//                Log.e("server","on coroutine")
+//                mc.supplementService.userJoin("testid").enqueue(object : retrofit2.Callback<JoinResponse> {
+//                    override fun onFailure(call: Call<JoinResponse>, t: Throwable) {
+//                        Log.e("server","fail...")
+//                        Log.e("server_throwable",t.toString())
+//                        Log.e("server_call",call.toString())
+//
+//                    }
+//
+//                    override fun onResponse(call: Call<JoinResponse>, response: Response<JoinResponse>) {
+//                        if(response.code() != 200){
+//                            Log.e("server","response 성공!!")
+//                        }
+//                        Log.e("response : ", response?.body().toString())
+//                    }
+//
+//
+//                })
+//            }
+//
+//        }
+
+        viewbinding.postBtn.setOnClickListener {
+            Log.e("userlog",user1.toString())
             Log.e("server","btn click")
-            CoroutineScope(Dispatchers.IO).launch{
-                Log.e("server","on coroutine")
-                mc.supplementService.userJoin("testid").enqueue(object : retrofit2.Callback<JoinResponse> {
-                    override fun onFailure(call: Call<JoinResponse>, t: Throwable) {
-                        Log.e("server","fail...")
-                        Log.e("server_throwable",t.toString())
-                        Log.e("server_call",call.toString())
-
+            mc.supplementService.post_user(user1).enqueue(object: retrofit2.Callback<testUser> {
+                override fun onResponse(call: Call<testUser>, response: Response<testUser>) {
+                    if(response.code() != 200){
+                        Log.e("server","response 성공!!")
                     }
+                    Log.e("response : ", response.body().toString())
+                    Log.e("responsecode : ", response.code().toString())
+                }
+                override fun onFailure(call: Call<testUser>, t: Throwable) {
+                    Log.e("server","fail...")
+                    Log.e("server_throwable",t.toString())
+                    Log.e("server_call",call.toString())
 
-                    override fun onResponse(call: Call<JoinResponse>, response: Response<JoinResponse>) {
-                        if(response.code() != 200){
-                            Log.e("server","response 성공!!")
-                        }
-                        Log.e("response : ", response?.body().toString())
-                    }
+                }
 
-
-                })
-            }
-
+            })
         }
+
 
     }
 }
