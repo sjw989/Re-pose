@@ -8,7 +8,7 @@ import androidx.room.Query
 @Dao
 interface UserDao {
     @Query("SELECT * FROM userdata")
-    fun getAll(): List<UserData>
+    fun getUserData(): UserData?
 //
 //    @Query("SELECT * FROM userdata WHERE uid IN (:userIds)")
 //    fun loadAllByIds(userIds: IntArray): List<UserData>

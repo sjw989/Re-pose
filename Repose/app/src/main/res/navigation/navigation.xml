@@ -120,6 +120,9 @@
         <action
             android:id="@+id/action_frag_splash_to_frag_start"
             app:destination="@id/frag_start" />
+        <action
+            android:id="@+id/action_frag_splash_to_frag_main"
+            app:destination="@id/frag_main" />
 
     </fragment>
     <fragment

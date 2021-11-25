@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var retrofit: Retrofit
     lateinit var supplementService : RetrofitService
 
-
     companion object{
         // pose 리스트
         val pose_list = listOf<String>("다리꼬기","한 쪽으로 짐 들기","장시간 앉아 있기","장시간 서있기",

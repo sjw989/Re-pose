@@ -40,11 +40,11 @@ class StartFragment : Fragment() {
 //        val newUserData = UserData(124,"chae","kijung")
 //        mc.db.userDao().insertUserData(newUserData)
 
-        CoroutineScope(Dispatchers.IO).launch{
-            // room DB 체크해서 넘어갈지 말지
-            dblist = mc.db.userDao().getAll()
-            Log.e("dblist",dblist.toString())
-        }
+//        CoroutineScope(Dispatchers.IO).launch{
+//            // room DB 체크해서 넘어갈지 말지
+//            dblist = mc.db.userDao().getAll()
+//            Log.e("dblist",dblist.toString())
+//        }
 
 //        if(dblist.isEmpty()){
 //            findNavController().navigate(R.id.action_frag_start_to_frag_login)

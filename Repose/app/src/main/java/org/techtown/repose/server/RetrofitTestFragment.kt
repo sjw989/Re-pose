@@ -36,30 +36,30 @@ class RetrofitTestFragment : Fragment() {
 
         //버튼눌렀을 때 network api 사용 << coroutine?
 
-        viewbinding.getBtn.setOnClickListener {
-            Log.e("server","btn click")
-            CoroutineScope(Dispatchers.IO).launch{
-                Log.e("server","on coroutine")
-                mc.supplementService.userJoin("testid").enqueue(object : retrofit2.Callback<JoinResponse> {
-                    override fun onFailure(call: Call<JoinResponse>, t: Throwable) {
-                        Log.e("server","fail...")
-                        Log.e("server_throwable",t.toString())
-                        Log.e("server_call",call.toString())
-
-                    }
-
-                    override fun onResponse(call: Call<JoinResponse>, response: Response<JoinResponse>) {
-                        if(response.code() != 200){
-                            Log.e("server","response 성공!!")
-                        }
-                        Log.e("response : ", response?.body().toString())
-                    }
-
-
-                })
-            }
-
-        }
+//        viewbinding.getBtn.setOnClickListener {
+//            Log.e("server","btn click")
+//            CoroutineScope(Dispatchers.IO).launch{
+//                Log.e("server","on coroutine")
+//                mc.supplementService.userJoin("testid").enqueue(object : retrofit2.Callback<JoinResponse> {
+//                    override fun onFailure(call: Call<JoinResponse>, t: Throwable) {
+//                        Log.e("server","fail...")
+//                        Log.e("server_throwable",t.toString())
+//                        Log.e("server_call",call.toString())
+//
+//                    }
+//
+//                    override fun onResponse(call: Call<JoinResponse>, response: Response<JoinResponse>) {
+//                        if(response.code() != 200){
+//                            Log.e("server","response 성공!!")
+//                        }
+//                        Log.e("response : ", response?.body().toString())
+//                    }
+//
+//
+//                })
+//            }
+//
+//        }
 
     }
 }
