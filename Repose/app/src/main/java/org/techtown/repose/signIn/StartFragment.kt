@@ -1,6 +1,7 @@
 package org.techtown.repose.signIn
 
 import android.animation.ObjectAnimator
+import android.graphics.Paint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -51,6 +52,7 @@ class StartFragment : Fragment() {
 //        }
         init() // 애니메이션 효과
         back_pressed() // 뒤로가기 버튼 금지
+        binding.loginBtn.paintFlags = Paint.UNDERLINE_TEXT_FLAG // 로그인하기 밑줄처리
 
         login_btn.setOnClickListener{
             findNavController().navigate(R.id.action_frag_start_to_frag_login)

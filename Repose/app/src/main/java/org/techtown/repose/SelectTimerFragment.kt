@@ -33,28 +33,29 @@ class SelectTimerFragment : Fragment(){
         set_days() // 요일 설정
         set_time() // 시간 설정
         back_pressed() // 뒤로가기 버튼
+        btn_back() // 화살표 뒤로가기 버튼
     }
     fun set_init(){
         if(user_days[0]){
-            binding.btnMonday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
+            binding.btnMonday.setBackgroundResource(R.drawable.green_border)
         }
         if(user_days[1]){
-            binding.btnTuesday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
+            binding.btnTuesday.setBackgroundResource(R.drawable.green_border)
         }
         if(user_days[2]){
-            binding.btnWednesday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
+            binding.btnWednesday.setBackgroundResource(R.drawable.green_border)
         }
         if(user_days[3]){
-            binding.btnThursday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
+            binding.btnThursday.setBackgroundResource(R.drawable.green_border)
         }
         if(user_days[4]){
-            binding.btnFriday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
+            binding.btnFriday.setBackgroundResource(R.drawable.green_border)
         }
         if(user_days[5]){
-            binding.btnSaturday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
+            binding.btnSaturday.setBackgroundResource(R.drawable.green_border)
         }
         if(user_days[6]){
-            binding.btnSunday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
+            binding.btnSunday.setBackgroundResource(R.drawable.green_border)
         }
         if(user_timer[0]){
             binding.switch1.isChecked = true
@@ -96,78 +97,79 @@ class SelectTimerFragment : Fragment(){
     fun set_days(){
         binding.btnMonday.setOnClickListener{
             if(!user_days[0]){
-                binding.btnMonday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
+                binding.btnMonday.setBackgroundResource(R.drawable.green_border)
                 user_days[0] = true
             }
             else{
                 user_days[0] = false
-                binding.btnMonday.setBackgroundColor(Color.parseColor("#FF636363"))
+                binding.btnMonday.setBackgroundResource(R.drawable.white_border)
             }
         }
 
         binding.btnTuesday.setOnClickListener{
             if(!user_days[1]){
-                binding.btnTuesday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
+                binding.btnTuesday.setBackgroundResource(R.drawable.green_border)
                 user_days[1] = true
             }
             else{
-                binding.btnTuesday.setBackgroundColor(Color.parseColor("#FF636363"))
+                binding.btnTuesday.setBackgroundResource(R.drawable.white_border)
                 user_days[1] = false
             }
         }
 
         binding.btnWednesday.setOnClickListener{
             if(!user_days[2]){
-                binding.btnWednesday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
+                binding.btnWednesday.setBackgroundResource(R.drawable.green_border)
                 user_days[2] = true
             }
             else{
                 user_days[2] = false
-                binding.btnWednesday.setBackgroundColor(Color.parseColor("#FF636363"))
+                binding.btnWednesday.setBackgroundResource(R.drawable.white_border)
             }
         }
         binding.btnThursday.setOnClickListener{
             if(!user_days[3]){
-                binding.btnThursday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
+                binding.btnThursday.setBackgroundResource(R.drawable.green_border)
                 user_days[3] = true
             }
             else{
                 user_days[3] = false
-                binding.btnThursday.setBackgroundColor(Color.parseColor("#FF636363"))
+                binding.btnThursday.setBackgroundResource(R.drawable.white_border)
             }
         }
         binding.btnFriday.setOnClickListener{
             if(!user_days[4]){
-                binding.btnFriday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
+                binding.btnFriday.setBackgroundResource(R.drawable.green_border)
                 user_days[4] = true
             }
             else{
                 user_days[4] = false
-                binding.btnFriday.setBackgroundColor(Color.parseColor("#FF636363"))
+                binding.btnFriday.setBackgroundResource(R.drawable.white_border)
             }
         }
         binding.btnSaturday.setOnClickListener{
             if(!user_days[5]){
-                binding.btnSaturday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
+                binding.btnSaturday.setBackgroundResource(R.drawable.green_border)
                 user_days[5] = true
             }
             else{
                 user_days[5] = false
-                binding.btnSaturday.setBackgroundColor(Color.parseColor("#FF636363"))
+                binding.btnSaturday.setBackgroundResource(R.drawable.white_border)
             }
         }
 
         binding.btnSunday.setOnClickListener{
             if(!user_days[6]){
-                binding.btnSunday.setBackgroundColor(Color.parseColor("#FF6BBAFA"))
+                binding.btnSunday.setBackgroundResource(R.drawable.green_border)
                 user_days[6] = true
             }
             else{
                 user_days[6] = false
-                binding.btnSunday.setBackgroundColor(Color.parseColor("#FF636363"))
+                binding.btnSunday.setBackgroundResource(R.drawable.white_border)
             }
         }
     }
+
     fun set_time(){
         binding.switch1.setOnCheckedChangeListener(timeSwitch_Listener(0))
         binding.switch2.setOnCheckedChangeListener(timeSwitch_Listener(1))
@@ -183,6 +185,11 @@ class SelectTimerFragment : Fragment(){
         binding.switch12.setOnCheckedChangeListener(timeSwitch_Listener(11))
     }
 
+    fun btn_back(){
+        binding.btnBack.setOnClickListener{
+            navController.popBackStack()
+        }
+    }
 
     fun back_pressed(){
         requireActivity().onBackPressedDispatcher.addCallback(object :

@@ -11,27 +11,42 @@
     <TextView
         android:id="@+id/textView31"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="14dp"
+        android:layout_marginBottom="100dp"
         android:alpha="0"
-        android:text="당신의 하루를\n좀 더 건강하게"
-        android:textColor="@color/black"
-        android:textSize="30sp"
+        android:text="당신의 하루를 좀 더 건강하게"
+        android:textColor="#a5a5a5"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/logo_imageView"
+        app:layout_constraintStart_toStartOf="@+id/logo_imageView" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="70dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="20dp"
+        android:alpha="0"
+        android:text="Repose"
+        android:textColor="#a5a5a5"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/logo_imageView"
         app:layout_constraintStart_toStartOf="@+id/logo_imageView"
         app:layout_constraintTop_toBottomOf="@+id/logo_imageView" />
 
+
     <ImageView
         android:id="@+id/logo_imageView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="100dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="100dp"
         android:alpha="0"
-        android:src="@drawable/image_sample"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></ImageView>
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo"></ImageView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

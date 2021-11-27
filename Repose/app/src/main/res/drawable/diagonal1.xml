@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <rotate
-            android:fromDegrees="145"
+            android:fromDegrees="140"
             android:pivotX="50%"
             android:pivotY="50%"
             android:toDegrees="0">
@@ -10,7 +10,7 @@
                 android:shape="line"
                 android:top="1dip">
                 <stroke
-                    android:width="3dp"
+                    android:width="4dp"
                     android:color="#FFFFFF"/>
             </shape>
         </rotate>

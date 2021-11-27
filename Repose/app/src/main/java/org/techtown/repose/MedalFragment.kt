@@ -1,13 +1,21 @@
 package org.techtown.repose
 
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.dialog_medal_condition.*
+import kotlinx.android.synthetic.main.dialog_medal_condition.view.*
 import org.techtown.repose.MainActivity.Companion.user_medal
 import org.techtown.repose.databinding.FragMedalBinding
 import org.techtown.repose.databinding.FragSelectPoseBinding
@@ -17,6 +25,15 @@ class MedalFragment : Fragment() {
     lateinit var  navController : NavController// 네비게이션 컨트롤러
     private var _binding : FragMedalBinding? = null // 뷰바인딩
     private val binding get() = _binding!! // 뷰바인딩
+
+    private val medal_list : List<String> = listOf("이런, 성한\n곳이 없군!", "건강해지는 소리가\n들리나요?","난 아직도 쌩쌩해!", "이제 시작이야",
+                                                    "깃털 같은 몸", "균형 잡힌 몸", "난 완벽해", "든든한 동반자")
+    private val medal_condition : List<String> = listOf("XXXX-XX-XX부터\n리포즈와 함께하셨습니다", "리포즈와 함께하신 지\n 100일이 지났습니다.",
+                                                        "리포즈와 함께하신 지\n 300일이 지났습니다.",
+                                                        "자세 교정 후, \n완료 버튼을 일정 시간 내 \n처음 클릭하셨습니다.",
+                                                        "자세 교정 후, \n완료 버튼을 일정 시간 내 \n50회 클릭하셨습니다",
+                                                        "자세 교정 후, \n완료 버튼을 일정 시간 내 \n300회 클릭하셨습니다",
+                                                        "자세 교정 후, \n완료 버튼을 일정 시간 내 \n1000회 클릭하셨습니다", "리포즈의 Pro ver.을 구매했습니다.")
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -30,6 +47,58 @@ class MedalFragment : Fragment() {
         navController = Navigation.findNavController(view) // 네비게이션 컨트롤러 view로 부터 가져오기
         back_pressed() // 뒤로가기 버튼
         set_medal() // 메달 설정
+        show_condition(); // 메달 조건 보여주기
+        btn_back() // 뒤로가기 화살표 버튼
+    }
+    fun btn_back(){
+        binding.btnBack3.setOnClickListener{
+            navController.popBackStack()
+        }
+    }
+
+    fun make_medal_dialog(medal_name : String, medal_condition : String){
+        val layoutInflater = LayoutInflater.from(context)
+        val view  = layoutInflater.inflate(R.layout.dialog_medal_condition,null)
+
+        val alertDialog = AlertDialog.Builder(context).setView(view).create()
+        alertDialog.setCanceledOnTouchOutside(false)
+        alertDialog.setCancelable(false)
+
+        alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        alertDialog.show()
+
+        alertDialog.tv_medalName.text = medal_name
+        alertDialog.tv_medal_condition.text = medal_condition
+
+        alertDialog.btn_okay.setOnClickListener{
+            alertDialog.dismiss()
+        }
+    }
+    fun show_condition( ){
+        binding.ivMedal1.setOnClickListener{
+            make_medal_dialog(medal_list[0], medal_condition[0])
+        }
+        binding.ivMedal2.setOnClickListener{
+            make_medal_dialog(medal_list[1], medal_condition[1])
+        }
+        binding.ivMedal3.setOnClickListener{
+            make_medal_dialog(medal_list[2], medal_condition[2])
+        }
+        binding.ivMedal4.setOnClickListener{
+            make_medal_dialog(medal_list[3], medal_condition[3])
+        }
+        binding.ivMedal5.setOnClickListener{
+            make_medal_dialog(medal_list[4], medal_condition[4])
+        }
+        binding.ivMedal6.setOnClickListener{
+            make_medal_dialog(medal_list[5], medal_condition[5])
+        }
+        binding.ivMedal7.setOnClickListener{
+            make_medal_dialog(medal_list[6], medal_condition[6])
+        }
+        binding.ivMedal8.setOnClickListener{
+            make_medal_dialog(medal_list[7], medal_condition[7])
+        }
     }
 
     // 뒤로가기 버튼
@@ -68,7 +137,6 @@ class MedalFragment : Fragment() {
         if(user_medal[7]){
             binding.ivMedal8.setImageResource(R.drawable.pose1_on)
         }
-        
     }
 
     // 뷰바인딩 destroy

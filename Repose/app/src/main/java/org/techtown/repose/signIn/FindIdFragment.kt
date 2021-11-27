@@ -29,15 +29,15 @@ class FindIdFragment : Fragment() {
         find_btn.setOnClickListener{
             if(viewbinding.idEdittext.text.toString() == "a"){
 
-                viewbinding.logoImageView.visibility = View.VISIBLE
-                viewbinding.failLogoImageView.visibility = View.INVISIBLE
-                viewbinding.failMessageTextview.visibility = View.INVISIBLE
+                //viewbinding.logoImageView.visibility = View.VISIBLE
+                //viewbinding.failLogoImageView.visibility = View.INVISIBLE
+                //viewbinding.failMessageTextview.visibility = View.INVISIBLE
                 findNavController().navigate(R.id.action_frag_find_id_to_frag_find_success)
             }
             else{
-                viewbinding.logoImageView.visibility = View.INVISIBLE
-                viewbinding.failLogoImageView.visibility = View.VISIBLE
-                viewbinding.failMessageTextview.visibility = View.VISIBLE
+                //viewbinding.logoImageView.visibility = View.INVISIBLE
+                //viewbinding.failLogoImageView.visibility = View.VISIBLE
+                //viewbinding.failMessageTextview.visibility = View.VISIBLE
 
             }
 

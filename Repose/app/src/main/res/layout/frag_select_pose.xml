@@ -7,24 +7,15 @@
     android:background="#FFFFFF"
     tools:context=".SelectPoseFragment">
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="wrap_content"
-        android:layout_height="5dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/line"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view">
+        app:layout_constraintTop_toBottomOf="@id/textView5">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,7 +24,180 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <ImageButton
+                    android:id="@+id/SelectBtn_pose1"
+                    android:layout_width="130dp"
+                    android:layout_height="166dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/pose_not_selected"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pose1"
+                    app:layout_constraintEnd_toStartOf="@+id/SelectBtn_pose2"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/SelectBtn_pose2"
+                    android:layout_width="130dp"
+                    android:layout_height="166dp"
+                    android:background="@drawable/pose_not_selected"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pose2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/SelectBtn_pose1"
+                    app:layout_constraintTop_toTopOf="@+id/SelectBtn_pose1" />
+
+                <ImageButton
+                    android:id="@+id/SelectBtn_pose3"
+                    android:layout_width="130dp"
+                    android:layout_height="166dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/pose_not_selected"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pose3"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose1"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose1"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+                <ImageButton
+                    android:id="@+id/SelectBtn_pose4"
+                    android:layout_width="130dp"
+                    android:layout_height="166dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/pose_not_selected"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pose4"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose2"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose2"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+                <ImageButton
+                    android:id="@+id/SelectBtn_pose5"
+                    android:layout_width="130dp"
+                    android:layout_height="166dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/pose_not_selected"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pose5"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose3"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+                <ImageButton
+                    android:id="@+id/SelectBtn_pose6"
+                    android:layout_width="130dp"
+                    android:layout_height="166dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/pose_not_selected"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pose6"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose4"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose4"
+                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+                <ImageButton
+                    android:id="@+id/SelectBtn_pose7"
+                    android:layout_width="130dp"
+                    android:layout_height="166dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/pose_not_selected"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pose7"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose5"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose5"
+                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+                <ImageButton
+                    android:id="@+id/SelectBtn_pose8"
+                    android:layout_width="130dp"
+                    android:layout_height="166dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/pose_not_selected"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pose1"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose7"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose7"
+                    app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+                <ImageButton
+                    android:id="@+id/SelectBtn_pose9"
+                    android:layout_width="130dp"
+                    android:layout_height="166dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/pose_not_selected"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pose8"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose6"
+                    app:layout_constraintHorizontal_bias="0.575"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose6"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+                <ImageButton
+                    android:id="@+id/SelectBtn_pose10"
+                    android:layout_width="130dp"
+                    android:layout_height="166dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/pose_not_selected"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pose2"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose9"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose9"
+                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+                <ImageButton
+                    android:id="@+id/SelectBtn_pose11"
+                    android:layout_width="130dp"
+                    android:layout_height="166dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/pose_not_selected"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pose11"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose8"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose8"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+                <ImageButton
+                    android:id="@+id/SelectBtn_pose12"
+                    android:layout_width="130dp"
+                    android:layout_height="166dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/pose_not_selected"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pose2"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose10"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose10"
+                    app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
                 <TextView
                     android:id="@+id/textView10"
                     android:layout_width="wrap_content"
@@ -42,47 +206,10 @@
                     android:text="장시간 앉아 있기"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="#000000"
-                    android:textSize="22sp"
+                    android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose3"
                     app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose3"
                     app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose3" />
-
-                <ImageButton
-                    android:id="@+id/SelectBtn_pose2"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:background="#FFFFFF"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/pose2_off"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/SelectBtn_pose1"
-                    app:layout_constraintTop_toTopOf="@+id/SelectBtn_pose1" />
-
-                <ImageButton
-                    android:id="@+id/SelectBtn_pose1"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="20dp"
-                    android:background="#FFFFFF"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/pose1_off"
-                    app:layout_constraintEnd_toStartOf="@+id/SelectBtn_pose2"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageButton
-                    android:id="@+id/SelectBtn_pose3"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="30dp"
-                    android:background="#FFFFFF"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/pose3_off"
-                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose1"
-                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose1"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
 
                 <TextView
@@ -93,23 +220,12 @@
                     android:text="다리꼬기"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="#000000"
-                    android:textSize="22sp"
+
+                    android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose1"
                     app:layout_constraintHorizontal_bias="0.51"
                     app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose1"
                     app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose1" />
-
-                <ImageButton
-                    android:id="@+id/imageButton6"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="30dp"
-                    android:background="#FFFFFF"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/alarm"
-                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose2"
-                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose2"
-                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                 <TextView
                     android:id="@+id/textView11"
@@ -119,10 +235,10 @@
                     android:text="장시간 서 있기"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="#000000"
-                    android:textSize="22sp"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton6"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton6"
-                    app:layout_constraintTop_toBottomOf="@+id/imageButton6" />
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose4"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose4"
+                    app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose4" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -131,34 +247,10 @@
                     android:layout_marginTop="10dp"
                     android:text="한 쪽으로 짐 들기"
                     android:textColor="#000000"
-                    android:textSize="22sp"
+                    android:textSize="15sp"
                     app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose2"
                     app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose2"
                     app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose2" />
-
-                <ImageButton
-                    android:id="@+id/imageButton"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="30dp"
-                    android:background="#FFFFFF"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/alarm"
-                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose3"
-                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose3"
-                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-                <ImageButton
-                    android:id="@+id/imageButton9"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="30dp"
-                    android:background="#FFFFFF"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/trophy"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton6"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton6"
-                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
                 <TextView
                     android:id="@+id/textView9"
@@ -167,10 +259,10 @@
                     android:layout_marginTop="10dp"
                     android:text="장시간 전자기기 사용"
                     android:textColor="#000000"
-                    android:textSize="22sp"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton"
-                    app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose5"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose5"
+                    app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose5" />
 
                 <TextView
                     android:id="@+id/textView13"
@@ -179,35 +271,10 @@
                     android:layout_marginTop="10dp"
                     android:text="장시간 독서"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton9"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton9"
-                    app:layout_constraintTop_toBottomOf="@+id/imageButton9" />
-
-                <ImageButton
-                    android:id="@+id/imageButton10"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="30dp"
-                    android:background="#FFFFFF"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/pose3_on"
-                    app:layout_constraintBottom_toTopOf="@+id/textView14"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-                <ImageButton
-                    android:id="@+id/imageButton11"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="30dp"
-                    android:background="#FFFFFF"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/pose2_on"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton10"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton10"
-                    app:layout_constraintTop_toBottomOf="@+id/textView14" />
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose6"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose6"
+                    app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose6" />
 
                 <TextView
                     android:id="@+id/textView14"
@@ -216,23 +283,10 @@
                     android:layout_marginTop="10dp"
                     android:text="장시간 필기"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton10"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton10"
-                    app:layout_constraintTop_toBottomOf="@+id/imageButton10" />
-
-                <ImageButton
-                    android:id="@+id/imageButton12"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="30dp"
-                    android:background="#FFFFFF"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/pose1_on"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton9"
-                    app:layout_constraintHorizontal_bias="0.575"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton9"
-                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose7"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose7"
+                    app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose7" />
 
                 <TextView
                     android:id="@+id/textView15"
@@ -241,11 +295,11 @@
                     android:layout_marginTop="10dp"
                     android:text="팔자걸음"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton11"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose8"
                     app:layout_constraintHorizontal_bias="0.51"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton11"
-                    app:layout_constraintTop_toBottomOf="@+id/imageButton11" />
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose8"
+                    app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose8" />
 
                 <TextView
                     android:id="@+id/textView16"
@@ -254,22 +308,10 @@
                     android:layout_marginTop="10dp"
                     android:text="장시간 운전"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton12"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton12"
-                    app:layout_constraintTop_toBottomOf="@+id/imageButton12" />
-
-                <ImageButton
-                    android:id="@+id/imageButton13"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="30dp"
-                    android:background="#FFFFFF"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/pose2_off"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton12"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton12"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose9"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose9"
+                    app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose9" />
 
                 <TextView
                     android:id="@+id/textView17"
@@ -278,34 +320,10 @@
                     android:layout_marginTop="10dp"
                     android:text="안짱걸음"
                     android:textColor="@color/black"
-                    android:textSize="22sp"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton13"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton13"
-                    app:layout_constraintTop_toBottomOf="@+id/imageButton13" />
-
-                <ImageButton
-                    android:id="@+id/imageButton2"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="30dp"
-                    android:background="#FFFFFF"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/alarm"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton11"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton11"
-                    app:layout_constraintTop_toBottomOf="@+id/textView15" />
-
-                <ImageButton
-                    android:id="@+id/imageButton3"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="30dp"
-                    android:background="#FFFFFF"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/direction"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton13"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton13"
-                    app:layout_constraintTop_toBottomOf="@+id/textView17" />
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose10"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose10"
+                    app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose10" />
 
                 <TextView
                     android:id="@+id/textView18"
@@ -315,11 +333,11 @@
                     android:layout_marginBottom="30dp"
                     android:text="양반다리"
                     android:textColor="#000000"
-                    android:textSize="22sp"
+                    android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton2"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton2"
-                    app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose11"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose11"
+                    app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose11" />
 
                 <TextView
                     android:id="@+id/textView19"
@@ -328,58 +346,41 @@
                     android:layout_marginTop="10dp"
                     android:text="엎드려자기"
                     android:textColor="#000000"
-                    android:textSize="22sp"
-                    app:layout_constraintEnd_toEndOf="@+id/imageButton3"
-                    app:layout_constraintStart_toStartOf="@+id/imageButton3"
-                    app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose12"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose12"
+                    app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose12" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
     </ScrollView>
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="98dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/pose"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <View
-        android:id="@+id/view2"
-        android:layout_width="0dp"
-        android:layout_height="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView3"
-        app:layout_constraintVertical_bias="0.99" />
-
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="253dp"
-        android:layout_height="77dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="당신의 잘못된\n 자세는?"
+        android:text="자세"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#000000"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/view"
+        android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.018"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/btn_back2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/white"
+        android:src="@drawable/back"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

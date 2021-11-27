@@ -33,6 +33,20 @@ class PoseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvPoseName.text  = pose_name
+        when(pose_name){
+            "다리꼬기" -> binding.btnGoGuide.setImageResource(R.drawable.pose1_1)
+            "한 쪽으로 짐 들기" -> binding.btnGoGuide.setImageResource(R.drawable.pose2_1)
+            "장시간 앉아 있기" -> binding.btnGoGuide.setImageResource(R.drawable.pose3_1)
+            "장시간 서 있기" -> binding.btnGoGuide.setImageResource(R.drawable.pose4_1)
+            "장시간 전자기기 사용" -> binding.btnGoGuide.setImageResource(R.drawable.pose5_1)
+            "장시간 독서" -> binding.btnGoGuide.setImageResource(R.drawable.pose6_1)
+            "장시간 필기" -> binding.btnGoGuide.setImageResource(R.drawable.pose7_1)
+            "장시간 운전" -> binding.btnGoGuide.setImageResource(R.drawable.pose8_1)
+            "팔자걸음" -> binding.btnGoGuide.setImageResource(R.drawable.pose11_1)
+            "안짱걸음" -> binding.btnGoGuide.setImageResource(R.drawable.pose11_1)
+            "양반다리" -> binding.btnGoGuide.setImageResource(R.drawable.pose11_1)
+            "엎드려자기" -> binding.btnGoGuide.setImageResource(R.drawable.pose11_1)
+        }
         binding.btnGoGuide.setOnClickListener{
             var bundle = Bundle()
             bundle.putString("pose_name",pose_name)

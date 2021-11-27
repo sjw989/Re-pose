@@ -36,7 +36,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mc.initRetrofit()
-
+    
         //외부 노드서버랑 연동하기 전 임시 데이터
         val tmpUserId = viewbinding.idEdittext.text.toString()
         val tmpUserPw = viewbinding.pwEdittext.text.toString()
@@ -55,7 +55,16 @@ class LoginFragment : Fragment() {
         )
 
         mc.db = AppDatabase.getInstance(requireContext())!!
+
         back_pressed() // 뒤로가기 버튼
+        btn_back() // 뒤로가기 화살표 버튼
+
+
+        viewbinding.loginBtn.setOnClickListener{
+            findNavController().navigate(R.id.action_frag_login_to_frag_main)
+        }
+
+        /*
         login_btn.setOnClickListener{
             //TO DO: 서버랑 아이디 비밀번호 일치하는지 체크
             //아이디 비밀번호 일치시, 룸디비에 데이터 넣기
@@ -64,7 +73,9 @@ class LoginFragment : Fragment() {
                 RoomDBInsertUserData(mc, newUserData)
                 MoveMainFragment()
             }
-        }
+        }*/
+
+
 //        login_btn.setOnClickListener{
 //            //로그인을 했을 때 서버에서 아이디랑 비밀번호 일치여부 -> 가져와서 룸DB에 저장한 뒤 main fragment로 이동
 //            findNavController().navigate(R.id.action_frag_login_to_fragment_retrofit_test)
@@ -74,6 +85,12 @@ class LoginFragment : Fragment() {
         }
     }
 
+    fun btn_back(){
+        viewbinding.btnBack5.setOnClickListener{
+            findNavController().popBackStack()
+        }
+    }
+    
     fun back_pressed(){
         requireActivity().onBackPressedDispatcher.addCallback(object :
             OnBackPressedCallback(true){

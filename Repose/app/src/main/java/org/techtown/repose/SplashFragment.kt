@@ -57,17 +57,24 @@ class SplashFragment : Fragment() {
             fadeIn = ObjectAnimator.ofFloat(binding.textView31, "alpha", 0f, 1f)
             fadeIn.duration = 1500
             fadeIn.start()
+
+            fadeIn = ObjectAnimator.ofFloat(binding.textView32, "alpha", 0f, 1f)
+            fadeIn.duration = 1500
+            fadeIn.start()
         }, 1000)
 
         var fadeOut = ObjectAnimator.ofFloat(binding.textView31, "alpha", 1f, 0f)
         Handler(Looper.getMainLooper()).postDelayed({
             fadeOut.duration = 1500
             fadeOut.start()
+            navController.navigate(R.id.action_frag_splash_to_frag_start)
+            /*
             fadeOut.doOnEnd {
                 //룸디비 체크
                 if(ExistUser) navController.navigate(R.id.action_frag_splash_to_frag_main)
                 else navController.navigate(R.id.action_frag_splash_to_frag_start)
             }
+             */
         }, 4000)
     }
     // 뷰바인딩 destroy

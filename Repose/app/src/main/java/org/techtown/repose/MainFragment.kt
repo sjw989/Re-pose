@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.marginLeft
+import androidx.core.view.marginRight
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -20,6 +22,16 @@ import org.techtown.repose.databinding.FragMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.math.abs
+import kotlin.math.max
+import androidx.core.view.ViewCompat
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.MarginPageTransformer
+
+import androidx.viewpager2.widget.ViewPager2
+
+
+
 
 class MainFragment : Fragment(){
     lateinit var  navController : NavController// 네비게이션 컨트롤러
@@ -81,22 +93,28 @@ class MainFragment : Fragment(){
                     if(time_hour < time_idx * 2 + 1  ){ // 2시간 단위니까 예를 들어 2~4시면 3시 이전에만 카운트다운이 돌아야함.
                         if(!is_exercise_complete[time_idx]){ // 해당 시간에 운동을 안헀으면
                             is_countDown = true // 카운트다운 on
+                            /*
                             binding.tvMiniutes.visibility = View.VISIBLE
                             binding.tvSeconds.visibility = View.VISIBLE
                             binding.tvTime.visibility = View.VISIBLE
+                             */
                             start_Timer(time_minutes.toString(), time_seconds.toString()) // 카운트다운 시작
                         }
                         else{
+                            /*
                             binding.tvMiniutes.visibility = View.INVISIBLE // 해당시간에 운동을 했으면 숨김
                             binding.tvSeconds.visibility = View.INVISIBLE
                             binding.tvTime.visibility = View.INVISIBLE
+                             */
                         }
                     }
                 }
                 else{
+                    /*
                     binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
                     binding.tvSeconds.visibility = View.INVISIBLE
                     binding.tvTime.visibility = View.INVISIBLE
+                     */
                 }
             }
         }
@@ -106,22 +124,28 @@ class MainFragment : Fragment(){
                     if(time_hour < time_idx * 2 + 1  ){ // 2시간 단위니까 예를 들어 2~4시면 3시 이전에만 카운트다운이 돌아야함.
                         if(!is_exercise_complete[time_idx]){ // 해당 시간에 운동을 안헀으면
                             is_countDown = true // 카운트다운 on
+                            /*
                             binding.tvMiniutes.visibility = View.VISIBLE
                             binding.tvSeconds.visibility = View.VISIBLE
                             binding.tvTime.visibility = View.VISIBLE
+                             */
                             start_Timer(time_minutes.toString(), time_seconds.toString()) // 카운트다운 시작
                         }
                         else{
+                            /*
                             binding.tvMiniutes.visibility = View.INVISIBLE // 해당시간에 운동을 했으면 숨김
                             binding.tvSeconds.visibility = View.INVISIBLE
                             binding.tvTime.visibility = View.INVISIBLE
+                             */
                         }
                     }
                 }
                 else{
+                    /*
                     binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
                     binding.tvSeconds.visibility = View.INVISIBLE
                     binding.tvTime.visibility = View.INVISIBLE
+                     */
                 }
             }
         }
@@ -131,22 +155,28 @@ class MainFragment : Fragment(){
                     if(time_hour < time_idx * 2 + 1  ){ // 2시간 단위니까 예를 들어 2~4시면 3시 이전에만 카운트다운이 돌아야함.
                         if(!is_exercise_complete[time_idx]){ // 해당 시간에 운동을 안헀으면
                             is_countDown = true // 카운트다운 on
+                            /*
                             binding.tvMiniutes.visibility = View.VISIBLE
                             binding.tvSeconds.visibility = View.VISIBLE
                             binding.tvTime.visibility = View.VISIBLE
+                             */
                             start_Timer(time_minutes.toString(), time_seconds.toString()) // 카운트다운 시작
                         }
                         else{
+                            /*
                             binding.tvMiniutes.visibility = View.INVISIBLE // 해당시간에 운동을 했으면 숨김
                             binding.tvSeconds.visibility = View.INVISIBLE
                             binding.tvTime.visibility = View.INVISIBLE
+                             */
                         }
                     }
                 }
                 else{
+                    /*
                     binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
                     binding.tvSeconds.visibility = View.INVISIBLE
                     binding.tvTime.visibility = View.INVISIBLE
+                     */
                 }
             }
         }
@@ -156,22 +186,28 @@ class MainFragment : Fragment(){
                     if(time_hour < time_idx * 2 + 1  ){ // 2시간 단위니까 예를 들어 2~4시면 3시 이전에만 카운트다운이 돌아야함.
                         if(!is_exercise_complete[time_idx]){ // 해당 시간에 운동을 안헀으면
                             is_countDown = true // 카운트다운 on
+                            /*
                             binding.tvMiniutes.visibility = View.VISIBLE
                             binding.tvSeconds.visibility = View.VISIBLE
                             binding.tvTime.visibility = View.VISIBLE
+                             */
                             start_Timer(time_minutes.toString(), time_seconds.toString()) // 카운트다운 시작
                         }
                         else{
+                            /*
                             binding.tvMiniutes.visibility = View.INVISIBLE // 해당시간에 운동을 했으면 숨김
                             binding.tvSeconds.visibility = View.INVISIBLE
                             binding.tvTime.visibility = View.INVISIBLE
+                             */
                         }
                     }
                 }
                 else{
+                    /*
                     binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
                     binding.tvSeconds.visibility = View.INVISIBLE
                     binding.tvTime.visibility = View.INVISIBLE
+                     */
                 }
             }
         }
@@ -181,22 +217,28 @@ class MainFragment : Fragment(){
                     if(time_hour < time_idx * 2 + 1  ){ // 2시간 단위니까 예를 들어 2~4시면 3시 이전에만 카운트다운이 돌아야함.
                         if(!is_exercise_complete[time_idx]){ // 해당 시간에 운동을 안헀으면
                             is_countDown = true // 카운트다운 on
-                            binding.tvMiniutes.visibility = View.VISIBLE
-                            binding.tvSeconds.visibility = View.VISIBLE
-                            binding.tvTime.visibility = View.VISIBLE
+                            /*
+                    binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
+                    binding.tvSeconds.visibility = View.INVISIBLE
+                    binding.tvTime.visibility = View.INVISIBLE
+                     */
                             start_Timer(time_minutes.toString(), time_seconds.toString()) // 카운트다운 시작
                         }
                         else{
-                            binding.tvMiniutes.visibility = View.INVISIBLE // 해당시간에 운동을 했으면 숨김
-                            binding.tvSeconds.visibility = View.INVISIBLE
-                            binding.tvTime.visibility = View.INVISIBLE
+                            /*
+                     binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
+                     binding.tvSeconds.visibility = View.INVISIBLE
+                     binding.tvTime.visibility = View.INVISIBLE
+                      */
                         }
                     }
                 }
                 else{
-                    binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
-                    binding.tvSeconds.visibility = View.INVISIBLE
-                    binding.tvTime.visibility = View.INVISIBLE
+                    /*
+                     binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
+                     binding.tvSeconds.visibility = View.INVISIBLE
+                     binding.tvTime.visibility = View.INVISIBLE
+                      */
                 }
             }
         }
@@ -206,22 +248,28 @@ class MainFragment : Fragment(){
                     if(time_hour < time_idx * 2 + 1  ){ // 2시간 단위니까 예를 들어 2~4시면 3시 이전에만 카운트다운이 돌아야함.
                         if(!is_exercise_complete[time_idx]){ // 해당 시간에 운동을 안헀으면
                             is_countDown = true // 카운트다운 on
-                            binding.tvMiniutes.visibility = View.VISIBLE
-                            binding.tvSeconds.visibility = View.VISIBLE
-                            binding.tvTime.visibility = View.VISIBLE
+                            /*
+                     binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
+                     binding.tvSeconds.visibility = View.INVISIBLE
+                     binding.tvTime.visibility = View.INVISIBLE
+                      */
                             start_Timer(time_minutes.toString(), time_seconds.toString()) // 카운트다운 시작   
                         }
                         else{
-                            binding.tvMiniutes.visibility = View.INVISIBLE // 해당시간에 운동을 했으면 숨김
-                            binding.tvSeconds.visibility = View.INVISIBLE
-                            binding.tvTime.visibility = View.INVISIBLE
+                            /*
+                    binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
+                    binding.tvSeconds.visibility = View.INVISIBLE
+                    binding.tvTime.visibility = View.INVISIBLE
+                     */
                         }
                     }
                 }
                 else{
-                    binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
-                    binding.tvSeconds.visibility = View.INVISIBLE
-                    binding.tvTime.visibility = View.INVISIBLE
+                    /*
+                     binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
+                     binding.tvSeconds.visibility = View.INVISIBLE
+                     binding.tvTime.visibility = View.INVISIBLE
+                      */
                 }
             }
         }
@@ -231,23 +279,29 @@ class MainFragment : Fragment(){
                     if (time_hour < time_idx * 2 + 1) { // 2시간 단위니까 예를 들어 2~4시면 3시 이전에만 카운트다운이 돌아야함.
                         if (!is_exercise_complete[time_idx]) { // 해당 시간에 운동을 안헀으면
                             is_countDown = true // 카운트다운 on
-                            binding.tvMiniutes.visibility = View.VISIBLE
-                            binding.tvSeconds.visibility = View.VISIBLE
-                            binding.tvTime.visibility = View.VISIBLE
+                            /*
+                     binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
+                     binding.tvSeconds.visibility = View.INVISIBLE
+                     binding.tvTime.visibility = View.INVISIBLE
+                      */
                             start_Timer(
                                 time_minutes.toString(),
                                 time_seconds.toString()
                             ) // 카운트다운 시작
                         } else {
-                            binding.tvMiniutes.visibility = View.INVISIBLE // 해당시간에 운동을 했으면 숨김
-                            binding.tvSeconds.visibility = View.INVISIBLE
-                            binding.tvTime.visibility = View.INVISIBLE
+                            /*
+                     binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
+                     binding.tvSeconds.visibility = View.INVISIBLE
+                     binding.tvTime.visibility = View.INVISIBLE
+                      */
                         }
                     }
                 } else {
-                    binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
-                    binding.tvSeconds.visibility = View.INVISIBLE
-                    binding.tvTime.visibility = View.INVISIBLE
+                    /*
+                     binding.tvMiniutes.visibility = View.INVISIBLE // 그 시간 선택 안해놨거나 선택한 자세가 없으면 숨김
+                     binding.tvSeconds.visibility = View.INVISIBLE
+                     binding.tvTime.visibility = View.INVISIBLE
+                      */
                 }
 
             }
@@ -323,9 +377,11 @@ class MainFragment : Fragment(){
             override fun onFinish() {
                 binding.tvMiniutes.text = "60"
                 binding.tvSeconds.text = "00"
+                /*
                 binding.tvTime.visibility = View.INVISIBLE
                 binding.tvMiniutes.visibility = View.INVISIBLE // 카운트다운 종료되면 숨김
                 binding.tvSeconds.visibility = View.INVISIBLE
+                 */
             }
         }.start()
     }
@@ -362,9 +418,11 @@ class MainFragment : Fragment(){
             fmList.add(EmptyPoseFragment.newInstance()) // 자세없음 fragment
         }
         vpAdapter = PosePagerAdapter(fmList,this) // 어댑터 설정
-        binding.vpPoseViewPager.adapter = vpAdapter // 어댑터 연결
+        binding.vpPoseViewPager.adapter = vpAdapter
+
         binding.poseIndicator.setViewPager2(binding.vpPoseViewPager) // 인디케이터랑 어댑터 동기화
     }
+
 
     // 뷰바인딩 destroy
     override fun onDestroyView() {

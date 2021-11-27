@@ -7,10 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.navigation.NavController
@@ -50,6 +47,10 @@ class AccountSettingFragment : Fragment() {
         back_pressed() // 뒤로가기 버튼
         //
 
+
+
+
+
         viewbinding.signUpBtn.setOnClickListener{
             val tmpUserId = viewbinding.idEdittext.text.toString()
             val tmpUserPw = viewbinding.pwEdittext.text.toString()
@@ -81,12 +82,16 @@ class AccountSettingFragment : Fragment() {
                 tmpJoinDate
             )
 
+            navController.navigate(R.id.action_frag_account_setting_to_guideFragment)
+
+
             ApiCallInsertUserData(newBeforeParsingUserData,newUserData,mc)
 
         }
         //버튼눌렀을 때 network api 사용
-        viewbinding.backBtn.setOnClickListener{
-            back_pressed()
+        // 뒤로가기 버튼
+        viewbinding.btnBack4.setOnClickListener{
+            navController.popBackStack()
         }
     }
 

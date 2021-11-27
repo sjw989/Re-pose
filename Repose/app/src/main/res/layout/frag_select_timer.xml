@@ -3,9 +3,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".SelectTimerFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".SelectTimerFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,288 +17,614 @@
             android:layout_height="match_parent"
             android:background="#FFFFFF">
 
-            <Button
-                android:id="@+id/btn_monday"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="30dp"
-                android:background="#636363"
-                android:text="월"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                app:layout_constraintEnd_toStartOf="@+id/btn_tuesday"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-            <Button
-                android:id="@+id/btn_tuesday"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="#FF636363"
-                android:text="화"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_monday"
-                app:layout_constraintEnd_toStartOf="@+id/btn_wednesday"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/btn_monday"
-                app:layout_constraintTop_toTopOf="@+id/btn_monday" />
-
-            <Button
-                android:id="@+id/btn_wednesday"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="#FF636363"
-                android:text="수"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_monday"
-                app:layout_constraintEnd_toStartOf="@+id/btn_thursday"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/btn_tuesday"
-                app:layout_constraintTop_toTopOf="@+id/btn_monday" />
-
-            <Button
-                android:id="@+id/btn_thursday"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="#FF636363"
-                android:text="목"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_monday"
-                app:layout_constraintEnd_toStartOf="@+id/btn_friday"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/btn_wednesday"
-                app:layout_constraintTop_toTopOf="@+id/btn_monday" />
-
-            <Button
-                android:id="@+id/btn_friday"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="#FF636363"
-                android:text="금"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_monday"
-                app:layout_constraintEnd_toStartOf="@+id/btn_saturday"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/btn_thursday"
-                app:layout_constraintTop_toTopOf="@+id/btn_monday" />
-
-            <Button
-                android:id="@+id/btn_saturday"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="#FF636363"
-                android:text="토"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_monday"
-                app:layout_constraintEnd_toStartOf="@+id/btn_sunday"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/btn_friday"
-                app:layout_constraintTop_toTopOf="@+id/btn_monday" />
-
-            <Button
-                android:id="@+id/btn_sunday"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="#FF636363"
-                android:text="일"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_monday"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/btn_saturday"
-                app:layout_constraintTop_toTopOf="@+id/btn_monday" />
-
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="시간설정화면"
+                android:layout_marginTop="20dp"
+                android:text="알림설정"
                 android:textColor="#000000"
-                android:textSize="50sp"
+                android:textSize="17sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Switch
-                android:id="@+id/switch1"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout5"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="30dp"
-                android:background="#CFCCCC"
-                android:paddingLeft="20dp"
-                android:switchMinWidth="80dp"
-                android:text="00:00 ~ 02:00"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_monday" />
-
-            <Switch
-                android:id="@+id/switch2"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="#CFCCCC"
-                android:paddingLeft="20dp"
-                android:switchMinWidth="80dp"
-                android:text="02:00 ~ 04:00"
-                android:textSize="30sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="#f8f8f5"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch1" />
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:layout_constraintVertical_bias="0.0">
 
-            <Switch
-                android:id="@+id/switch3"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="#CFCCCC"
-                android:paddingLeft="20dp"
-                android:switchMinWidth="80dp"
-                android:text="04:00 ~ 06:00"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.333"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch2" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="17dp"
+                    android:layout_marginRight="17dp"
+                    android:background="@drawable/border"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/textView36"
+                    app:layout_constraintTop_toBottomOf="@+id/textView36">
 
-            <Switch
-                android:id="@+id/switch4"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="#CFCCCC"
-                android:paddingLeft="20dp"
-                android:switchMinWidth="80dp"
-                android:text="06:00 ~ 08:00"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch3" />
+                    <Button
+                        android:id="@+id/btn_monday"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/white_border"
+                        android:text="월"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_tuesday"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <Switch
-                android:id="@+id/switch5"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="#CFCCCC"
-                android:paddingLeft="20dp"
-                android:switchMinWidth="80dp"
-                android:text="08:00 ~ 10:00"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch4" />
+                    <Button
+                        android:id="@+id/btn_tuesday"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/white_border"
+                        android:text="화"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/btn_monday"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_wednesday"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btn_monday"
+                        app:layout_constraintTop_toTopOf="@+id/btn_monday" />
 
-            <Switch
-                android:id="@+id/switch6"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="#CFCCCC"
-                android:paddingLeft="20dp"
-                android:switchMinWidth="80dp"
-                android:text="10:00 ~ 12:00"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch5" />
+                    <Button
+                        android:id="@+id/btn_wednesday"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/white_border"
+                        android:text="수"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/btn_tuesday"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_thursday"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btn_tuesday"
+                        app:layout_constraintTop_toTopOf="@+id/btn_tuesday"
+                        app:layout_constraintVertical_bias="0.0" />
 
-            <Switch
-                android:id="@+id/switch7"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="#CFCCCC"
-                android:paddingLeft="20dp"
-                android:switchMinWidth="80dp"
-                android:text="12:00 ~ 14:00"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch6" />
+                    <Button
+                        android:id="@+id/btn_thursday"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/white_border"
+                        android:text="목"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/btn_wednesday"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_friday"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btn_wednesday"
+                        app:layout_constraintTop_toTopOf="@+id/btn_wednesday"
+                        app:layout_constraintVertical_bias="0.0" />
 
-            <Switch
-                android:id="@+id/switch8"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="#CFCCCC"
-                android:paddingLeft="20dp"
-                android:switchMinWidth="80dp"
-                android:text="14:00 ~ 16:00"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch7" />
+                    <Button
+                        android:id="@+id/btn_friday"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/white_border"
+                        android:text="금"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/btn_thursday"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_saturday"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btn_thursday"
+                        app:layout_constraintTop_toTopOf="@+id/btn_thursday"
+                        app:layout_constraintVertical_bias="0.0" />
 
-            <Switch
-                android:id="@+id/switch9"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="#CFCCCC"
-                android:paddingLeft="20dp"
-                android:switchMinWidth="80dp"
-                android:text="16:00 ~ 18:00"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch8" />
+                    <Button
+                        android:id="@+id/btn_saturday"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/white_border"
+                        android:text="토"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/btn_friday"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_sunday"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btn_friday"
+                        app:layout_constraintTop_toTopOf="@+id/btn_friday"
+                        app:layout_constraintVertical_bias="0.0" />
 
-            <Switch
-                android:id="@+id/switch10"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="#CFCCCC"
-                android:paddingLeft="20dp"
-                android:switchMinWidth="80dp"
-                android:text="18:00 ~ 20:00"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch9" />
+                    <Button
+                        android:id="@+id/btn_sunday"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/white_border"
+                        android:text="일"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/btn_saturday"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/btn_saturday"
+                        app:layout_constraintTop_toTopOf="@+id/btn_saturday" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Switch
-                android:id="@+id/switch11"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="#CFCCCC"
-                android:paddingLeft="20dp"
-                android:switchMinWidth="80dp"
-                android:text="20:00 ~ 22:00"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch10" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/border"
+                    android:padding="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/constraintLayout4"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
+                    app:layout_constraintTop_toBottomOf="@+id/textView37"
+                    app:layout_constraintVertical_bias="1.0">
 
-            <Switch
-                android:id="@+id/switch12"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:background="#CFCCCC"
-                android:paddingLeft="20dp"
-                android:switchMinWidth="80dp"
-                android:text="22:00 ~ 00:00"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                    <TextView
+                        android:id="@+id/textView48"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20:00 ~ 22:00"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch11"
+                        app:layout_constraintStart_toStartOf="@+id/textView47"
+                        app:layout_constraintTop_toTopOf="@+id/switch11" />
+
+                    <TextView
+                        android:id="@+id/textView45"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="14:00 ~ 16:00"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch8"
+                        app:layout_constraintStart_toStartOf="@+id/textView44"
+                        app:layout_constraintTop_toTopOf="@+id/switch8" />
+
+                    <Switch
+                        android:id="@+id/switch4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout6" />
+
+                    <Switch
+                        android:id="@+id/switch6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/LinearLayout12" />
+
+                    <Switch
+                        android:id="@+id/switch3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+
+                    <Switch
+                        android:id="@+id/switch12"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/LinearLayout14" />
+
+                    <Switch
+                        android:id="@+id/switch5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
+
+                    <Switch
+                        android:id="@+id/switch2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/white"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+                    <Switch
+                        android:id="@+id/switch7"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/white"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout8" />
+
+                    <Switch
+                        android:id="@+id/switch1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Switch
+                        android:id="@+id/switch9"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/white"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout10" />
+
+                    <Switch
+                        android:id="@+id/switch8"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/white"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout9" />
+
+                    <Switch
+                        android:id="@+id/switch11"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/white"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/LinearLayout13" />
+
+                    <Switch
+                        android:id="@+id/switch10"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/white"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout11"
+                        tools:layout_editor_absoluteY="533dp" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout6"
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch3"></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout5"
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch2">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout3"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch1">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout7"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch4"></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout8"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch6"></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout9"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch7"></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout10"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch8"></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout11"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch9"></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout12"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch5"></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout13"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch10"></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/LinearLayout14"
+                        android:layout_width="0dp"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch11"></LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textView38"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="00:00 ~ 02:00"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/switch1" />
+
+                    <TextView
+                        android:id="@+id/textView39"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:text="02:00 ~ 04:00"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/switch2" />
+
+                    <TextView
+                        android:id="@+id/textView40"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="04:00 ~ 06:00"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch3"
+                        app:layout_constraintStart_toStartOf="@+id/textView39"
+                        app:layout_constraintTop_toTopOf="@+id/switch3" />
+
+                    <TextView
+                        android:id="@+id/textView41"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="06:00 ~ 08:00"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch4"
+                        app:layout_constraintStart_toStartOf="@+id/textView40"
+                        app:layout_constraintTop_toTopOf="@+id/switch4" />
+
+                    <TextView
+                        android:id="@+id/textView42"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="08:00 ~ 10:00"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch5"
+                        app:layout_constraintStart_toStartOf="@+id/textView41"
+                        app:layout_constraintTop_toTopOf="@+id/switch5" />
+
+                    <TextView
+                        android:id="@+id/textView43"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10:00 ~ 12:00"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch6"
+                        app:layout_constraintStart_toStartOf="@+id/textView42"
+                        app:layout_constraintTop_toTopOf="@+id/switch6" />
+
+                    <TextView
+                        android:id="@+id/textView44"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12:00 ~ 14:00"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch7"
+                        app:layout_constraintStart_toStartOf="@+id/textView43"
+                        app:layout_constraintTop_toTopOf="@+id/switch7" />
+
+                    <TextView
+                        android:id="@+id/textView46"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="16:00 ~ 18:00"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch9"
+                        app:layout_constraintStart_toStartOf="@+id/textView45"
+                        app:layout_constraintTop_toTopOf="@+id/switch9" />
+
+                    <TextView
+                        android:id="@+id/textView47"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="18:00 ~ 20:00"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch10"
+                        app:layout_constraintStart_toStartOf="@+id/textView46"
+                        app:layout_constraintTop_toTopOf="@+id/switch10" />
+
+                    <TextView
+                        android:id="@+id/textView49"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22:00 ~ 00:00"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch12"
+                        app:layout_constraintStart_toStartOf="@+id/textView48"
+                        app:layout_constraintTop_toTopOf="@+id/switch12" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/textView36"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginTop="30dp"
+                    android:text="요일설정"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView37"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginTop="30dp"
+                    android:text="시간대설정"
+                    android:textColor="#000000"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/white"
+                android:src="@drawable/back"
+                app:layout_constraintBottom_toBottomOf="@+id/textView6"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch11" />
+                app:layout_constraintTop_toTopOf="@+id/textView6" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

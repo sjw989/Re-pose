@@ -33,6 +33,7 @@ class SelectPoseFragment : Fragment(){
         setButton() // 버튼으로 자세 선택
         selected() // 사용자가 Disease화면에서 자세를 선택한 경우 처리
         back_pressed() // 뒤로가기 버튼
+        btn_back() // 뒤로가기 화살표 버튼
     }
 
     // Disease화면에서 자세가 선택버튼을 누른경우 처리
@@ -40,9 +41,9 @@ class SelectPoseFragment : Fragment(){
         navController.currentBackStackEntry?.savedStateHandle?.getLiveData<String>("pose")?.observe(viewLifecycleOwner){
             user_pose[pose_list.indexOf(it)] = true
             when(it){
-                "다리꼬기"->binding.SelectBtnPose1.setImageResource(R.drawable.pose1_on)
-                "한 쪽으로 짐 들기"->binding.SelectBtnPose2.setImageResource(R.drawable.pose2_on)
-                "장시간 앉아 있기"->binding.SelectBtnPose3.setImageResource(R.drawable.pose3_on)
+                "다리꼬기"->binding.SelectBtnPose1.setBackgroundResource(R.drawable.pose_selected)
+                "한 쪽으로 짐 들기"->binding.SelectBtnPose2.setBackgroundResource(R.drawable.pose_selected)
+                "장시간 앉아 있기"->binding.SelectBtnPose3.setBackgroundResource(R.drawable.pose_selected)
             }
         }
     }
@@ -52,7 +53,7 @@ class SelectPoseFragment : Fragment(){
         binding.SelectBtnPose1.setOnClickListener(){
             if(user_pose[pose_list.indexOf("다리꼬기")]){
                 user_pose[pose_list.indexOf("다리꼬기")] = false
-                binding.SelectBtnPose1.setImageResource(R.drawable.pose1_off)
+                binding.SelectBtnPose1.setBackgroundResource(R.drawable.pose_not_selected)
             }
             else if(!user_pose[pose_list.indexOf("다리꼬기")]){
                 val bundle = Bundle()
@@ -63,7 +64,7 @@ class SelectPoseFragment : Fragment(){
         binding.SelectBtnPose2.setOnClickListener(){
             if(user_pose[pose_list.indexOf("한 쪽으로 짐 들기")]){
                 user_pose[pose_list.indexOf("한 쪽으로 짐 들기")] = false
-                binding.SelectBtnPose2.setImageResource(R.drawable.pose2_off)
+                binding.SelectBtnPose2.setBackgroundResource(R.drawable.pose_not_selected)
             }
             else if(!user_pose[pose_list.indexOf("한 쪽으로 짐 들기")]){
                 val bundle = Bundle()
@@ -75,7 +76,7 @@ class SelectPoseFragment : Fragment(){
         binding.SelectBtnPose3.setOnClickListener(){
             if(user_pose[pose_list.indexOf("장시간 앉아 있기")]){
                 user_pose[pose_list.indexOf("장시간 앉아 있기")] = false
-                binding.SelectBtnPose3.setImageResource(R.drawable.pose3_off)
+                binding.SelectBtnPose3.setBackgroundResource(R.drawable.pose_not_selected)
             }
             else if(!user_pose[pose_list.indexOf("장시간 앉아 있기")]){
                 val bundle = Bundle()
@@ -88,22 +89,22 @@ class SelectPoseFragment : Fragment(){
     // 초기 버튼 상태
     fun setInit(){
         if(user_pose[pose_list.indexOf("다리꼬기")]){
-            binding.SelectBtnPose1.setImageResource(R.drawable.pose1_on)
+            binding.SelectBtnPose1.setBackgroundResource(R.drawable.pose_selected)
         }
         else{
-            binding.SelectBtnPose1.setImageResource(R.drawable.pose1_off)
+            binding.SelectBtnPose1.setBackgroundResource(R.drawable.pose_not_selected)
         }
         if(user_pose[pose_list.indexOf("한 쪽으로 짐 들기")]){
-            binding.SelectBtnPose2.setImageResource(R.drawable.pose2_on)
+            binding.SelectBtnPose2.setBackgroundResource(R.drawable.pose_selected)
         }
         else{
-            binding.SelectBtnPose2.setImageResource(R.drawable.pose2_off)
+            binding.SelectBtnPose2.setBackgroundResource(R.drawable.pose_not_selected)
         }
         if(user_pose[pose_list.indexOf("장시간 앉아 있기")]){
-            binding.SelectBtnPose3.setImageResource(R.drawable.pose3_on)
+            binding.SelectBtnPose3.setBackgroundResource(R.drawable.pose_selected)
         }
         else{
-            binding.SelectBtnPose3.setImageResource(R.drawable.pose3_off)
+            binding.SelectBtnPose3.setBackgroundResource(R.drawable.pose_not_selected)
         }
     }
 
@@ -121,5 +122,11 @@ class SelectPoseFragment : Fragment(){
                 navController.popBackStack()
             }
         })
+    }
+    
+    fun btn_back(){
+        binding.btnBack2.setOnClickListener{
+            navController.popBackStack()
+        }
     }
 }
