@@ -1,4 +1,4 @@
-package org.techtown.repose
+package org.techtown.repose.Data
 
 import androidx.room.*
 import com.google.gson.Gson

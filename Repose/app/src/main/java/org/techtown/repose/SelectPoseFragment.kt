@@ -10,6 +10,10 @@ import androidx.activity.OnBackPressedCallback
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.techtown.repose.Data.AppDatabase
 import org.techtown.repose.MainActivity.Companion.pose_list
 import org.techtown.repose.MainActivity.Companion.user_pose
 
@@ -19,7 +23,7 @@ class SelectPoseFragment : Fragment(){
     lateinit var  navController : NavController// 네비게이션 컨트롤러
     private var _binding : FragSelectPoseBinding? = null // 뷰바인딩
     private val binding get() = _binding!! // 뷰바인딩
-
+    var mc : MainActivity = MainActivity()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragSelectPoseBinding.inflate(inflater,container,false) // 뷰바인딩
@@ -28,6 +32,11 @@ class SelectPoseFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mc.initRetrofit()
+        mc.db = AppDatabase.getInstance(requireContext())!!
+        CoroutineScope(Dispatchers.IO).launch {
+            MainActivity.user_days = RoomDBGetPoseOfUserData(mc).toMutableList()
+        }
         navController = Navigation.findNavController(view) // 네비게이션 컨트롤러 view로 부터 가져오기
         setInit() // 초기 버튼 상태 설정
         setButton() // 버튼으로 자세 선택
@@ -51,6 +60,9 @@ class SelectPoseFragment : Fragment(){
     // 버튼으로 자세 선택
     fun setButton(){
         binding.SelectBtnPose1.setOnClickListener(){
+            CoroutineScope(Dispatchers.IO).launch {
+                RoomDBUpdatePoseOfUserData(mc,0, !user_pose[pose_list.indexOf("다리꼬기")])
+            }
             if(user_pose[pose_list.indexOf("다리꼬기")]){
                 user_pose[pose_list.indexOf("다리꼬기")] = false
                 binding.SelectBtnPose1.setBackgroundResource(R.drawable.pose_not_selected)
@@ -62,6 +74,9 @@ class SelectPoseFragment : Fragment(){
             }
         }
         binding.SelectBtnPose2.setOnClickListener(){
+            CoroutineScope(Dispatchers.IO).launch {
+                RoomDBUpdatePoseOfUserData(mc,0, !user_pose[pose_list.indexOf("한 쪽으로 짐 들기")])
+            }
             if(user_pose[pose_list.indexOf("한 쪽으로 짐 들기")]){
                 user_pose[pose_list.indexOf("한 쪽으로 짐 들기")] = false
                 binding.SelectBtnPose2.setBackgroundResource(R.drawable.pose_not_selected)
@@ -74,6 +89,9 @@ class SelectPoseFragment : Fragment(){
         }
 
         binding.SelectBtnPose3.setOnClickListener(){
+            CoroutineScope(Dispatchers.IO).launch {
+                RoomDBUpdatePoseOfUserData(mc,0, !user_pose[pose_list.indexOf("장시간 앉아 있기")])
+            }
             if(user_pose[pose_list.indexOf("장시간 앉아 있기")]){
                 user_pose[pose_list.indexOf("장시간 앉아 있기")] = false
                 binding.SelectBtnPose3.setBackgroundResource(R.drawable.pose_not_selected)
@@ -128,5 +146,16 @@ class SelectPoseFragment : Fragment(){
         binding.btnBack2.setOnClickListener{
             navController.popBackStack()
         }
+    }
+
+    suspend fun RoomDBUpdatePoseOfUserData(mc: MainActivity, updateIndex: Int, set: Boolean){
+        val tmpId = mc.db.userDao().getUserData()!!.id
+        var tmpList = mc.db.userDao().getUserData()!!.pose.toMutableList()
+        tmpList[updateIndex] = set
+        mc.db.userDao().updateUserDataPose(tmpId, tmpList.toList())
+    }
+
+    suspend fun RoomDBGetPoseOfUserData(mc: MainActivity):List<Boolean>{
+        return mc.db.userDao().getUserData()!!.pose
     }
 }

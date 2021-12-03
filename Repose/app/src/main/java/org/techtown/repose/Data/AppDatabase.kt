@@ -1,10 +1,11 @@
-package org.techtown.repose
+package org.techtown.repose.Data
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import org.techtown.repose.Converters
 
 @Database(entities = arrayOf(UserData::class), version = 1)
 @TypeConverters(Converters::class)

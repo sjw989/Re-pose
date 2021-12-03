@@ -3,9 +3,6 @@ package org.techtown.repose.signIn
 import android.animation.ObjectAnimator
 import android.graphics.Paint
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,10 +11,9 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.frag_start.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import org.techtown.repose.*
+import org.techtown.repose.Data.AppDatabase
+import org.techtown.repose.Data.UserData
 import org.techtown.repose.databinding.FragStartBinding
 
 
