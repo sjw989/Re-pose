@@ -1,4 +1,4 @@
-package org.techtown.repose
+package org.techtown.repose.Data
 
 import com.google.gson.annotations.SerializedName
 
@@ -11,6 +11,6 @@ data class BeforeParsingUserData(
     @SerializedName("weekday") var weekday: String, // 7
     @SerializedName("hour") var hour: String, //16
     @SerializedName("confirmNum") var confirmNum: Int, // 운동 완료 버튼 누른 횟수
-    @SerializedName("premium") var premium: Boolean,
-    @SerializedName("joinDate") var joinDate: String, // 가입한 날짜
+    @SerializedName("premium") var premium: Int,
+    @SerializedName("JoinDate") var joinDate: String, // 가입한 날짜
 )

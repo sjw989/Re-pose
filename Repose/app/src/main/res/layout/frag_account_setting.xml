@@ -90,6 +90,21 @@
         app:layout_constraintTop_toBottomOf="@+id/id_edittext" />
 
     <TextView
+        android:id="@+id/id_not_redundancy_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:text="*사용 가능한 아이디입니다!"
+        android:textColor="#c2d84f"
+        android:textSize="7sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_edittext" />
+
+
+    <TextView
         android:id="@+id/pw_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

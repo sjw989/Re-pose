@@ -12,12 +12,14 @@ import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.techtown.repose.*
+import org.techtown.repose.Data.AppDatabase
+import org.techtown.repose.Data.BeforeParsingUserData
+import org.techtown.repose.Data.UserData
 import org.techtown.repose.databinding.FragAccountSettingBinding
 import retrofit2.Call
 import retrofit2.Response
@@ -47,46 +49,14 @@ class AccountSettingFragment : Fragment() {
         back_pressed() // 뒤로가기 버튼
         //
 
-
-
-
-
         viewbinding.signUpBtn.setOnClickListener{
-            val tmpUserId = viewbinding.idEdittext.text.toString()
-            val tmpUserPw = viewbinding.pwEdittext.text.toString()
-            val tmpUserEmail = viewbinding.emailEdittext.text.toString()
-            val tmpJoinDate = getStringLocalDateNow()
-
-            val newUserData = UserData(tmpUserId,
-                tmpUserPw,
-                tmpUserEmail,
-                mutableListOf<Boolean>(false,false,false,false,false,false,false,false,false,false,false,false),
-                mutableListOf<Boolean>(false,false,false,false,false,false,false),
-                mutableListOf<Boolean>(false,false,false,false,false,false,false,false),
-                mutableListOf<Boolean>(false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false),
-                0,
-                false,
-                tmpJoinDate
-            )
-
-            val newBeforeParsingUserData = BeforeParsingUserData(
-                tmpUserId,
-                tmpUserPw,
-                tmpUserEmail,
-                "000000000000",
-                "00000000",
-                "0000000",
-                "0000000000000000",
-                0,
-                false,
-                tmpJoinDate
-            )
-
-            navController.navigate(R.id.action_frag_account_setting_to_guideFragment)
-
-
+            val newUserData = setNewUserData()
+            val newBeforeParsingUserData = setNewBeforeParsingUserData()
             ApiCallInsertUserData(newBeforeParsingUserData,newUserData,mc)
-
+        }
+        viewbinding.btnCheckID.setOnClickListener{
+            val newBeforeParsingUserData = setNewBeforeParsingUserData()
+            ApiCallExistIdOfUserData(newBeforeParsingUserData,mc)
         }
         //버튼눌렀을 때 network api 사용
         // 뒤로가기 버튼
@@ -121,7 +91,7 @@ class AccountSettingFragment : Fragment() {
         return LocalDate.now().toString()
     }
 
-    private fun ApiCallInsertUserData(beforeParasingUserData: BeforeParsingUserData,newUserData: UserData, mc: MainActivity):Int {
+    private fun ApiCallInsertUserData(beforeParasingUserData: BeforeParsingUserData, newUserData: UserData, mc: MainActivity):Int {
         var responseCode: Int = 0
         mc.supplementService.post_user(beforeParasingUserData).enqueue(object: retrofit2.Callback<BeforeParsingUserData> {
             override fun onResponse(call: Call<BeforeParsingUserData>, response: Response<BeforeParsingUserData>) {
@@ -146,6 +116,7 @@ class AccountSettingFragment : Fragment() {
                         CoroutineScope(Dispatchers.Main).launch {
                             Toast.makeText(requireContext(),"아이디가 중복되었습니다. 다시 입력해주세요.", Toast.LENGTH_SHORT).show()
                         }
+                        viewbinding.idNotRedundancyTextview.visibility = View.INVISIBLE
                         viewbinding.idRedundancyTextview.visibility = View.VISIBLE
                     }
                     else -> { //다른 에러 발생(서버)
@@ -164,5 +135,84 @@ class AccountSettingFragment : Fragment() {
 
         Log.e("fun code",responseCode.toString())
         return responseCode
+    }
+
+    private fun ApiCallExistIdOfUserData(beforeParsingUserData: BeforeParsingUserData, mc: MainActivity):Int {
+        var responseCode: Int = 0
+        mc.supplementService.id_check(beforeParsingUserData).enqueue(object: retrofit2.Callback<BeforeParsingUserData> {
+            override fun onResponse(call: Call<BeforeParsingUserData>, response: Response<BeforeParsingUserData>) {
+                if(response.code() == 200){
+                    Log.e("server","response 성공!!")
+                }
+                Log.e("response : ", response.body().toString())
+                Log.e("responsecode : ", response.code().toString())
+                responseCode = response.code().toInt()
+
+                when(responseCode){
+                    200 -> { //유저 생성 성공
+                        viewbinding.idNotRedundancyTextview.visibility = View.INVISIBLE
+                        viewbinding.idRedundancyTextview.visibility = View.VISIBLE
+                    }
+                    201 -> { //아이디 중복
+                        CoroutineScope(Dispatchers.Main).launch {
+                            Toast.makeText(requireContext(),"아이디가 중복되었습니다. 다시 입력해주세요.", Toast.LENGTH_SHORT).show()
+                        }
+                        viewbinding.idNotRedundancyTextview.visibility = View.VISIBLE
+                        viewbinding.idRedundancyTextview.visibility = View.INVISIBLE
+                    }
+                    else -> { //다른 에러 발생(서버)
+                        CoroutineScope(Dispatchers.Main).launch {
+                            Toast.makeText(requireContext(),"서버 에러가 발생하였습니다!", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
+            override fun onFailure(call: Call<BeforeParsingUserData>, t: Throwable) {
+                Log.e("server","fail...")
+                Log.e("server_throwable",t.toString())
+                Log.e("server_call",call.toString())
+            }
+        })
+
+        Log.e("fun code",responseCode.toString())
+        return responseCode
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun setNewUserData(): UserData{
+        val tmpUserId = viewbinding.idEdittext.text.toString()
+        val tmpUserPw = viewbinding.pwEdittext.text.toString()
+        val tmpUserEmail = viewbinding.emailEdittext.text.toString()
+        val tmpJoinDate = getStringLocalDateNow()
+        return UserData(tmpUserId,
+            tmpUserPw,
+            tmpUserEmail,
+            mutableListOf<Boolean>(false,false,false,false,false,false,false,false,false,false,false,false),
+            mutableListOf<Boolean>(false,false,false,false,false,false,false),
+            mutableListOf<Boolean>(false,false,false,false,false,false,false,false),
+            mutableListOf<Boolean>(false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false),
+            0,
+            false,
+            tmpJoinDate
+        )
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun setNewBeforeParsingUserData(): BeforeParsingUserData{
+        val tmpUserId = viewbinding.idEdittext.text.toString()
+        val tmpUserPw = viewbinding.pwEdittext.text.toString()
+        val tmpUserEmail = viewbinding.emailEdittext.text.toString()
+        val tmpJoinDate = getStringLocalDateNow()
+        return BeforeParsingUserData(
+            tmpUserId,
+            tmpUserPw,
+            tmpUserEmail,
+            "000000000000",
+            "00000000",
+            "0000000",
+            "0000000000000000",
+            0,
+            0,
+            tmpJoinDate
+        )
     }
 }
