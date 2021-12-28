@@ -171,7 +171,7 @@
                         android:id="@+id/textView48"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="20:00 ~ 22:00"
+                        android:text="15:30 ~ 17:00"
                         app:layout_constraintBottom_toBottomOf="@+id/switch11"
                         app:layout_constraintStart_toStartOf="@+id/textView47"
                         app:layout_constraintTop_toTopOf="@+id/switch11" />
@@ -180,7 +180,7 @@
                         android:id="@+id/textView45"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="14:00 ~ 16:00"
+                        android:text="11:00 ~ 12:30"
                         app:layout_constraintBottom_toBottomOf="@+id/switch8"
                         app:layout_constraintStart_toStartOf="@+id/textView44"
                         app:layout_constraintTop_toTopOf="@+id/switch8" />
@@ -256,7 +256,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout7" />
 
                     <Switch
-                        android:id="@+id/switch2"
+                        android:id="@+id/switch13"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -268,7 +268,7 @@
                         android:thumb="@drawable/switch_thumb"
                         android:track="@drawable/switch_selector"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout15" />
 
                     <Switch
                         android:id="@+id/switch7"
@@ -359,6 +359,66 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/linearLayout11"
                         tools:layout_editor_absoluteY="533dp" />
+
+                    <Switch
+                        android:id="@+id/switch2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/white"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+                    <Switch
+                        android:id="@+id/switch14"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/white"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout16" />
+
+                    <Switch
+                        android:id="@+id/switch15"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/white"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout17" />
+
+                    <Switch
+                        android:id="@+id/switch16"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/white"
+                        android:checked="false"
+                        android:switchMinWidth="50dp"
+                        android:textSize="15sp"
+                        android:thumb="@drawable/switch_thumb"
+                        android:track="@drawable/switch_selector"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/linearLayout18" />
 
                     <LinearLayout
                         android:id="@+id/linearLayout6"
@@ -487,12 +547,63 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/switch11"></LinearLayout>
 
+                    <LinearLayout
+                        android:id="@+id/linearLayout15"
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch12"></LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout16"
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch13">
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout17"
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch14">
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout18"
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/switch15">
+                    </LinearLayout>
+
                     <TextView
                         android:id="@+id/textView38"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:text="00:00 ~ 02:00"
+                        android:text="00:30 ~ 02:00"
                         app:layout_constraintBottom_toBottomOf="@+id/switch1"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/switch1" />
@@ -503,7 +614,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_marginLeft="20dp"
-                        android:text="02:00 ~ 04:00"
+                        android:text="02:00 ~ 03:30"
                         app:layout_constraintBottom_toBottomOf="@+id/switch2"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/switch2" />
@@ -512,7 +623,7 @@
                         android:id="@+id/textView40"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="04:00 ~ 06:00"
+                        android:text="03:30 ~ 05:00"
                         app:layout_constraintBottom_toBottomOf="@+id/switch3"
                         app:layout_constraintStart_toStartOf="@+id/textView39"
                         app:layout_constraintTop_toTopOf="@+id/switch3" />
@@ -521,7 +632,7 @@
                         android:id="@+id/textView41"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="06:00 ~ 08:00"
+                        android:text="05:00 ~ 06:30"
                         app:layout_constraintBottom_toBottomOf="@+id/switch4"
                         app:layout_constraintStart_toStartOf="@+id/textView40"
                         app:layout_constraintTop_toTopOf="@+id/switch4" />
@@ -530,7 +641,7 @@
                         android:id="@+id/textView42"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="08:00 ~ 10:00"
+                        android:text="06:30 ~ 08:00"
                         app:layout_constraintBottom_toBottomOf="@+id/switch5"
                         app:layout_constraintStart_toStartOf="@+id/textView41"
                         app:layout_constraintTop_toTopOf="@+id/switch5" />
@@ -539,7 +650,7 @@
                         android:id="@+id/textView43"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10:00 ~ 12:00"
+                        android:text="08:00 ~ 09:30"
                         app:layout_constraintBottom_toBottomOf="@+id/switch6"
                         app:layout_constraintStart_toStartOf="@+id/textView42"
                         app:layout_constraintTop_toTopOf="@+id/switch6" />
@@ -548,7 +659,7 @@
                         android:id="@+id/textView44"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="12:00 ~ 14:00"
+                        android:text="09:30 ~ 11:00"
                         app:layout_constraintBottom_toBottomOf="@+id/switch7"
                         app:layout_constraintStart_toStartOf="@+id/textView43"
                         app:layout_constraintTop_toTopOf="@+id/switch7" />
@@ -557,7 +668,7 @@
                         android:id="@+id/textView46"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="16:00 ~ 18:00"
+                        android:text="12:30 ~ 14:00"
                         app:layout_constraintBottom_toBottomOf="@+id/switch9"
                         app:layout_constraintStart_toStartOf="@+id/textView45"
                         app:layout_constraintTop_toTopOf="@+id/switch9" />
@@ -566,7 +677,7 @@
                         android:id="@+id/textView47"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="18:00 ~ 20:00"
+                        android:text="14:00 ~ 15:30"
                         app:layout_constraintBottom_toBottomOf="@+id/switch10"
                         app:layout_constraintStart_toStartOf="@+id/textView46"
                         app:layout_constraintTop_toTopOf="@+id/switch10" />
@@ -575,10 +686,47 @@
                         android:id="@+id/textView49"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="22:00 ~ 00:00"
+                        android:text="17:00 ~ 18:30"
                         app:layout_constraintBottom_toBottomOf="@+id/switch12"
                         app:layout_constraintStart_toStartOf="@+id/textView48"
                         app:layout_constraintTop_toTopOf="@+id/switch12" />
+
+                    <TextView
+                        android:id="@+id/textView50"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="18:30 ~ 20:00"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch13"
+                        app:layout_constraintStart_toStartOf="@+id/textView49"
+                        app:layout_constraintTop_toTopOf="@+id/switch13" />
+
+                    <TextView
+                        android:id="@+id/textView51"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20:00 ~ 21:30"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch14"
+                        app:layout_constraintStart_toStartOf="@+id/textView50"
+                        app:layout_constraintTop_toTopOf="@+id/switch14" />
+
+                    <TextView
+                        android:id="@+id/textView52"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21:30 ~ 23:00"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch15"
+                        app:layout_constraintStart_toStartOf="@+id/textView51"
+                        app:layout_constraintTop_toTopOf="@+id/switch15" />
+
+                    <TextView
+                        android:id="@+id/textView53"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="23:00 ~ 00:30"
+                        app:layout_constraintBottom_toBottomOf="@+id/switch16"
+                        app:layout_constraintStart_toStartOf="@+id/textView52"
+                        app:layout_constraintTop_toTopOf="@+id/switch16" />
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -621,7 +769,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:background="@color/white"
-                android:src="@drawable/back"
+                android:src="@drawable/direction"
                 app:layout_constraintBottom_toBottomOf="@+id/textView6"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView6" />

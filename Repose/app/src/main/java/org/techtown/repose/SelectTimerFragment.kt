@@ -93,6 +93,18 @@ class SelectTimerFragment : Fragment(){
         if(user_timer[11]){
             binding.switch12.isChecked = true
         }
+        if(user_timer[12]){
+            binding.switch13.isChecked = true
+        }
+        if(user_timer[13]){
+            binding.switch14.isChecked = true
+        }
+        if(user_timer[14]){
+            binding.switch15.isChecked = true
+        }
+        if(user_timer[15]){
+            binding.switch16.isChecked = true
+        }
     }
     fun set_days(){
         binding.btnMonday.setOnClickListener{
@@ -183,6 +195,10 @@ class SelectTimerFragment : Fragment(){
         binding.switch10.setOnCheckedChangeListener(timeSwitch_Listener(9))
         binding.switch11.setOnCheckedChangeListener(timeSwitch_Listener(10))
         binding.switch12.setOnCheckedChangeListener(timeSwitch_Listener(11))
+        binding.switch13.setOnCheckedChangeListener(timeSwitch_Listener(12))
+        binding.switch14.setOnCheckedChangeListener(timeSwitch_Listener(13))
+        binding.switch15.setOnCheckedChangeListener(timeSwitch_Listener(14))
+        binding.switch16.setOnCheckedChangeListener(timeSwitch_Listener(15))
     }
 
     fun btn_back(){
@@ -210,5 +226,4 @@ class timeSwitch_Listener : CompoundButton.OnCheckedChangeListener{
     override fun onCheckedChanged(btn : CompoundButton?, isChecked: Boolean) {
         user_timer[idx] = isChecked
     }
-
 }

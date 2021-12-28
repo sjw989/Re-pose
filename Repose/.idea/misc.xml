@@ -10,6 +10,7 @@
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/drawable/dot_indicator.xml" value="0.1" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/drawable/green_border.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/drawable/line.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/drawable/nav_border.xml" value="0.275" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/drawable/pose_not_selected.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/drawable/pose_selected.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/drawable/selected_dot.xml" value="0.1" />
@@ -25,29 +26,31 @@
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_account_setting.xml" value="0.2805755395683453" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_complete_exercise_splash.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_complete_splash.xml" value="0.25" />
-        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_disease.xml" value="0.19427083333333334" />
+        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_disease.xml" value="0.33" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_empty_pose.xml" value="0.25" />
-        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_exercise.xml" value="0.3052536231884058" />
+        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_exercise.xml" value="0.22" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_exercise_complete.xml" value="0.30480072463768115" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_find_id.xml" value="0.19467213114754098" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_find_pw.xml" value="0.19467213114754098" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_find_success.xml" value="0.1912568306010929" />
-        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_guide.xml" value="0.3052536231884058" />
-        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_guide1.xml" value="0.2" />
-        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_guide2.xml" value="0.22" />
-        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_guide3.xml" value="0.22" />
+        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_guide.xml" value="0.25" />
+        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_guide1.xml" value="0.33" />
+        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_guide2.xml" value="0.5" />
+        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_guide3.xml" value="0.33" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_guide4.xml" value="0.33" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_login.xml" value="0.21687158469945356" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_main.xml" value="0.25" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_medal.xml" value="0.271286231884058" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_pose.xml" value="0.25" />
-        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_select_pose.xml" value="0.25" />
+        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_select_pose.xml" value="0.33" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_select_timer.xml" value="0.33" />
-        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_show_exercise.xml" value="0.22" />
+        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_show_exercise.xml" value="0.25" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_splash.xml" value="0.26403985507246375" />
-        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_start.xml" value="0.25" />
+        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/frag_start.xml" value="0.22" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/fragment_empty_pose.xml" value="0.1765625" />
+        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/fragment_retrofit_test.xml" value="0.322463768115942" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/fragment_test.xml" value="0.3052536231884058" />
+        <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/rcv_disease_component.xml" value="0.33" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/rcv_exercise_component.xml" value="0.30480072463768115" />
         <entry key="..\:/Users/sjw98/Apptive/Repose/app/src/main/res/layout/test.xml" value="0.3052536231884058" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2671794871794872" />

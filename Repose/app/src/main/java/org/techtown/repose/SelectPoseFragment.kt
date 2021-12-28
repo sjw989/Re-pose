@@ -44,6 +44,15 @@ class SelectPoseFragment : Fragment(){
                 "다리꼬기"->binding.SelectBtnPose1.setBackgroundResource(R.drawable.pose_selected)
                 "한 쪽으로 짐 들기"->binding.SelectBtnPose2.setBackgroundResource(R.drawable.pose_selected)
                 "장시간 앉아 있기"->binding.SelectBtnPose3.setBackgroundResource(R.drawable.pose_selected)
+                "장시간 서 있기"->binding.SelectBtnPose4.setBackgroundResource(R.drawable.pose_selected)
+                "장시간 전자기기 사용"->binding.SelectBtnPose5.setBackgroundResource(R.drawable.pose_selected)
+                "장시간 독서"->binding.SelectBtnPose6.setBackgroundResource(R.drawable.pose_selected)
+                "장시간 필기"->binding.SelectBtnPose7.setBackgroundResource(R.drawable.pose_selected)
+                "장시간 운전"->binding.SelectBtnPose8.setBackgroundResource(R.drawable.pose_selected)
+                "팔자걸음"->binding.SelectBtnPose9.setBackgroundResource(R.drawable.pose_selected)
+                "안짱걸음"->binding.SelectBtnPose10.setBackgroundResource(R.drawable.pose_selected)
+                "양반다리"->binding.SelectBtnPose11.setBackgroundResource(R.drawable.pose_selected)
+                "엎드려자기"->binding.SelectBtnPose12.setBackgroundResource(R.drawable.pose_selected)
             }
         }
     }
@@ -51,22 +60,22 @@ class SelectPoseFragment : Fragment(){
     // 버튼으로 자세 선택
     fun setButton(){
         binding.SelectBtnPose1.setOnClickListener(){
-            if(user_pose[pose_list.indexOf("다리꼬기")]){
-                user_pose[pose_list.indexOf("다리꼬기")] = false
+            if(user_pose[0]){
+                user_pose[0] = false
                 binding.SelectBtnPose1.setBackgroundResource(R.drawable.pose_not_selected)
             }
-            else if(!user_pose[pose_list.indexOf("다리꼬기")]){
+            else if(!user_pose[0]){
                 val bundle = Bundle()
                 bundle.putString("pose","다리꼬기")
                 findNavController().navigate(R.id.action_frag_select_pose_to_frag_disease,bundle)
             }
         }
         binding.SelectBtnPose2.setOnClickListener(){
-            if(user_pose[pose_list.indexOf("한 쪽으로 짐 들기")]){
-                user_pose[pose_list.indexOf("한 쪽으로 짐 들기")] = false
+            if(user_pose[1]){
+                user_pose[1] = false
                 binding.SelectBtnPose2.setBackgroundResource(R.drawable.pose_not_selected)
             }
-            else if(!user_pose[pose_list.indexOf("한 쪽으로 짐 들기")]){
+            else if(!user_pose[1]){
                 val bundle = Bundle()
                 bundle.putString("pose","한 쪽으로 짐 들기")
                 findNavController().navigate(R.id.action_frag_select_pose_to_frag_disease,bundle)
@@ -74,13 +83,114 @@ class SelectPoseFragment : Fragment(){
         }
 
         binding.SelectBtnPose3.setOnClickListener(){
-            if(user_pose[pose_list.indexOf("장시간 앉아 있기")]){
-                user_pose[pose_list.indexOf("장시간 앉아 있기")] = false
+            if(user_pose[2]){
+                user_pose[2] = false
                 binding.SelectBtnPose3.setBackgroundResource(R.drawable.pose_not_selected)
             }
-            else if(!user_pose[pose_list.indexOf("장시간 앉아 있기")]){
+            else if(!user_pose[2]){
                 val bundle = Bundle()
                 bundle.putString("pose","장시간 앉아 있기")
+                findNavController().navigate(R.id.action_frag_select_pose_to_frag_disease,bundle)
+            }
+        }
+        binding.SelectBtnPose4.setOnClickListener(){
+            if(user_pose[3]){
+                user_pose[3] = false
+                binding.SelectBtnPose4.setBackgroundResource(R.drawable.pose_not_selected)
+            }
+            else if(!user_pose[3]){
+                val bundle = Bundle()
+                bundle.putString("pose","장시간 서 있기")
+                findNavController().navigate(R.id.action_frag_select_pose_to_frag_disease,bundle)
+            }
+        }
+        binding.SelectBtnPose5.setOnClickListener(){
+            if(user_pose[4]){
+                user_pose[4] = false
+                binding.SelectBtnPose5.setBackgroundResource(R.drawable.pose_not_selected)
+            }
+            else if(!user_pose[4]){
+                val bundle = Bundle()
+                bundle.putString("pose","장시간 전자기기 사용")
+                findNavController().navigate(R.id.action_frag_select_pose_to_frag_disease,bundle)
+            }
+        }
+        binding.SelectBtnPose6.setOnClickListener(){
+            if(user_pose[5]){
+                user_pose[5] = false
+                binding.SelectBtnPose6.setBackgroundResource(R.drawable.pose_not_selected)
+            }
+            else if(!user_pose[5]){
+                val bundle = Bundle()
+                bundle.putString("pose","장시간 독서")
+                findNavController().navigate(R.id.action_frag_select_pose_to_frag_disease,bundle)
+            }
+        }
+        binding.SelectBtnPose7.setOnClickListener(){
+            if(user_pose[6]){
+                user_pose[6] = false
+                binding.SelectBtnPose7.setBackgroundResource(R.drawable.pose_not_selected)
+            }
+            else if(!user_pose[6]){
+                val bundle = Bundle()
+                bundle.putString("pose","장시간 필기")
+                findNavController().navigate(R.id.action_frag_select_pose_to_frag_disease,bundle)
+            }
+        }
+        binding.SelectBtnPose8.setOnClickListener(){
+            if(user_pose[7]){
+                user_pose[7] = false
+                binding.SelectBtnPose8.setBackgroundResource(R.drawable.pose_not_selected)
+            }
+            else if(!user_pose[7]){
+                val bundle = Bundle()
+                bundle.putString("pose","장시간 운전")
+                print(456)
+                findNavController().navigate(R.id.action_frag_select_pose_to_frag_disease,bundle)
+            }
+        }
+        binding.SelectBtnPose9.setOnClickListener(){
+            if(user_pose[8]){
+                user_pose[8] = false
+                binding.SelectBtnPose9.setBackgroundResource(R.drawable.pose_not_selected)
+            }
+            else if(!user_pose[8]){
+                val bundle = Bundle()
+                bundle.putString("pose","팔자걸음")
+                print(123)
+                findNavController().navigate(R.id.action_frag_select_pose_to_frag_disease,bundle)
+            }
+        }
+        binding.SelectBtnPose10.setOnClickListener(){
+            if(user_pose[9]){
+                user_pose[9] = false
+                binding.SelectBtnPose10.setBackgroundResource(R.drawable.pose_not_selected)
+            }
+            else if(!user_pose[9]){
+                val bundle = Bundle()
+                bundle.putString("pose","안짱걸음")
+                findNavController().navigate(R.id.action_frag_select_pose_to_frag_disease,bundle)
+            }
+        }
+        binding.SelectBtnPose11.setOnClickListener(){
+            if(user_pose[10]){
+                user_pose[10] = false
+                binding.SelectBtnPose11.setBackgroundResource(R.drawable.pose_not_selected)
+            }
+            else if(!user_pose[10]){
+                val bundle = Bundle()
+                bundle.putString("pose","양반다리")
+                findNavController().navigate(R.id.action_frag_select_pose_to_frag_disease,bundle)
+            }
+        }
+        binding.SelectBtnPose12.setOnClickListener(){
+            if(user_pose[11]){
+                user_pose[11] = false
+                binding.SelectBtnPose12.setBackgroundResource(R.drawable.pose_not_selected)
+            }
+            else if(!user_pose[11]){
+                val bundle = Bundle()
+                bundle.putString("pose","엎드려자기")
                 findNavController().navigate(R.id.action_frag_select_pose_to_frag_disease,bundle)
             }
         }
@@ -88,23 +198,77 @@ class SelectPoseFragment : Fragment(){
 
     // 초기 버튼 상태
     fun setInit(){
-        if(user_pose[pose_list.indexOf("다리꼬기")]){
+        if(user_pose[0]){
             binding.SelectBtnPose1.setBackgroundResource(R.drawable.pose_selected)
         }
         else{
             binding.SelectBtnPose1.setBackgroundResource(R.drawable.pose_not_selected)
         }
-        if(user_pose[pose_list.indexOf("한 쪽으로 짐 들기")]){
+        if(user_pose[1]){
             binding.SelectBtnPose2.setBackgroundResource(R.drawable.pose_selected)
         }
         else{
             binding.SelectBtnPose2.setBackgroundResource(R.drawable.pose_not_selected)
         }
-        if(user_pose[pose_list.indexOf("장시간 앉아 있기")]){
+        if(user_pose[2]){
             binding.SelectBtnPose3.setBackgroundResource(R.drawable.pose_selected)
         }
         else{
             binding.SelectBtnPose3.setBackgroundResource(R.drawable.pose_not_selected)
+        }
+        if(user_pose[3]){
+            binding.SelectBtnPose4.setBackgroundResource(R.drawable.pose_selected)
+        }
+        else{
+            binding.SelectBtnPose4.setBackgroundResource(R.drawable.pose_not_selected)
+        }
+        if(user_pose[4]){
+            binding.SelectBtnPose5.setBackgroundResource(R.drawable.pose_selected)
+        }
+        else{
+            binding.SelectBtnPose5.setBackgroundResource(R.drawable.pose_not_selected)
+        }
+        if(user_pose[5]){
+            binding.SelectBtnPose6.setBackgroundResource(R.drawable.pose_selected)
+        }
+        else{
+            binding.SelectBtnPose6.setBackgroundResource(R.drawable.pose_not_selected)
+        }
+        if(user_pose[6]){
+            binding.SelectBtnPose7.setBackgroundResource(R.drawable.pose_selected)
+        }
+        else{
+            binding.SelectBtnPose7.setBackgroundResource(R.drawable.pose_not_selected)
+        }
+        if(user_pose[7]){
+            binding.SelectBtnPose8.setBackgroundResource(R.drawable.pose_selected)
+        }
+        else{
+            binding.SelectBtnPose8.setBackgroundResource(R.drawable.pose_not_selected)
+        }
+        if(user_pose[8]){
+            binding.SelectBtnPose9.setBackgroundResource(R.drawable.pose_selected)
+        }
+        else{
+            binding.SelectBtnPose9.setBackgroundResource(R.drawable.pose_not_selected)
+        }
+        if(user_pose[9]){
+            binding.SelectBtnPose10.setBackgroundResource(R.drawable.pose_selected)
+        }
+        else{
+            binding.SelectBtnPose10.setBackgroundResource(R.drawable.pose_not_selected)
+        }
+        if(user_pose[10]){
+            binding.SelectBtnPose11.setBackgroundResource(R.drawable.pose_selected)
+        }
+        else{
+            binding.SelectBtnPose11.setBackgroundResource(R.drawable.pose_not_selected)
+        }
+        if(user_pose[11]){
+            binding.SelectBtnPose12.setBackgroundResource(R.drawable.pose_selected)
+        }
+        else{
+            binding.SelectBtnPose12.setBackgroundResource(R.drawable.pose_not_selected)
         }
     }
 

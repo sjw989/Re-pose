@@ -17,7 +17,7 @@
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+            app:layout_constraintTop_toBottomOf="@+id/adView">
 
 
                 <androidx.viewpager2.widget.ViewPager2
@@ -28,28 +28,29 @@
                     android:clipToPadding="false"
                     app:layout_constraintBottom_toTopOf="@+id/pose_indicator"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
-                <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
                     android:id="@+id/pose_indicator"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="60dp"
-                    app:dotsColor="#d6efbf"
-                    app:dotsCornerRadius="8dp"
-                    app:dotsSize="16dp"
+                    app:dotsColor="#8cc458"
+                    app:dotsCornerRadius="20dp"
+                    app:dotsSize="8dp"
                     app:dotsSpacing="4dp"
+                    app:dotsStrokeColor="#d6efbf                 "
                     app:dotsWidthFactor="2.5"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/vp_poseViewPager"
                     app:layout_constraintStart_toStartOf="@+id/vp_poseViewPager"
                     app:layout_constraintTop_toBottomOf="@+id/vp_poseViewPager"
-                    app:progressMode="true"
-                    app:selectedDotColor="#8cc458">
+                    app:progressMode="true">
 
-                </com.tbuonomo.viewpagerdotsindicator.DotsIndicator>
+                </com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout2"
@@ -83,7 +84,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginLeft="10dp"
-                            android:text="60"
+                            android:text="00"
                             android:textColor="@color/white"
                             android:textSize="20sp"
                             android:visibility="visible"
@@ -120,36 +121,29 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginRight="1dp"
-            android:layout_marginBottom="1dp"
-            android:orientation="horizontal"
+       
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            app:adSize="BANNER"
+            app:adUnitId = "ca-app-pub-9133594708175780/8009317574"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"/>
 
-                <TextView
-                    android:id="@+id/textView33"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="광고자리" />
-
-        </LinearLayout>
+ 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/border"
+            android:background="@drawable/nav_border"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -228,12 +222,12 @@
                     android:layout_height="30dp"
                     android:background="#FFFFFF"
                     android:scaleType="fitXY"
+                    app:srcCompat="@drawable/medal"
                     app:layout_constraintBottom_toBottomOf="@+id/btn_setTimer"
                     app:layout_constraintEnd_toStartOf="@+id/btn_SelectPose"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/btn_setTimer"
                     app:layout_constraintTop_toTopOf="@+id/btn_setTimer"
-                    app:srcCompat="@drawable/trophy"
                     tools:ignore="SpeakableTextPresentCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

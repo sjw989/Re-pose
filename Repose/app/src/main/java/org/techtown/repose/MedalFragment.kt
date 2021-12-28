@@ -28,12 +28,14 @@ class MedalFragment : Fragment() {
 
     private val medal_list : List<String> = listOf("이런, 성한\n곳이 없군!", "건강해지는 소리가\n들리나요?","난 아직도 쌩쌩해!", "이제 시작이야",
                                                     "깃털 같은 몸", "균형 잡힌 몸", "난 완벽해", "든든한 동반자")
-    private val medal_condition : List<String> = listOf("XXXX-XX-XX부터\n리포즈와 함께하셨습니다", "리포즈와 함께하신 지\n 100일이 지났습니다.",
+    private val medal_condition : List<String> = listOf("XXXX-XX-XX부터\n리포즈와 함께하셨습니다.",
+                                                        "리포즈와 함께하신 지\n 100일이 지났습니다.",
                                                         "리포즈와 함께하신 지\n 300일이 지났습니다.",
                                                         "자세 교정 후, \n완료 버튼을 일정 시간 내 \n처음 클릭하셨습니다.",
-                                                        "자세 교정 후, \n완료 버튼을 일정 시간 내 \n50회 클릭하셨습니다",
-                                                        "자세 교정 후, \n완료 버튼을 일정 시간 내 \n300회 클릭하셨습니다",
-                                                        "자세 교정 후, \n완료 버튼을 일정 시간 내 \n1000회 클릭하셨습니다", "리포즈의 Pro ver.을 구매했습니다.")
+                                                        "자세 교정 후, \n완료 버튼을 일정 시간 내 \n50회 클릭하셨습니다.",
+                                                        "자세 교정 후, \n완료 버튼을 일정 시간 내 \n300회 클릭하셨습니다.",
+                                                        "자세 교정 후, \n완료 버튼을 일정 시간 내 \n1000회 클릭하셨습니다.",
+                                                        "리포즈의 Pro ver.을 구매했습니다.")
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -56,19 +58,22 @@ class MedalFragment : Fragment() {
         }
     }
 
-    fun make_medal_dialog(medal_name : String, medal_condition : String){
+    fun make_medal_dialog(medal_name : String, medal_condition : String, image : Int){
         val layoutInflater = LayoutInflater.from(context)
         val view  = layoutInflater.inflate(R.layout.dialog_medal_condition,null)
 
         val alertDialog = AlertDialog.Builder(context).setView(view).create()
+        // 터치로 끄는거 잠금 start
         alertDialog.setCanceledOnTouchOutside(false)
         alertDialog.setCancelable(false)
+        // end
 
-        alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        alertDialog.show()
+        alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) // 배경 투명하게
+        alertDialog.show() // 우선 dialog를 띄우고 text를 설정해야함
+        alertDialog.tv_medalName.text = medal_name // 메달이름 설정
+        alertDialog.tv_medal_condition.text = medal_condition // 메달 획득조건 설정
+        alertDialog.iv_medal_condition.setImageResource(image) // 메달 이미지 설정
 
-        alertDialog.tv_medalName.text = medal_name
-        alertDialog.tv_medal_condition.text = medal_condition
 
         alertDialog.btn_okay.setOnClickListener{
             alertDialog.dismiss()
@@ -76,28 +81,28 @@ class MedalFragment : Fragment() {
     }
     fun show_condition( ){
         binding.ivMedal1.setOnClickListener{
-            make_medal_dialog(medal_list[0], medal_condition[0])
+            make_medal_dialog(medal_list[0], medal_condition[0],R.drawable.medal1_on)
         }
         binding.ivMedal2.setOnClickListener{
-            make_medal_dialog(medal_list[1], medal_condition[1])
+            make_medal_dialog(medal_list[1], medal_condition[1],R.drawable.medal2_on)
         }
         binding.ivMedal3.setOnClickListener{
-            make_medal_dialog(medal_list[2], medal_condition[2])
+            make_medal_dialog(medal_list[2], medal_condition[2],R.drawable.medal3_on)
         }
         binding.ivMedal4.setOnClickListener{
-            make_medal_dialog(medal_list[3], medal_condition[3])
+            make_medal_dialog(medal_list[3], medal_condition[3],R.drawable.medal4_on)
         }
         binding.ivMedal5.setOnClickListener{
-            make_medal_dialog(medal_list[4], medal_condition[4])
+            make_medal_dialog(medal_list[4], medal_condition[4],R.drawable.medal5_on)
         }
         binding.ivMedal6.setOnClickListener{
-            make_medal_dialog(medal_list[5], medal_condition[5])
+            make_medal_dialog(medal_list[5], medal_condition[5],R.drawable.medal6_on)
         }
         binding.ivMedal7.setOnClickListener{
-            make_medal_dialog(medal_list[6], medal_condition[6])
+            make_medal_dialog(medal_list[6], medal_condition[6],R.drawable.medal7_on)
         }
         binding.ivMedal8.setOnClickListener{
-            make_medal_dialog(medal_list[7], medal_condition[7])
+            make_medal_dialog(medal_list[7], medal_condition[7],R.drawable.medal8_on)
         }
     }
 
@@ -114,28 +119,28 @@ class MedalFragment : Fragment() {
     // 메달 설정
     fun set_medal(){
         if(user_medal[0]){
-            binding.ivMedal1.setImageResource(R.drawable.pose1_on)
+            binding.ivMedal1.setImageResource(R.drawable.medal1_on)
         }
         if(user_medal[1]){
-            binding.ivMedal2.setImageResource(R.drawable.pose1_on)
+            binding.ivMedal2.setImageResource(R.drawable.medal2_on)
         }
         if(user_medal[2]){
-            binding.ivMedal3.setImageResource(R.drawable.pose1_on)
+            binding.ivMedal3.setImageResource(R.drawable.medal3_on)
         }
         if(user_medal[3]){
-            binding.ivMedal4.setImageResource(R.drawable.pose1_on)
+            binding.ivMedal4.setImageResource(R.drawable.medal4_on)
         }
         if(user_medal[4]){
-            binding.ivMedal5.setImageResource(R.drawable.pose1_on)
+            binding.ivMedal5.setImageResource(R.drawable.medal5_on)
         }
         if(user_medal[5]){
-            binding.ivMedal6.setImageResource(R.drawable.pose1_on)
+            binding.ivMedal6.setImageResource(R.drawable.medal6_on)
         }
         if(user_medal[6]){
-            binding.ivMedal7.setImageResource(R.drawable.pose1_on)
+            binding.ivMedal7.setImageResource(R.drawable.medal7_on)
         }
         if(user_medal[7]){
-            binding.ivMedal8.setImageResource(R.drawable.pose1_on)
+            binding.ivMedal8.setImageResource(R.drawable.medal8_on)
         }
     }
 

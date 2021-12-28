@@ -13,18 +13,18 @@
         <action
             android:id="@+id/action_frag_main_to_frag_select_pose"
             app:destination="@id/frag_select_pose"
-            app:enterAnim="@anim/ani_from_right_to_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@anim/ani_from_right_to_left_in"
+            app:popExitAnim="@anim/ani_from_left_to_right_out" />
         <action
             android:id="@+id/action_frag_main_to_frag_show_exercise"
             app:destination="@id/frag_show_exercise"
-            app:enterAnim="@anim/ani_from_right_to_left"
-            app:popExitAnim="@android:anim/slide_out_right" />
+            app:enterAnim="@anim/ani_from_right_to_left_in"
+            app:popExitAnim="@anim/ani_from_left_to_right_out" />
         <action
             android:id="@+id/action_frag_main_to_selectTimerFragment"
             app:destination="@id/selectTimerFragment"
-            app:enterAnim="@anim/ani_from_left_to_right"
-            app:popExitAnim="@anim/ani_from_right_to_left2" />
+            app:enterAnim="@anim/ani_from_left_to_right_in"
+            app:popExitAnim="@anim/ani_from_right_to_left_out" />
         <action
             android:id="@+id/action_frag_main_to_medalFragment"
             app:destination="@id/medalFragment" />
@@ -38,7 +38,7 @@
         <action
             android:id="@+id/action_frag_select_pose_to_frag_disease"
             app:destination="@id/frag_disease"
-            app:enterAnim="@anim/ani_from_right_to_left"
+            app:enterAnim="@anim/ani_from_right_to_left_in"
             app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
 

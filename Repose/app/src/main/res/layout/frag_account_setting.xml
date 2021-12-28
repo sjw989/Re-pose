@@ -17,7 +17,7 @@
         android:layout_marginTop="5dp"
         android:text="*아이디 분실 시 이메일로 아이디가 전송됩니다. 정확하게 기입해주세요."
         android:textColor="#ed1900"
-        android:textSize="7sp"
+        android:textSize="10sp"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_edittext" />

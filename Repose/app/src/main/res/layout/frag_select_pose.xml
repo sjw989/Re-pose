@@ -136,10 +136,11 @@
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/pose1"
-                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose7"
-                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose7"
-                    app:layout_constraintTop_toBottomOf="@+id/textView14" />
+                    android:src="@drawable/pose8"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose6"
+                    app:layout_constraintHorizontal_bias="0.575"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose6"
+                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
                 <ImageButton
                     android:id="@+id/SelectBtn_pose9"
@@ -150,11 +151,10 @@
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/pose8"
-                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose6"
-                    app:layout_constraintHorizontal_bias="0.575"
-                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose6"
-                    app:layout_constraintTop_toBottomOf="@+id/textView13" />
+                    android:src="@drawable/pose9"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose7"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose7"
+                    app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
                 <ImageButton
                     android:id="@+id/SelectBtn_pose10"
@@ -165,9 +165,9 @@
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/pose2"
-                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose9"
-                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose9"
+                    android:src="@drawable/pose10"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose8"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose8"
                     app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
                 <ImageButton
@@ -180,8 +180,8 @@
                     android:paddingBottom="10dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/pose11"
-                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose8"
-                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose8"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose9"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose9"
                     app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
                 <ImageButton
@@ -193,7 +193,7 @@
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/pose2"
+                    android:src="@drawable/pose12"
                     app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose10"
                     app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose10"
                     app:layout_constraintTop_toBottomOf="@+id/textView17" />
@@ -296,10 +296,10 @@
                     android:text="팔자걸음"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose8"
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose9"
                     app:layout_constraintHorizontal_bias="0.51"
-                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose8"
-                    app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose8" />
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose9"
+                    app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose9" />
 
                 <TextView
                     android:id="@+id/textView16"
@@ -309,9 +309,9 @@
                     android:text="장시간 운전"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose9"
-                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose9"
-                    app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose9" />
+                    app:layout_constraintEnd_toEndOf="@+id/SelectBtn_pose8"
+                    app:layout_constraintStart_toStartOf="@+id/SelectBtn_pose8"
+                    app:layout_constraintTop_toBottomOf="@+id/SelectBtn_pose8" />
 
                 <TextView
                     android:id="@+id/textView17"
@@ -377,7 +377,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:background="@color/white"
-        android:src="@drawable/back"
+        android:src="@drawable/direction"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView5" />

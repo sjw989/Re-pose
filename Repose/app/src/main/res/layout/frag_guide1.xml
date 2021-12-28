@@ -9,6 +9,18 @@
     tools:context="GuideFragment1">
 
 
+    <TextView
+        android:id="@+id/textView62"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="탭하여 다음으로 넘어가주세요."
+        android:textColor="#c4c4c4"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="0dp"
@@ -109,28 +121,41 @@
 
     <View
         android:id="@+id/view4"
-        android:layout_width="133dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/diagonal1"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
-        app:layout_constraintEnd_toEndOf="@+id/textView30"
-        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintEnd_toEndOf="@+id/textView57"
+        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="@+id/textView30"
-        app:layout_constraintTop_toBottomOf="@+id/textView30"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
     <TextView
         android:id="@+id/textView30"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
-        android:text="이 곳에서 push알림 수신을 설정 할 수 있어요! "
+        android:layout_marginBottom="60dp"
+        android:text="이 곳에서                            을 \n설정 할 수 있어요! "
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.23"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView57"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="push알림 수신"
+        android:textColor="#c2d84f "
+        app:layout_constraintEnd_toEndOf="@+id/textView30"
+        app:layout_constraintHorizontal_bias="0.74"
+        app:layout_constraintStart_toStartOf="@+id/textView30"
+        app:layout_constraintTop_toTopOf="@+id/textView30" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
