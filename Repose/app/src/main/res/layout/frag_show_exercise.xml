@@ -7,20 +7,27 @@
     android:background="#FFFFFF"
     tools:context=".ShowExerciseFragment">
 
-    
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        app:adSize="BANNER"
-        app:adUnitId = "ca-app-pub-3940256099942544/6300978111"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_exercise_pose_name"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_exercise_pose_name">
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-9133594708175780/8009317574" />
+    </LinearLayout>
 
     <ImageButton
         android:id="@+id/btn_back9"
@@ -29,6 +36,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:background="@color/white"
+        android:scaleType="fitCenter"
         android:src="@drawable/direction"
         app:layout_constraintBottom_toBottomOf="@+id/textView56"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +86,7 @@
         app:layout_constraintBottom_toTopOf="@+id/exercise_indicator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adView2" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <TextView
         android:id="@+id/textView56"
@@ -86,6 +94,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="운동"
+        android:textColor="#000000"
+        android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

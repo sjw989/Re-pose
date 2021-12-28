@@ -2,40 +2,16 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <runningDeviceTargetSelectedWithDropDown>
-<<<<<<< HEAD
-=======
       <Target>
         <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
-            <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="$USER_HOME$/.android/avd/Pixel_2_API_30_2.avd" />
-          </Key>
-        </deviceKey>
-      </Target>
-    </runningDeviceTargetSelectedWithDropDown>
-    <targetSelectedWithDropDown>
->>>>>>> 47b7a69efffa264549bfa2fcc5f8d7de281e03c7
-      <Target>
-        <type value="RUNNING_DEVICE_TARGET" />
-        <deviceKey>
-          <Key>
-<<<<<<< HEAD
             <type value="SERIAL_NUMBER" />
             <value value="ce10160a2026ac0605" />
           </Key>
         </deviceKey>
       </Target>
     </runningDeviceTargetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2021-12-28T03:55:10.165387700Z" />
-=======
-            <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="$USER_HOME$/.android/avd/Pixel_2_API_30_2.avd" />
-          </Key>
-        </deviceKey>
-      </Target>
-    </targetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2021-12-03T04:43:54.582600Z" />
->>>>>>> 47b7a69efffa264549bfa2fcc5f8d7de281e03c7
+    <timeTargetWasSelectedWithDropDown value="2021-12-28T12:40:56.391949600Z" />
   </component>
 </project>
