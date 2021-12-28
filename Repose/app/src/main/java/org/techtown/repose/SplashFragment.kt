@@ -20,6 +20,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.techtown.repose.Data.AppDatabase
 import org.techtown.repose.MainActivity.Companion.user_days
+import org.techtown.repose.MainActivity.Companion.user_joinData
 import org.techtown.repose.MainActivity.Companion.user_medal
 import org.techtown.repose.MainActivity.Companion.user_pose
 import org.techtown.repose.MainActivity.Companion.user_timer
@@ -90,9 +91,9 @@ class SplashFragment : Fragment() {
                         user_timer = RoomDBGetHourOfUserData(mc).toMutableList()
                         user_pose = RoomDBGetPoseOfUserData(mc).toMutableList()
                         user_medal = RoomDBGetMedalOfUserData(mc).toMutableList()
-                        val tmpJoinDate = RoomDBGetJoinDateOfUserData(mc)
+                        user_joinData = RoomDBGetJoinDateOfUserData(mc)
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            ComposeJoindateForSettingAlarm(mc, tmpJoinDate)
+                            ComposeJoindateForSettingAlarm(mc, user_joinData)
                         }
                     }
                     navController.navigate(R.id.action_frag_splash_to_frag_main)

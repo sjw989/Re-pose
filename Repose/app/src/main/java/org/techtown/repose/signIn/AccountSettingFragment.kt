@@ -80,6 +80,10 @@ class AccountSettingFragment : Fragment() {
         mc.db.userDao().insertUserData(newUserData)
     }
 
+    suspend fun RoomDBGetJoinDateOfUserData(mc: MainActivity):String{
+        return mc.db.userDao().getUserData()!!.joinDate
+    }
+
     private suspend fun MoveGuideFragment(){
         CoroutineScope(Dispatchers.Main).launch {
             // room DB 체크해서 넘어갈지 말지
@@ -112,6 +116,7 @@ class AccountSettingFragment : Fragment() {
                         CoroutineScope(Dispatchers.IO).launch {
                             RoomDBInsertUserData(mc, newUserData)
                             mc.setMedalAlarm(50, requireContext(),0)
+                            MainActivity.user_joinData = RoomDBGetJoinDateOfUserData(mc)
                             MoveGuideFragment()
                         }
                     }
@@ -217,4 +222,6 @@ class AccountSettingFragment : Fragment() {
             tmpJoinDate
         )
     }
+
+
 }

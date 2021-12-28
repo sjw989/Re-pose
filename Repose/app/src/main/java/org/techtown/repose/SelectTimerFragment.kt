@@ -237,6 +237,10 @@ class SelectTimerFragment : Fragment(){
         binding.switch10.setOnCheckedChangeListener(timeSwitch_Listener(9 ,activity as MainActivity))
         binding.switch11.setOnCheckedChangeListener(timeSwitch_Listener(10 ,activity as MainActivity))
         binding.switch12.setOnCheckedChangeListener(timeSwitch_Listener(11 ,activity as MainActivity))
+        binding.switch13.setOnCheckedChangeListener(timeSwitch_Listener(12 ,activity as MainActivity))
+        binding.switch14.setOnCheckedChangeListener(timeSwitch_Listener(13 ,activity as MainActivity))
+        binding.switch15.setOnCheckedChangeListener(timeSwitch_Listener(14 ,activity as MainActivity))
+        binding.switch16.setOnCheckedChangeListener(timeSwitch_Listener(15 ,activity as MainActivity))
     }
 
     fun btn_back(){

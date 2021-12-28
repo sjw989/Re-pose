@@ -21,7 +21,7 @@ user.post('/', function(req, res, next) {
     console.log(req.body.userPw);
     console.log(req.body.userEmail);
     connection.query('insert into repose_user(userId, userPw, userEmail, pose, medal, weekday, hour, confirmNum, premium, joinDate) values (?,?,?,?,?,?,?,?,?,?);',
-    [req.body.userId, req.body.userPw, req.body.userEmail, req.body.pose, req.body.medal, req.body.weekday, req.body.hour, req.body.confirmNum, req.body.premium, req.body.joinDate],
+    [req.body.userId, req.body.userPw, req.body.userEmail, req.body.pose, req.body.medal, req.body.weekday, req.body.hour, req.body.confirmNum, req.body.premium, req.body.JoinDate],
     function(error, info){
         console.log("info! :",info);
         console.log("console check success!!");

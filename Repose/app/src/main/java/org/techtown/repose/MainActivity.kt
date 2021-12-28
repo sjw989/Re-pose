@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         var user_days = mutableListOf<Boolean>(false,false,false,false,false,false,false) // 사이즈 : 7
         var user_medal = mutableListOf<Boolean>(false,false,false,false,false,false,false,false) // 사이즈 : 8
         var user_confirmNum = 0 // 운동완료 버튼 누른 횟수
+        var user_joinData = "a" // 운동완료 버튼 누른 횟수
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,8 +82,8 @@ class MainActivity : AppCompatActivity() {
             val repeatInterval: Long = 24* 60 * 60 * 1000   // 24h
             val calendar: Calendar = Calendar.getInstance().apply { // 1
                 timeInMillis = System.currentTimeMillis()
-                set(Calendar.HOUR_OF_DAY, notificationId * 2)
-                set(Calendar.MINUTE, 0)
+                set(Calendar.HOUR_OF_DAY, (notificationId * 90)/60)
+                set(Calendar.MINUTE, (notificationId * 90)%60)
             }
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, // 2
                 calendar.timeInMillis,
