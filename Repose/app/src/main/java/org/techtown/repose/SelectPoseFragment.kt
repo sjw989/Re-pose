@@ -38,7 +38,7 @@ class SelectPoseFragment : Fragment() {
         mc.initRetrofit()
         mc.db = AppDatabase.getInstance(requireContext())!!
         CoroutineScope(Dispatchers.IO).launch {
-            MainActivity.user_days = RoomDBGetPoseOfUserData(mc).toMutableList()
+            MainActivity.user_days = RoomDBGetWeekDayOfUserData(mc).toMutableList()
         }
         navController = Navigation.findNavController(view) // 네비게이션 컨트롤러 view로 부터 가져오기
         setInit() // 초기 버튼 상태 설정
@@ -89,10 +89,12 @@ class SelectPoseFragment : Fragment() {
                 )
             }
         }
-
-        binding.SelectBtnPose2.setOnClickListener() {
-            if (user_pose[1]) {
-                user_pose[1] = false
+        binding.SelectBtnPose2.setOnClickListener(){
+            CoroutineScope(Dispatchers.IO).launch {
+                RoomDBUpdatePoseOfUserData(mc,1, !user_pose[pose_list.indexOf("한 쪽으로 짐 들기")])
+            }
+            if(user_pose[pose_list.indexOf("한 쪽으로 짐 들기")]){
+                user_pose[pose_list.indexOf("한 쪽으로 짐 들기")] = false
                 binding.SelectBtnPose2.setBackgroundResource(R.drawable.pose_not_selected)
                 CoroutineScope(Dispatchers.IO).launch {
                     RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("한 쪽으로 짐 들기")])
@@ -108,9 +110,12 @@ class SelectPoseFragment : Fragment() {
             }
         }
 
-        binding.SelectBtnPose3.setOnClickListener() {
-            if (user_pose[2]) {
-                user_pose[2] = false
+        binding.SelectBtnPose3.setOnClickListener(){
+            CoroutineScope(Dispatchers.IO).launch {
+                RoomDBUpdatePoseOfUserData(mc,2, !user_pose[pose_list.indexOf("장시간 앉아 있기")])
+            }
+            if(user_pose[pose_list.indexOf("장시간 앉아 있기")]){
+                user_pose[pose_list.indexOf("장시간 앉아 있기")] = false
                 binding.SelectBtnPose3.setBackgroundResource(R.drawable.pose_not_selected)
                 CoroutineScope(Dispatchers.IO).launch {
                     RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("장시간 앉아 있기")])
@@ -390,7 +395,7 @@ class SelectPoseFragment : Fragment() {
         mc.db.userDao().updateUserDataPose(tmpId, tmpList.toList())
     }
 
-    suspend fun RoomDBGetPoseOfUserData(mc: MainActivity): List<Boolean> {
-        return mc.db.userDao().getUserData()!!.pose
+    suspend fun RoomDBGetWeekDayOfUserData(mc: MainActivity):List<Boolean>{
+        return mc.db.userDao().getUserData()!!.weekday
     }
 }

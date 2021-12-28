@@ -72,11 +72,11 @@ user.post('/idcheck', function(req, res, next) {
         // console.log("info! :",info.length);
         if(error == null){
             if(info.length == 0) {
-                res.status(201).json(error);
+                res.status(200).json(error);
                 console.log("user Id: not existence");
             }
             else {
-                res.status(200).json(error);
+                res.status(201).json(error);
                 console.log("user Id: existence");
             }
         }else{

@@ -81,6 +81,7 @@
         <entry key="app/src/main/res/layout/frag_find_success.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/frag_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/frag_main.xml" value="0.2552083333333333" />
+        <entry key="app/src/main/res/layout/frag_pose.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/layout/frag_select_pose.xml" value="0.103125" />
         <entry key="app/src/main/res/layout/frag_select_timer.xml" value="0.14270833333333333" />
         <entry key="app/src/main/res/layout/frag_show_exercise.xml" value="0.103125" />
@@ -93,7 +94,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
