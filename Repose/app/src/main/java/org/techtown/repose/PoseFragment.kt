@@ -1,11 +1,18 @@
 package org.techtown.repose
 
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import org.techtown.repose.Data.UserData
 import org.techtown.repose.databinding.FragPoseBinding
 
 class PoseFragment : Fragment() {
@@ -15,6 +22,8 @@ class PoseFragment : Fragment() {
 
     private var pose_num : Int? = null
     private var pose_name: String? = null
+
+    private lateinit var mc: MainActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +39,11 @@ class PoseFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mc = MainActivity()
+        mc.initRoomDB(requireContext())
         binding.tvPoseName.text  = pose_name
         when(pose_name){
             "다리꼬기" -> binding.btnGoGuide.setImageResource(R.drawable.pose1_1)
@@ -53,6 +65,11 @@ class PoseFragment : Fragment() {
             if(MainFragment.is_countDown){
                 MainFragment.countDown.cancel()
             }
+            CoroutineScope(Dispatchers.IO).launch {
+                var tmpConfirmNum = mc.db.userDao().getUserData()!!.confirmNum
+                RoomDBUpdateConfirmNumOfUserData(mc, tmpConfirmNum)
+                ClassifyConfirmNumForSettingAlarm(mc, tmpConfirmNum)
+            }
             findNavController().navigate(R.id.action_frag_main_to_frag_show_exercise,bundle)
         }
     }
@@ -73,4 +90,21 @@ class PoseFragment : Fragment() {
                 }
             }
     }
+
+    suspend fun RoomDBUpdateConfirmNumOfUserData(mc: MainActivity, tmpConfirmNum: Int){
+        val tmpId = mc.db.userDao().getUserData()!!.id
+        mc.db.userDao().updateUserDataConfirmNum(tmpId, tmpConfirmNum + 1)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
+    suspend fun ClassifyConfirmNumForSettingAlarm(mc: MainActivity, tmpConfirmNum: Int){
+        when(tmpConfirmNum + 1) {
+            1 -> mc.setMedalAlarm(50, requireContext(),3)
+            5 -> mc.setMedalAlarm(50, requireContext(),4)
+            6 -> mc.setMedalAlarm(50, requireContext(),5)
+            1000 -> mc.setMedalAlarm(50, requireContext(),6)
+            else -> return
+        }
+    }
+
 }

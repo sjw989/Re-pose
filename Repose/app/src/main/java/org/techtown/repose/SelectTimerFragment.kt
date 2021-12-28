@@ -1,14 +1,20 @@
 package org.techtown.repose
 
+import android.app.AlarmManager
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import kotlinx.coroutines.CoroutineScope
@@ -17,7 +23,9 @@ import kotlinx.coroutines.launch
 import org.techtown.repose.Data.AppDatabase
 import org.techtown.repose.MainActivity.Companion.user_days
 import org.techtown.repose.MainActivity.Companion.user_timer
+import org.techtown.repose.Service.AlarmReceiver.Companion.TAG
 import org.techtown.repose.databinding.FragSelectTimerBinding
+import java.util.*
 
 
 class SelectTimerFragment : Fragment(){
@@ -47,6 +55,7 @@ class SelectTimerFragment : Fragment(){
         back_pressed() // 뒤로가기 버튼
         btn_back() // 화살표 뒤로가기 버튼
     }
+
     fun set_init(){
         if(user_days[0]){
             binding.btnMonday.setBackgroundResource(R.drawable.green_border)
@@ -204,18 +213,18 @@ class SelectTimerFragment : Fragment(){
     }
 
     fun set_time(){
-        binding.switch1.setOnCheckedChangeListener(timeSwitch_Listener(0 ,requireContext()))
-        binding.switch2.setOnCheckedChangeListener(timeSwitch_Listener(1 ,requireContext()))
-        binding.switch3.setOnCheckedChangeListener(timeSwitch_Listener(2 ,requireContext()))
-        binding.switch4.setOnCheckedChangeListener(timeSwitch_Listener(3 ,requireContext()))
-        binding.switch5.setOnCheckedChangeListener(timeSwitch_Listener(4 ,requireContext()))
-        binding.switch6.setOnCheckedChangeListener(timeSwitch_Listener(5 ,requireContext()))
-        binding.switch7.setOnCheckedChangeListener(timeSwitch_Listener(6 ,requireContext()))
-        binding.switch8.setOnCheckedChangeListener(timeSwitch_Listener(7 ,requireContext()))
-        binding.switch9.setOnCheckedChangeListener(timeSwitch_Listener(8 ,requireContext()))
-        binding.switch10.setOnCheckedChangeListener(timeSwitch_Listener(9 ,requireContext()))
-        binding.switch11.setOnCheckedChangeListener(timeSwitch_Listener(10 ,requireContext()))
-        binding.switch12.setOnCheckedChangeListener(timeSwitch_Listener(11 ,requireContext()))
+        binding.switch1.setOnCheckedChangeListener(timeSwitch_Listener(0 ,activity as MainActivity))
+        binding.switch2.setOnCheckedChangeListener(timeSwitch_Listener(1 ,activity as MainActivity))
+        binding.switch3.setOnCheckedChangeListener(timeSwitch_Listener(2 ,activity as MainActivity))
+        binding.switch4.setOnCheckedChangeListener(timeSwitch_Listener(3 ,activity as MainActivity))
+        binding.switch5.setOnCheckedChangeListener(timeSwitch_Listener(4 ,activity as MainActivity))
+        binding.switch6.setOnCheckedChangeListener(timeSwitch_Listener(5 ,activity as MainActivity))
+        binding.switch7.setOnCheckedChangeListener(timeSwitch_Listener(6 ,activity as MainActivity))
+        binding.switch8.setOnCheckedChangeListener(timeSwitch_Listener(7 ,activity as MainActivity))
+        binding.switch9.setOnCheckedChangeListener(timeSwitch_Listener(8 ,activity as MainActivity))
+        binding.switch10.setOnCheckedChangeListener(timeSwitch_Listener(9 ,activity as MainActivity))
+        binding.switch11.setOnCheckedChangeListener(timeSwitch_Listener(10 ,activity as MainActivity))
+        binding.switch12.setOnCheckedChangeListener(timeSwitch_Listener(11 ,activity as MainActivity))
     }
 
     fun btn_back(){
@@ -255,21 +264,26 @@ class SelectTimerFragment : Fragment(){
         return mc.db.userDao().getUserData()!!.hour
     }
 }
+
 class timeSwitch_Listener : CompoundButton.OnCheckedChangeListener{
     var idx : Int = 0
     var mc : MainActivity = MainActivity()
+    var listenerContext: Context
 
     constructor(idx : Int, context: Context){
         this.idx = idx
         mc.initRetrofit()
         mc.initRoomDB(context)
+        listenerContext = context
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCheckedChanged(btn : CompoundButton?, isChecked: Boolean) {
         user_timer[idx] = isChecked
         CoroutineScope(Dispatchers.IO).launch {
             RoomDBUpdateHourOfUserData(mc,idx,user_timer[idx])
         }
+        mc.setPosingAlarm(isChecked, idx, listenerContext)
     }
 
     suspend fun RoomDBUpdateHourOfUserData(mc: MainActivity, updateIndex: Int, set: Boolean){

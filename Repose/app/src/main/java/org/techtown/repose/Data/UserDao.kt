@@ -19,6 +19,9 @@ interface UserDao {
     @Query("UPDATE userdata SET hour=:hour WHERE id=:id")
     fun updateUserDataHour(id: String, hour: List<Boolean>)
 
+    @Query("UPDATE userdata SET confirmNum=:confirmNum WHERE id=:id")
+    fun updateUserDataConfirmNum(id: String, confirmNum: Int)
+
     @Insert
     fun insertUserData(user: UserData)
 

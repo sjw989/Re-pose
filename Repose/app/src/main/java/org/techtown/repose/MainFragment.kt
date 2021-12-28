@@ -1,5 +1,6 @@
 package org.techtown.repose
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
@@ -29,8 +30,13 @@ import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 
 import androidx.viewpager2.widget.ViewPager2
-
-
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import org.techtown.repose.Data.AppDatabase
+import org.techtown.repose.Data.UserData
+import org.techtown.repose.MainActivity.Companion.user_medal
 
 
 class MainFragment : Fragment(){
@@ -38,6 +44,8 @@ class MainFragment : Fragment(){
     private var _binding : FragMainBinding? = null // 뷰바인딩
     private val binding get() = _binding!! // 뷰바인딩
     private var exit_time : Long = 0
+    var mc:MainActivity = MainActivity()
+
 
     companion object{
         var vpAdapter: FragmentStateAdapter? = null // pose Adapter
@@ -50,9 +58,24 @@ class MainFragment : Fragment(){
         _binding = FragMainBinding.inflate(inflater,container,false) // 뷰바인딩
         return binding.root
     }
+    @SuppressLint("LongLogTag")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view) // 네비게이션 컨트롤러 view로 부터 가져오기
+        mc.initRetrofit()
+        mc.db = AppDatabase.getInstance(requireContext())!!
+        CoroutineScope(Dispatchers.IO).launch {
+            val tempUserData: UserData = mc.db.userDao().getUserData()!!
+            Log.e("main_frag", user_pose.toString())
+            Log.e("main_frag", user_days.toString())
+            Log.e("main_frag", user_timer.toString())
+            Log.e("main_frag_medal", user_medal.toString())
+            Log.e("main_frag_room", tempUserData.pose.toString())
+            Log.e("main_frag_room", tempUserData.weekday.toString())
+            Log.e("main_frag_room", tempUserData.hour.toString())
+            Log.e("main_frag_room_confirmNum", tempUserData.confirmNum.toString())
+        }
+
         select_pose() // 자세선택 버튼
         show_medal() // 메달 보여주기 화면
         select_time() // 요일, 시간 선택

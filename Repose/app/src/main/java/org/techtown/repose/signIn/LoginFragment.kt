@@ -122,6 +122,8 @@ class LoginFragment : Fragment() {
                         }
                         CoroutineScope(Dispatchers.IO).launch {
                             RoomDBInsertUserData(mc, ParseUserData(response.body()!!))
+                            MainActivity.user_days = RoomDBGetWeekdayOfUserData(mc).toMutableList()
+                            MainActivity.user_timer = RoomDBGetHourOfUserData(mc).toMutableList()
                             MoveMainFragment()
                         }
                     }
@@ -180,5 +182,13 @@ class LoginFragment : Fragment() {
 
     private fun ParseDataFromIntToBoolean(int: Int):Boolean{
         return int != 0
+    }
+
+    suspend fun RoomDBGetWeekdayOfUserData(mc: MainActivity):List<Boolean>{
+        return mc.db.userDao().getUserData()!!.weekday
+    }
+
+    suspend fun RoomDBGetHourOfUserData(mc: MainActivity):List<Boolean>{
+        return mc.db.userDao().getUserData()!!.hour
     }
 }
