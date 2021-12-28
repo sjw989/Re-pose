@@ -73,12 +73,12 @@ class SelectPoseFragment : Fragment() {
     // 버튼으로 자세 선택
     fun setButton() {
         binding.SelectBtnPose1.setOnClickListener() {
+            CoroutineScope(Dispatchers.IO).launch {
+                RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("다리꼬기")])
+            }
             if (user_pose[0]) {
                 user_pose[0] = false
                 binding.SelectBtnPose1.setBackgroundResource(R.drawable.pose_not_selected)
-                CoroutineScope(Dispatchers.IO).launch {
-                    RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("다리꼬기")])
-                }
             }
             else if (!user_pose[0]) {
                 val bundle = Bundle()
@@ -96,9 +96,6 @@ class SelectPoseFragment : Fragment() {
             if(user_pose[pose_list.indexOf("한 쪽으로 짐 들기")]){
                 user_pose[pose_list.indexOf("한 쪽으로 짐 들기")] = false
                 binding.SelectBtnPose2.setBackgroundResource(R.drawable.pose_not_selected)
-                CoroutineScope(Dispatchers.IO).launch {
-                    RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("한 쪽으로 짐 들기")])
-                }
             }
             else if (!user_pose[1]) {
                 val bundle = Bundle()
@@ -117,11 +114,7 @@ class SelectPoseFragment : Fragment() {
             if(user_pose[pose_list.indexOf("장시간 앉아 있기")]){
                 user_pose[pose_list.indexOf("장시간 앉아 있기")] = false
                 binding.SelectBtnPose3.setBackgroundResource(R.drawable.pose_not_selected)
-                CoroutineScope(Dispatchers.IO).launch {
-                    RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("장시간 앉아 있기")])
-                }
             }
-
             else if (!user_pose[2]) {
                 val bundle = Bundle()
                 bundle.putString("pose", "장시간 앉아 있기")
@@ -134,12 +127,12 @@ class SelectPoseFragment : Fragment() {
         }
 
         binding.SelectBtnPose4.setOnClickListener() {
+            CoroutineScope(Dispatchers.IO).launch {
+                RoomDBUpdatePoseOfUserData(mc, 3, !user_pose[pose_list.indexOf("장시간 서 있기")])
+            }
             if (user_pose[3]) {
                 user_pose[3] = false
                 binding.SelectBtnPose4.setBackgroundResource(R.drawable.pose_not_selected)
-                CoroutineScope(Dispatchers.IO).launch {
-                    RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("장시간 서 있기")])
-                }
             }
              else if (!user_pose[3]) {
                 val bundle = Bundle()
@@ -153,12 +146,12 @@ class SelectPoseFragment : Fragment() {
         }
 
         binding.SelectBtnPose5.setOnClickListener() {
+            CoroutineScope(Dispatchers.IO).launch {
+                RoomDBUpdatePoseOfUserData(mc, 4, !user_pose[pose_list.indexOf("장시간 전자기기 있기")])
+            }
             if (user_pose[4]) {
                 user_pose[4] = false
                 binding.SelectBtnPose5.setBackgroundResource(R.drawable.pose_not_selected)
-                CoroutineScope(Dispatchers.IO).launch {
-                    RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("장시간 전자기기 있기")])
-                }
             }
              else if (!user_pose[4]) {
                 val bundle = Bundle()
@@ -172,12 +165,12 @@ class SelectPoseFragment : Fragment() {
         }
 
         binding.SelectBtnPose6.setOnClickListener() {
+            CoroutineScope(Dispatchers.IO).launch {
+                RoomDBUpdatePoseOfUserData(mc, 5, !user_pose[pose_list.indexOf("장시간 독서")])
+            }
             if (user_pose[5]) {
                 user_pose[5] = false
                 binding.SelectBtnPose6.setBackgroundResource(R.drawable.pose_not_selected)
-                CoroutineScope(Dispatchers.IO).launch {
-                    RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("장시간 독서")])
-                }
             }
            else if (!user_pose[5]) {
                 val bundle = Bundle()
@@ -190,12 +183,12 @@ class SelectPoseFragment : Fragment() {
         }
 
         binding.SelectBtnPose7.setOnClickListener() {
+            CoroutineScope(Dispatchers.IO).launch {
+                RoomDBUpdatePoseOfUserData(mc, 6, !user_pose[pose_list.indexOf("장시간 필기")])
+            }
             if (user_pose[6]) {
                 user_pose[6] = false
                 binding.SelectBtnPose7.setBackgroundResource(R.drawable.pose_not_selected)
-                CoroutineScope(Dispatchers.IO).launch {
-                    RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("장시간 필기")])
-                }
             }
              else if (!user_pose[6]) {
                 val bundle = Bundle()
@@ -208,12 +201,12 @@ class SelectPoseFragment : Fragment() {
 
         }
         binding.SelectBtnPose8.setOnClickListener() {
+            CoroutineScope(Dispatchers.IO).launch {
+                RoomDBUpdatePoseOfUserData(mc, 7, !user_pose[pose_list.indexOf("장시간 운전")])
+            }
             if (user_pose[7]) {
                 user_pose[7] = false
                 binding.SelectBtnPose8.setBackgroundResource(R.drawable.pose_not_selected)
-                CoroutineScope(Dispatchers.IO).launch {
-                    RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("장시간 운전")])
-                }
             }
              else if (!user_pose[7]) {
                 val bundle = Bundle()
@@ -227,12 +220,12 @@ class SelectPoseFragment : Fragment() {
 
         }
         binding.SelectBtnPose9.setOnClickListener() {
+            CoroutineScope(Dispatchers.IO).launch {
+                RoomDBUpdatePoseOfUserData(mc, 8, !user_pose[pose_list.indexOf("팔자걸음")])
+            }
             if (user_pose[8]) {
                 user_pose[8] = false
                 binding.SelectBtnPose9.setBackgroundResource(R.drawable.pose_not_selected)
-                CoroutineScope(Dispatchers.IO).launch {
-                    RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("팔자걸음")])
-                }
             }
             else if (!user_pose[8]) {
                 val bundle = Bundle()
@@ -247,12 +240,12 @@ class SelectPoseFragment : Fragment() {
         }
 
         binding.SelectBtnPose10.setOnClickListener() {
+            CoroutineScope(Dispatchers.IO).launch {
+                RoomDBUpdatePoseOfUserData(mc, 9, !user_pose[pose_list.indexOf("안짱걸음")])
+            }
             if (user_pose[9]) {
                 user_pose[9] = false
                 binding.SelectBtnPose10.setBackgroundResource(R.drawable.pose_not_selected)
-                CoroutineScope(Dispatchers.IO).launch {
-                    RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("안짱걸음")])
-                }
             }
             else if (!user_pose[9]) {
                 val bundle = Bundle()
@@ -265,12 +258,12 @@ class SelectPoseFragment : Fragment() {
         }
 
         binding.SelectBtnPose11.setOnClickListener() {
+            CoroutineScope(Dispatchers.IO).launch {
+                RoomDBUpdatePoseOfUserData(mc, 10, !user_pose[pose_list.indexOf("양반다리")])
+            }
             if (user_pose[10]) {
                 user_pose[10] = false
                 binding.SelectBtnPose11.setBackgroundResource(R.drawable.pose_not_selected)
-                CoroutineScope(Dispatchers.IO).launch {
-                    RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("양반다리")])
-                }
             }
              else if (!user_pose[10]) {
                 val bundle = Bundle()
@@ -283,12 +276,12 @@ class SelectPoseFragment : Fragment() {
 
         }
         binding.SelectBtnPose12.setOnClickListener() {
+            CoroutineScope(Dispatchers.IO).launch {
+                RoomDBUpdatePoseOfUserData(mc, 11, !user_pose[pose_list.indexOf("엎드려자기")])
+            }
             if (user_pose[11]) {
                 user_pose[11] = false
                 binding.SelectBtnPose12.setBackgroundResource(R.drawable.pose_not_selected)
-                CoroutineScope(Dispatchers.IO).launch {
-                    RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("엎드려자기")])
-                }
             }
             else if (!user_pose[11]) {
                 val bundle = Bundle()

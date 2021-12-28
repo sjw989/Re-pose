@@ -44,7 +44,7 @@ class medalAlarmReceiver : BroadcastReceiver() {
         )
         val builder =
             NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
-                .setSmallIcon(R.drawable.alarm)
+                .setSmallIcon(R.drawable.trophy)
                 .setContentTitle("메달 획득!")
                 .setContentText(SelectRandomText())
                 .setContentIntent(contentPendingIntent)

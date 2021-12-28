@@ -28,6 +28,7 @@
         <entry key="app/src/main/res/drawable/green_border.xml" value="0.2743589743589744" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2671794871794872" />
         <entry key="app/src/main/res/drawable/line.xml" value="0.2671794871794872" />
+        <entry key="app/src/main/res/drawable/nav_border.xml" value="0.2777777777777778" />
         <entry key="app/src/main/res/drawable/switch_track_on.xml" value="0.2777777777777778" />
         <entry key="app/src/main/res/drawable/white_border.xml" value="0.2777777777777778" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24375" />
@@ -44,7 +45,7 @@
         <entry key="app/src/main/res/layout/frag_pose.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/layout/frag_select_pose.xml" value="0.103125" />
         <entry key="app/src/main/res/layout/frag_select_timer.xml" value="0.14270833333333333" />
-        <entry key="app/src/main/res/layout/frag_show_exercise.xml" value="0.103125" />
+        <entry key="app/src/main/res/layout/frag_show_exercise.xml" value="0.335" />
         <entry key="app/src/main/res/layout/frag_splash.xml" value="0.25833333333333336" />
         <entry key="app/src/main/res/layout/frag_start.xml" value="0.24114583333333334" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.2296875" />

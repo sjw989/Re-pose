@@ -50,7 +50,7 @@ class AlarmReceiver : BroadcastReceiver() {
         )
         val builder =
             NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
-                .setSmallIcon(R.drawable.alarm)
+                .setSmallIcon(R.drawable.notice)
                 .setContentTitle("자세 교정!")
                 .setContentText(SelectRandomText())
                 .setContentIntent(contentPendingIntent)

@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -13,11 +14,16 @@ import android.view.View.INVISIBLE
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.*
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.marginBottom
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.techtown.repose.ExerciseFragment.Companion.exercise_list
 import org.techtown.repose.MainActivity.Companion.user_confirmNum
 import java.text.SimpleDateFormat
@@ -27,6 +33,8 @@ class ExerciseRecyclerViewAdapter(private val context : Context, private val dat
                                   private val idx : Int, private val pose_name:String, private val view:View) :
                                     RecyclerView.Adapter<ExerciseRecyclerViewAdapter.ViewHolder>() {
     lateinit var  navController : NavController// 네비게이션 컨트롤러
+    private lateinit var mc: MainActivity
+
 
     companion object{
         var is_dialog : Boolean = false // 다이얼로그가 활성화중인지 저장하는 변수 -> Handler + 뒤로가기버튼 때문에 앱터지는거 방지
@@ -71,7 +79,11 @@ class ExerciseRecyclerViewAdapter(private val context : Context, private val dat
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     fun makeCompleteButton(holder: ViewHolder, position: Int) {
+        mc = MainActivity()
+        mc.initRoomDB(context)
+
         if (idx == exercise_list[MainActivity.pose_list.indexOf(pose_name)].size - 1
             && position == data.size - 1) {// 지금 운동이 마지막 운동이고, 마지막 설명인 경우
             // 운동완료 버튼 동적 생성
@@ -91,7 +103,12 @@ class ExerciseRecyclerViewAdapter(private val context : Context, private val dat
                 if(MainFragment.is_countDown){ // 버튼을 눌렀는데 현재 카운트다운 중이라면
                     MainFragment.is_countDown = false
                     MainFragment.is_exercise_complete[MainFragment.time_idx] = true // 해당 시간에 운동 헀음을 표시 -> Timer 안뜨게 하기위함
-                    user_confirmNum++ // 운동완료 버튼 누른 횟수 ++
+                }
+
+                CoroutineScope(Dispatchers.IO).launch {
+                    var tmpConfirmNum = mc.db.userDao().getUserData()!!.confirmNum
+                    RoomDBUpdateConfirmNumOfUserData(mc, tmpConfirmNum)
+                    ClassifyConfirmNumForSettingAlarm(mc, tmpConfirmNum, context)
                 }
 
                 val dialog = make_dialog(context)
@@ -115,5 +132,21 @@ class ExerciseRecyclerViewAdapter(private val context : Context, private val dat
         alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         alertDialog.window!!.setWindowAnimations(R.style.ani_dialog)
         return alertDialog
+    }
+
+    suspend fun RoomDBUpdateConfirmNumOfUserData(mc: MainActivity, tmpConfirmNum: Int){
+        val tmpId = mc.db.userDao().getUserData()!!.id
+        mc.db.userDao().updateUserDataConfirmNum(tmpId, tmpConfirmNum + 1)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
+    suspend fun ClassifyConfirmNumForSettingAlarm(mc: MainActivity, tmpConfirmNum: Int, context: Context){
+        when(tmpConfirmNum + 1) {
+            1 -> mc.setMedalAlarm(50, context,3)
+            5 -> mc.setMedalAlarm(50, context,4)
+            6 -> mc.setMedalAlarm(50, context,5)
+            1000 -> mc.setMedalAlarm(50, context,6)
+            else -> return
+        }
     }
 }
