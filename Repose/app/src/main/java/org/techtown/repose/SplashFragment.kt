@@ -9,16 +9,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
 import androidx.core.animation.doOnEnd
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.techtown.repose.databinding.FragMainBinding
+import org.techtown.repose.Data.AppDatabase
+import org.techtown.repose.MainActivity.Companion.user_days
 import org.techtown.repose.databinding.FragSplashBinding
-import kotlin.coroutines.coroutineContext
 
 
 class SplashFragment : Fragment() {
@@ -41,6 +40,7 @@ class SplashFragment : Fragment() {
         CoroutineScope(Dispatchers.IO).launch {
             Log.e("Exist User",ExistUser.toString())
             ExistUser = mc.db.userDao().getUserData() != null
+            Log.e("Exist User",mc.db.userDao().getUserData().toString())
             Log.e("Exist User",ExistUser.toString())
             init()
             Log.e("Exist User",ExistUser.toString())
@@ -67,14 +67,14 @@ class SplashFragment : Fragment() {
         Handler(Looper.getMainLooper()).postDelayed({
             fadeOut.duration = 1500
             fadeOut.start()
-            navController.navigate(R.id.action_frag_splash_to_frag_start)
-            /*
+//            navController.navigate(R.id.action_frag_splash_to_frag_start)
             fadeOut.doOnEnd {
                 //룸디비 체크
-                if(ExistUser) navController.navigate(R.id.action_frag_splash_to_frag_main)
+                if(ExistUser) {
+                    navController.navigate(R.id.action_frag_splash_to_frag_main)
+                }
                 else navController.navigate(R.id.action_frag_splash_to_frag_start)
             }
-             */
         }, 4000)
     }
     // 뷰바인딩 destroy

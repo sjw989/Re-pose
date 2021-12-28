@@ -39,11 +39,25 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="50dp"
         android:hint="아이디를 입력하세요"
-        android:backgroundTint="
-#c2d84f"
+        android:backgroundTint="#c2d84f"
         android:textColorHint="#707070"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_textview2" />
+
+    <TextView
+        android:id="@+id/id_notion_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:text="*아이디를 확인해주세요."
+        android:textColor="#ed1900"
+        android:textSize="7sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_edittext" />
+
 
     <EditText
         android:id="@+id/pw_edittext"
@@ -52,11 +66,24 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="50dp"
         android:hint="비밀번호를 입력하세요"
-        android:backgroundTint="
-#c2d84f"
+        android:backgroundTint="#c2d84f"
         android:textColorHint="#707070"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_edittext" />
+
+    <TextView
+        android:id="@+id/pw_notion_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:text="*패스워드를 확인해주세요."
+        android:textColor="#ed1900"
+        android:textSize="7sp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pw_edittext" />
 
 
     <TextView
