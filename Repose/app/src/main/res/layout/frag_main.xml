@@ -131,7 +131,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             app:adSize="BANNER"
-            app:adUnitId = "ca-app-pub-9133594708175780/8009317574"
+            app:adUnitId = "ca-app-pub-3940256099942544/6300978111"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

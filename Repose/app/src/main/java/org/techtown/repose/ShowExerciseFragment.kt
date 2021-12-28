@@ -10,6 +10,8 @@ import androidx.activity.OnBackPressedCallback
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import org.techtown.repose.ExerciseFragment.Companion.exercise_list
 import org.techtown.repose.databinding.FragShowExerciseBinding
 
@@ -55,6 +57,7 @@ class ShowExerciseFragment : Fragment(){
         connect_viewPager() // 뷰페이저 연결
         back_pressed() // 뒤로가기 버튼
         btn_back() // 화살표 뒤로가기
+        start_ad() // 광고 실행
     }
 
 
@@ -74,6 +77,12 @@ class ShowExerciseFragment : Fragment(){
         override fun containsItem(itemId: Long): Boolean {
             return fmIds.contains(itemId)
         }
+    }
+
+    fun start_ad(){
+        MobileAds.initialize(context){}
+        val adRequest = AdRequest.Builder().build()
+        binding.adView2.loadAd(adRequest)
     }
 
     // 뷰페이저 연결
