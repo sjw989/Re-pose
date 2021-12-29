@@ -9,7 +9,7 @@ object RetrofitClient {
     private var instance: Retrofit?=null
     private val gson = GsonBuilder().setLenient().create()
 
-    private const val BASE_URL = "http://192.168.139.233:3000" //에뮬 > laptop 내부ip 10.0.2.2
+    private const val BASE_URL = "http://192.168.143.233:3000" //에뮬 > laptop 내부ip 10.0.2.2
 
     //SingleTon
 

@@ -24,8 +24,14 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.techtown.repose.Data.BeforeParsingUserData
+import org.techtown.repose.Data.UpdateConfirmNumOfUserData
+import org.techtown.repose.Data.UpdateHourOfUserData
+import org.techtown.repose.Data.UpdatePoseOfUserData
 import org.techtown.repose.ExerciseFragment.Companion.exercise_list
 import org.techtown.repose.MainActivity.Companion.user_confirmNum
+import retrofit2.Call
+import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -83,6 +89,7 @@ class ExerciseRecyclerViewAdapter(private val context : Context, private val dat
     fun makeCompleteButton(holder: ViewHolder, position: Int) {
         mc = MainActivity()
         mc.initRoomDB(context)
+        mc.initRetrofit()
 
         if (idx == exercise_list[MainActivity.pose_list.indexOf(pose_name)].size - 1
             && position == data.size - 1) {// 지금 운동이 마지막 운동이고, 마지막 설명인 경우
@@ -106,9 +113,14 @@ class ExerciseRecyclerViewAdapter(private val context : Context, private val dat
                 }
 
                 CoroutineScope(Dispatchers.IO).launch {
-                    var tmpConfirmNum = mc.db.userDao().getUserData()!!.confirmNum
+                    var tmpConfirmNum = mc.db.userDao().getUserData()!!.confirmNum + 1
                     RoomDBUpdateConfirmNumOfUserData(mc, tmpConfirmNum)
                     ClassifyConfirmNumForSettingAlarm(mc, tmpConfirmNum, context)
+                    val updateConfirmNumOfUserData = UpdateConfirmNumOfUserData(
+                        tmpConfirmNum,
+                        RoomDBGetUserIdOfUserData(mc)
+                    )
+                    ApiCallUpdateConfirmNumOfUserData(updateConfirmNumOfUserData, mc)
                 }
 
                 val dialog = make_dialog(context)
@@ -136,16 +148,42 @@ class ExerciseRecyclerViewAdapter(private val context : Context, private val dat
 
     suspend fun RoomDBUpdateConfirmNumOfUserData(mc: MainActivity, tmpConfirmNum: Int){
         val tmpId = mc.db.userDao().getUserData()!!.id
-        mc.db.userDao().updateUserDataConfirmNum(tmpId, tmpConfirmNum + 1)
+        mc.db.userDao().updateUserDataConfirmNum(tmpId, tmpConfirmNum)
+    }
+
+    suspend fun RoomDBGetUserIdOfUserData(mc: MainActivity):String{
+        return mc.db.userDao().getUserData()!!.id
+    }
+
+    private fun ApiCallUpdateConfirmNumOfUserData(updateConfirmNumOfUserData: UpdateConfirmNumOfUserData, mc: MainActivity):Int {
+        var responseCode: Int = 0
+        mc.supplementService.update_confirmNum(updateConfirmNumOfUserData).enqueue(object: retrofit2.Callback<BeforeParsingUserData> {
+            override fun onResponse(call: Call<BeforeParsingUserData>, response: Response<BeforeParsingUserData>) {
+                if(response.code() == 200){
+                    Log.e("server","response 성공!!")
+                }
+                Log.e("response : ", response.body().toString())
+                Log.e("responsecode : ", response.code().toString())
+                responseCode = response.code()
+            }
+            override fun onFailure(call: Call<BeforeParsingUserData>, t: Throwable) {
+                Log.e("server","fail...")
+                Log.e("server_throwable",t.toString())
+                Log.e("server_call",call.toString())
+            }
+        })
+
+        Log.e("fun code",responseCode.toString())
+        return responseCode
     }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     suspend fun ClassifyConfirmNumForSettingAlarm(mc: MainActivity, tmpConfirmNum: Int, context: Context){
-        when(tmpConfirmNum + 1) {
-            1 -> mc.setMedalAlarm(50, context,3)
-            5 -> mc.setMedalAlarm(50, context,4)
-            6 -> mc.setMedalAlarm(50, context,5)
-            1000 -> mc.setMedalAlarm(50, context,6)
+        when(tmpConfirmNum) {
+            7 -> mc.setMedalAlarm(50, context,3)
+            8 -> mc.setMedalAlarm(50, context,4)
+            9 -> mc.setMedalAlarm(50, context,5)
+            10 -> mc.setMedalAlarm(50, context,6)
             else -> return
         }
     }

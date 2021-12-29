@@ -50,9 +50,13 @@ class AccountSettingFragment : Fragment() {
         //
 
         viewbinding.signUpBtn.setOnClickListener{
-            val newUserData = setNewUserData()
-            val newBeforeParsingUserData = setNewBeforeParsingUserData()
-            ApiCallInsertUserData(newBeforeParsingUserData,newUserData,mc)
+            if(viewbinding.pwEdittext.text.toString() == viewbinding.pwConfirmEdittext.text.toString()){
+                val newUserData = setNewUserData()
+                val newBeforeParsingUserData = setNewBeforeParsingUserData()
+                ApiCallInsertUserData(newBeforeParsingUserData,newUserData,mc)
+            }else{
+                Toast.makeText(requireContext(),"비밀번호를 일치여부를 확인해주세요.", Toast.LENGTH_SHORT).show()
+            }
         }
         viewbinding.btnCheckID.setOnClickListener{
             val newBeforeParsingUserData = setNewBeforeParsingUserData()

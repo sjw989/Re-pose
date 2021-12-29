@@ -20,11 +20,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.techtown.repose.Data.AppDatabase
+import org.techtown.repose.Data.*
 import org.techtown.repose.Service.AlarmReceiver
 import org.techtown.repose.Service.medalAlarmReceiver
 import org.techtown.repose.server.RetrofitClient
 import org.techtown.repose.server.RetrofitService
+import retrofit2.Call
+import retrofit2.Response
 import retrofit2.Retrofit
 import java.util.*
 
@@ -44,7 +46,6 @@ class MainActivity : AppCompatActivity() {
         val pose_list = listOf<String>("다리꼬기","한 쪽으로 짐 들기","장시간 앉아 있기","장시간 서 있기",
                                         "장시간 전자기기 사용","장시간 독서", "장시간 필기","장시간 운전",
                                         "팔자걸음","안짱걸음","양반다리", "엎드려자기")
-
         var user_pose = mutableListOf<Boolean>(false,false,false,false,false,false,false,false,false,false,false,false) // 사이즈 : 12
         var user_timer = mutableListOf<Boolean>(false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false) // 사이즈 : 16
         var user_days = mutableListOf<Boolean>(false,false,false,false,false,false,false) // 사이즈 : 7
@@ -106,7 +107,14 @@ class MainActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             initRoomDB(listenerContext)
+            initRetrofit()
             RoomDBUpdateMedalOfUserData(medalIdx, true)
+            val tmpMedal :String = ParseDataFromListToString(RoomDBGetMedalOfUserData())
+            val updateMedalOfUserData = UpdateMedalOfUserData(
+                tmpMedal,
+                RoomDBGetUserIdOfUserData()
+            )
+            ApiCallUpdateMedalOfUserData(updateMedalOfUserData)
         }
 
         val calendar = Calendar.getInstance()
@@ -124,5 +132,44 @@ class MainActivity : AppCompatActivity() {
         tmpList[updateIndex] = set
         user_medal = tmpList
         db.userDao().updateUserDataMedal(tmpId, tmpList.toList())
+    }
+
+    suspend fun RoomDBGetMedalOfUserData():List<Boolean>{
+        return db.userDao().getUserData()!!.medal
+    }
+
+    suspend fun RoomDBGetUserIdOfUserData():String{
+        return db.userDao().getUserData()!!.id
+    }
+
+    private fun ApiCallUpdateMedalOfUserData(updateMedalOfUserData: UpdateMedalOfUserData):Int {
+        var responseCode: Int = 0
+        supplementService.update_medal(updateMedalOfUserData).enqueue(object: retrofit2.Callback<BeforeParsingUserData> {
+            override fun onResponse(call: Call<BeforeParsingUserData>, response: Response<BeforeParsingUserData>) {
+                if(response.code() == 200){
+                    Log.e("server","response 성공!!")
+                }
+                Log.e("response : ", response.body().toString())
+                Log.e("responsecode : ", response.code().toString())
+                responseCode = response.code()
+            }
+            override fun onFailure(call: Call<BeforeParsingUserData>, t: Throwable) {
+                Log.e("server","fail...")
+                Log.e("server_throwable",t.toString())
+                Log.e("server_call",call.toString())
+            }
+        })
+
+        Log.e("fun code",responseCode.toString())
+        return responseCode
+    }
+
+    private fun ParseDataFromListToString(list: List<Boolean>): String {
+        var str: String = ""
+        for(ele in list){
+            if(ele) str += "1"
+            else str += "0"
+        }
+        return str
     }
 }

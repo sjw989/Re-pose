@@ -2,6 +2,7 @@ package org.techtown.repose
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +15,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.techtown.repose.Data.AppDatabase
+import org.techtown.repose.Data.BeforeParsingUserData
+import org.techtown.repose.Data.UpdateHourOfUserData
+import org.techtown.repose.Data.UpdatePoseOfUserData
 import org.techtown.repose.MainActivity.Companion.pose_list
 import org.techtown.repose.MainActivity.Companion.user_pose
 import org.techtown.repose.databinding.FragSelectPoseBinding
+import retrofit2.Call
+import retrofit2.Response
 
 class SelectPoseFragment : Fragment() {
     lateinit var navController: NavController// 네비게이션 컨트롤러
@@ -75,6 +81,12 @@ class SelectPoseFragment : Fragment() {
         binding.SelectBtnPose1.setOnClickListener() {
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("다리꼬기")])
+                val tmpPose :String = ParseDataFromListToString(RoomDBGetPoseOfUserData(mc))
+                val updatePoseOfUserData = UpdatePoseOfUserData(
+                    tmpPose,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdatePoseOfUserData(updatePoseOfUserData, mc)
             }
             if (user_pose[0]) {
                 user_pose[0] = false
@@ -92,6 +104,12 @@ class SelectPoseFragment : Fragment() {
         binding.SelectBtnPose2.setOnClickListener(){
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdatePoseOfUserData(mc,1, !user_pose[pose_list.indexOf("한 쪽으로 짐 들기")])
+                val tmpPose :String = ParseDataFromListToString(RoomDBGetPoseOfUserData(mc))
+                val updatePoseOfUserData = UpdatePoseOfUserData(
+                    tmpPose,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdatePoseOfUserData(updatePoseOfUserData, mc)
             }
             if(user_pose[pose_list.indexOf("한 쪽으로 짐 들기")]){
                 user_pose[pose_list.indexOf("한 쪽으로 짐 들기")] = false
@@ -110,6 +128,12 @@ class SelectPoseFragment : Fragment() {
         binding.SelectBtnPose3.setOnClickListener(){
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdatePoseOfUserData(mc,2, !user_pose[pose_list.indexOf("장시간 앉아 있기")])
+                val tmpPose :String = ParseDataFromListToString(RoomDBGetPoseOfUserData(mc))
+                val updatePoseOfUserData = UpdatePoseOfUserData(
+                    tmpPose,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdatePoseOfUserData(updatePoseOfUserData, mc)
             }
             if(user_pose[pose_list.indexOf("장시간 앉아 있기")]){
                 user_pose[pose_list.indexOf("장시간 앉아 있기")] = false
@@ -129,6 +153,12 @@ class SelectPoseFragment : Fragment() {
         binding.SelectBtnPose4.setOnClickListener() {
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdatePoseOfUserData(mc, 3, !user_pose[pose_list.indexOf("장시간 서 있기")])
+                val tmpPose :String = ParseDataFromListToString(RoomDBGetPoseOfUserData(mc))
+                val updatePoseOfUserData = UpdatePoseOfUserData(
+                    tmpPose,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdatePoseOfUserData(updatePoseOfUserData, mc)
             }
             if (user_pose[3]) {
                 user_pose[3] = false
@@ -147,7 +177,13 @@ class SelectPoseFragment : Fragment() {
 
         binding.SelectBtnPose5.setOnClickListener() {
             CoroutineScope(Dispatchers.IO).launch {
-                RoomDBUpdatePoseOfUserData(mc, 4, !user_pose[pose_list.indexOf("장시간 전자기기 있기")])
+                RoomDBUpdatePoseOfUserData(mc, 4, !user_pose[pose_list.indexOf("장시간 전자기기 사용")])
+                val tmpPose :String = ParseDataFromListToString(RoomDBGetPoseOfUserData(mc))
+                val updatePoseOfUserData = UpdatePoseOfUserData(
+                    tmpPose,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdatePoseOfUserData(updatePoseOfUserData, mc)
             }
             if (user_pose[4]) {
                 user_pose[4] = false
@@ -167,6 +203,12 @@ class SelectPoseFragment : Fragment() {
         binding.SelectBtnPose6.setOnClickListener() {
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdatePoseOfUserData(mc, 5, !user_pose[pose_list.indexOf("장시간 독서")])
+                val tmpPose :String = ParseDataFromListToString(RoomDBGetPoseOfUserData(mc))
+                val updatePoseOfUserData = UpdatePoseOfUserData(
+                    tmpPose,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdatePoseOfUserData(updatePoseOfUserData, mc)
             }
             if (user_pose[5]) {
                 user_pose[5] = false
@@ -185,6 +227,12 @@ class SelectPoseFragment : Fragment() {
         binding.SelectBtnPose7.setOnClickListener() {
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdatePoseOfUserData(mc, 6, !user_pose[pose_list.indexOf("장시간 필기")])
+                val tmpPose :String = ParseDataFromListToString(RoomDBGetPoseOfUserData(mc))
+                val updatePoseOfUserData = UpdatePoseOfUserData(
+                    tmpPose,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdatePoseOfUserData(updatePoseOfUserData, mc)
             }
             if (user_pose[6]) {
                 user_pose[6] = false
@@ -203,6 +251,12 @@ class SelectPoseFragment : Fragment() {
         binding.SelectBtnPose8.setOnClickListener() {
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdatePoseOfUserData(mc, 7, !user_pose[pose_list.indexOf("장시간 운전")])
+                val tmpPose :String = ParseDataFromListToString(RoomDBGetPoseOfUserData(mc))
+                val updatePoseOfUserData = UpdatePoseOfUserData(
+                    tmpPose,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdatePoseOfUserData(updatePoseOfUserData, mc)
             }
             if (user_pose[7]) {
                 user_pose[7] = false
@@ -222,6 +276,12 @@ class SelectPoseFragment : Fragment() {
         binding.SelectBtnPose9.setOnClickListener() {
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdatePoseOfUserData(mc, 8, !user_pose[pose_list.indexOf("팔자걸음")])
+                val tmpPose :String = ParseDataFromListToString(RoomDBGetPoseOfUserData(mc))
+                val updatePoseOfUserData = UpdatePoseOfUserData(
+                    tmpPose,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdatePoseOfUserData(updatePoseOfUserData, mc)
             }
             if (user_pose[8]) {
                 user_pose[8] = false
@@ -242,6 +302,12 @@ class SelectPoseFragment : Fragment() {
         binding.SelectBtnPose10.setOnClickListener() {
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdatePoseOfUserData(mc, 9, !user_pose[pose_list.indexOf("안짱걸음")])
+                val tmpPose :String = ParseDataFromListToString(RoomDBGetPoseOfUserData(mc))
+                val updatePoseOfUserData = UpdatePoseOfUserData(
+                    tmpPose,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdatePoseOfUserData(updatePoseOfUserData, mc)
             }
             if (user_pose[9]) {
                 user_pose[9] = false
@@ -260,6 +326,12 @@ class SelectPoseFragment : Fragment() {
         binding.SelectBtnPose11.setOnClickListener() {
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdatePoseOfUserData(mc, 10, !user_pose[pose_list.indexOf("양반다리")])
+                val tmpPose :String = ParseDataFromListToString(RoomDBGetPoseOfUserData(mc))
+                val updatePoseOfUserData = UpdatePoseOfUserData(
+                    tmpPose,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdatePoseOfUserData(updatePoseOfUserData, mc)
             }
             if (user_pose[10]) {
                 user_pose[10] = false
@@ -278,6 +350,12 @@ class SelectPoseFragment : Fragment() {
         binding.SelectBtnPose12.setOnClickListener() {
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdatePoseOfUserData(mc, 11, !user_pose[pose_list.indexOf("엎드려자기")])
+                val tmpPose :String = ParseDataFromListToString(RoomDBGetPoseOfUserData(mc))
+                val updatePoseOfUserData = UpdatePoseOfUserData(
+                    tmpPose,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdatePoseOfUserData(updatePoseOfUserData, mc)
             }
             if (user_pose[11]) {
                 user_pose[11] = false
@@ -381,6 +459,15 @@ class SelectPoseFragment : Fragment() {
         }
     }
 
+    private fun ParseDataFromListToString(list: List<Boolean>): String {
+        var str: String = ""
+        for(ele in list){
+            if(ele) str += "1"
+            else str += "0"
+        }
+        return str
+    }
+
     suspend fun RoomDBUpdatePoseOfUserData(mc: MainActivity, updateIndex: Int, set: Boolean) {
         val tmpId = mc.db.userDao().getUserData()!!.id
         var tmpList = mc.db.userDao().getUserData()!!.pose.toMutableList()
@@ -390,5 +477,35 @@ class SelectPoseFragment : Fragment() {
 
     suspend fun RoomDBGetWeekDayOfUserData(mc: MainActivity):List<Boolean>{
         return mc.db.userDao().getUserData()!!.weekday
+    }
+
+    suspend fun RoomDBGetUserIdOfUserData(mc: MainActivity):String{
+        return mc.db.userDao().getUserData()!!.id
+    }
+
+    suspend fun RoomDBGetPoseOfUserData(mc: MainActivity):List<Boolean>{
+        return mc.db.userDao().getUserData()!!.pose
+    }
+
+    private fun ApiCallUpdatePoseOfUserData(updatePoseOfUserData: UpdatePoseOfUserData, mc: MainActivity):Int {
+        var responseCode: Int = 0
+        mc.supplementService.update_pose(updatePoseOfUserData).enqueue(object: retrofit2.Callback<BeforeParsingUserData> {
+            override fun onResponse(call: Call<BeforeParsingUserData>, response: Response<BeforeParsingUserData>) {
+                if(response.code() == 200){
+                    Log.e("server","response 성공!!")
+                }
+                Log.e("response : ", response.body().toString())
+                Log.e("responsecode : ", response.code().toString())
+                responseCode = response.code()
+            }
+            override fun onFailure(call: Call<BeforeParsingUserData>, t: Throwable) {
+                Log.e("server","fail...")
+                Log.e("server_throwable",t.toString())
+                Log.e("server_call",call.toString())
+            }
+        })
+
+        Log.e("fun code",responseCode.toString())
+        return responseCode
     }
 }
