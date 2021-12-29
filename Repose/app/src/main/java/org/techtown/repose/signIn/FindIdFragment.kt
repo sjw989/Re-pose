@@ -35,6 +35,7 @@ class FindIdFragment : Fragment() {
                 findNavController().navigate(R.id.action_frag_find_id_to_frag_find_success)
             }
             else{
+                
                 //viewbinding.logoImageView.visibility = View.INVISIBLE
                 //viewbinding.failLogoImageView.visibility = View.VISIBLE
                 //viewbinding.failMessageTextview.visibility = View.VISIBLE

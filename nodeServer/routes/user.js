@@ -2,16 +2,12 @@ var express = require('express');
 var mysql = require('mysql');
 const bodyParser = require('body-parser')
 var user = express.Router();
+var dontUpload = require('./../dontUpload');
 
 user.use(bodyParser.urlencoded({extended: true}))
 user.use(bodyParser.json())
 
-var connection = mysql.createConnection({
-    user: 'repose_user1',
-    password: 'Qwer1234!',
-    database: 'repose',
-    host: 'localhost'
-});
+var connection = dontUpload.connection
 
 connection.connect();
 
