@@ -21,7 +21,7 @@ user.post('/', function(req, res, next) {
     console.log(req.body.userPw);
     console.log(req.body.userEmail);
     connection.query('insert into repose_user(userId, userPw, userEmail, pose, medal, weekday, hour, confirmNum, premium, joinDate) values (?,?,?,?,?,?,?,?,?,?);',
-    [req.body.userId, req.body.userPw, req.body.userEmail, req.body.pose, req.body.medal, req.body.weekday, req.body.hour, req.body.confirmNum, req.body.premium, req.body.joinDate],
+    [req.body.userId, req.body.userPw, req.body.userEmail, req.body.pose, req.body.medal, req.body.weekday, req.body.hour, req.body.confirmNum, req.body.premium, req.body.JoinDate],
     function(error, info){
         console.log("info! :",info);
         console.log("console check success!!");
@@ -72,11 +72,11 @@ user.post('/idcheck', function(req, res, next) {
         // console.log("info! :",info.length);
         if(error == null){
             if(info.length == 0) {
-                res.status(201).json(error);
+                res.status(200).json(error);
                 console.log("user Id: not existence");
             }
             else {
-                res.status(200).json(error);
+                res.status(201).json(error);
                 console.log("user Id: existence");
             }
         }else{
@@ -91,7 +91,6 @@ user.post('/idcheck', function(req, res, next) {
 user.post('/update/pose', function(req, res, next) {
     console.log(req.body);
     console.log(req.body.userId);
-    console.log(req.body.userPw);
     connection.query('UPDATE repose_user SET pose=? WHERE userId=?',
     [req.body.pose, req.body.userId],
     function(error, info){
@@ -101,6 +100,7 @@ user.post('/update/pose', function(req, res, next) {
             // console.log("res: ", res);
             console.log("user Id is exist, id: ", res.userId);
             console.log("success updata data for database  !!");
+            res.status(200).json(error);
         }else{
             console.log("error exist!! :",error);
             res.status(503).json(error);
@@ -112,7 +112,6 @@ user.post('/update/pose', function(req, res, next) {
 user.post('/update/medal', function(req, res, next) {
     console.log(req.body);
     console.log(req.body.userId);
-    console.log(req.body.userPw);
     connection.query('UPDATE repose_user SET medal=? WHERE userId=?',
     [req.body.medal, req.body.userId],
     function(error, info){
@@ -122,6 +121,7 @@ user.post('/update/medal', function(req, res, next) {
             // console.log("res: ", res);
             console.log("user Id is exist, id: ", res.userId);
             console.log("success updata data for database  !!");
+            res.status(200).json(error);
         }else{
             console.log("error exist!! :",error);
             res.status(503).json(error);
@@ -129,11 +129,10 @@ user.post('/update/medal', function(req, res, next) {
     });
 })
 
-//pose
+//weekday
 user.post('/update/weekday', function(req, res, next) {
     console.log(req.body);
     console.log(req.body.userId);
-    console.log(req.body.userPw);
     connection.query('UPDATE repose_user SET weekday=? WHERE userId=?',
     [req.body.weekday, req.body.userId],
     function(error, info){
@@ -143,6 +142,7 @@ user.post('/update/weekday', function(req, res, next) {
             // console.log("res: ", res);
             console.log("user Id is exist, id: ", res.userId);
             console.log("success updata data for database  !!");
+            res.status(200).json(error);
         }else{
             console.log("error exist!! :",error);
             res.status(503).json(error);
@@ -154,7 +154,6 @@ user.post('/update/weekday', function(req, res, next) {
 user.post('/update/hour', function(req, res, next) {
     console.log(req.body);
     console.log(req.body.userId);
-    console.log(req.body.userPw);
     connection.query('UPDATE repose_user SET hour=? WHERE userId=?',
     [req.body.hour, req.body.userId],
     function(error, info){
@@ -164,6 +163,28 @@ user.post('/update/hour', function(req, res, next) {
             // console.log("res: ", res);
             console.log("user Id is exist, id: ", res.userId);
             console.log("success updata data for database  !!");
+            res.status(200).json(error);
+        }else{
+            console.log("error exist!! :",error);
+            res.status(503).json(error);
+        } 
+    });
+})
+
+//confirmNum
+user.post('/update/confirmNum', function(req, res, next) {
+    console.log(req.body);
+    console.log(req.body.userId);
+    connection.query('UPDATE repose_user SET confirmNum=? WHERE userId=?',
+    [req.body.confirmNum, req.body.userId],
+    function(error, info){
+        console.log("info! :",info);
+        // console.log("console check success!!");
+        if(error == null){
+            // console.log("res: ", res);
+            console.log("user Id is exist, id: ", res.userId);
+            console.log("success updata data for database  !!");
+            res.status(200).json(error);
         }else{
             console.log("error exist!! :",error);
             res.status(503).json(error);
