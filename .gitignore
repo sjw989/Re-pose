@@ -1,5 +1,5 @@
 # comment
 
 #server
-./nodeServer/dontUpload.js
-./nodeServer/node_modules/
+nodeServer/dontUpload.js
+nodeServer/node_modules/
