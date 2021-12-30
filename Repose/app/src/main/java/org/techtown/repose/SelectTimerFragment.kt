@@ -1,23 +1,36 @@
 package org.techtown.repose
 
+import android.app.AlarmManager
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.techtown.repose.Data.AppDatabase
+import org.techtown.repose.Data.BeforeParsingUserData
+import org.techtown.repose.Data.UpdateHourOfUserData
+import org.techtown.repose.Data.UpdateWeekdayOfUserData
 import org.techtown.repose.MainActivity.Companion.user_days
 import org.techtown.repose.MainActivity.Companion.user_timer
+import org.techtown.repose.Service.AlarmReceiver.Companion.TAG
 import org.techtown.repose.databinding.FragSelectTimerBinding
+import retrofit2.Call
+import retrofit2.Response
+import java.util.*
 
 
 class SelectTimerFragment : Fragment(){
@@ -47,6 +60,7 @@ class SelectTimerFragment : Fragment(){
         back_pressed() // 뒤로가기 버튼
         btn_back() // 화살표 뒤로가기 버튼
     }
+
     fun set_init(){
         if(user_days[0]){
             binding.btnMonday.setBackgroundResource(R.drawable.green_border)
@@ -130,6 +144,12 @@ class SelectTimerFragment : Fragment(){
             }
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdateWeekdayOfUserData(mc,0, user_days[0])
+                val tmpWeekday :String = ParseDataFromListToString(RoomDBGetWeekdayOfUserData(mc))
+                val updateWeekdayOfUserData = UpdateWeekdayOfUserData(
+                        tmpWeekday,
+                        RoomDBGetUserIdOfUserData(mc)
+                    )
+                ApiCallUpdateWeekdayOfUserData(updateWeekdayOfUserData, mc)
             }
         }
 
@@ -144,6 +164,12 @@ class SelectTimerFragment : Fragment(){
             }
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdateWeekdayOfUserData(mc,1, user_days[1])
+                val tmpWeekday :String = ParseDataFromListToString(RoomDBGetWeekdayOfUserData(mc))
+                val updateWeekdayOfUserData = UpdateWeekdayOfUserData(
+                    tmpWeekday,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdateWeekdayOfUserData(updateWeekdayOfUserData, mc)
             }
         }
 
@@ -158,6 +184,12 @@ class SelectTimerFragment : Fragment(){
             }
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdateWeekdayOfUserData(mc,2, user_days[2])
+                val tmpWeekday :String = ParseDataFromListToString(RoomDBGetWeekdayOfUserData(mc))
+                val updateWeekdayOfUserData = UpdateWeekdayOfUserData(
+                    tmpWeekday,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdateWeekdayOfUserData(updateWeekdayOfUserData, mc)
             }
         }
         binding.btnThursday.setOnClickListener{
@@ -171,6 +203,12 @@ class SelectTimerFragment : Fragment(){
             }
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdateWeekdayOfUserData(mc,3, user_days[3])
+                val tmpWeekday :String = ParseDataFromListToString(RoomDBGetWeekdayOfUserData(mc))
+                val updateWeekdayOfUserData = UpdateWeekdayOfUserData(
+                    tmpWeekday,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdateWeekdayOfUserData(updateWeekdayOfUserData, mc)
             }
         }
         binding.btnFriday.setOnClickListener{
@@ -184,6 +222,12 @@ class SelectTimerFragment : Fragment(){
             }
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdateWeekdayOfUserData(mc,4, user_days[4])
+                val tmpWeekday :String = ParseDataFromListToString(RoomDBGetWeekdayOfUserData(mc))
+                val updateWeekdayOfUserData = UpdateWeekdayOfUserData(
+                    tmpWeekday,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdateWeekdayOfUserData(updateWeekdayOfUserData, mc)
             }
         }
         binding.btnSaturday.setOnClickListener{
@@ -197,6 +241,12 @@ class SelectTimerFragment : Fragment(){
             }
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdateWeekdayOfUserData(mc,5, user_days[5])
+                val tmpWeekday :String = ParseDataFromListToString(RoomDBGetWeekdayOfUserData(mc))
+                val updateWeekdayOfUserData = UpdateWeekdayOfUserData(
+                    tmpWeekday,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdateWeekdayOfUserData(updateWeekdayOfUserData, mc)
             }
         }
 
@@ -211,27 +261,33 @@ class SelectTimerFragment : Fragment(){
             }
             CoroutineScope(Dispatchers.IO).launch {
                 RoomDBUpdateWeekdayOfUserData(mc,6, user_days[6])
+                val tmpWeekday :String = ParseDataFromListToString(RoomDBGetWeekdayOfUserData(mc))
+                val updateWeekdayOfUserData = UpdateWeekdayOfUserData(
+                    tmpWeekday,
+                    RoomDBGetUserIdOfUserData(mc)
+                )
+                ApiCallUpdateWeekdayOfUserData(updateWeekdayOfUserData, mc)
             }
         }
     }
 
     fun set_time(){
-        binding.switch1.setOnCheckedChangeListener(timeSwitch_Listener(0,mc))
-        binding.switch2.setOnCheckedChangeListener(timeSwitch_Listener(1,mc))
-        binding.switch3.setOnCheckedChangeListener(timeSwitch_Listener(2,mc))
-        binding.switch4.setOnCheckedChangeListener(timeSwitch_Listener(3,mc))
-        binding.switch5.setOnCheckedChangeListener(timeSwitch_Listener(4,mc))
-        binding.switch6.setOnCheckedChangeListener(timeSwitch_Listener(5,mc))
-        binding.switch7.setOnCheckedChangeListener(timeSwitch_Listener(6,mc))
-        binding.switch8.setOnCheckedChangeListener(timeSwitch_Listener(7,mc))
-        binding.switch9.setOnCheckedChangeListener(timeSwitch_Listener(8,mc))
-        binding.switch10.setOnCheckedChangeListener(timeSwitch_Listener(9,mc))
-        binding.switch11.setOnCheckedChangeListener(timeSwitch_Listener(10,mc))
-        binding.switch12.setOnCheckedChangeListener(timeSwitch_Listener(11,mc))
-        binding.switch13.setOnCheckedChangeListener(timeSwitch_Listener(12,mc))
-        binding.switch14.setOnCheckedChangeListener(timeSwitch_Listener(13,mc))
-        binding.switch15.setOnCheckedChangeListener(timeSwitch_Listener(14,mc))
-        binding.switch16.setOnCheckedChangeListener(timeSwitch_Listener(15,mc))
+        binding.switch1.setOnCheckedChangeListener(timeSwitch_Listener(0 ,activity as MainActivity))
+        binding.switch2.setOnCheckedChangeListener(timeSwitch_Listener(1 ,activity as MainActivity))
+        binding.switch3.setOnCheckedChangeListener(timeSwitch_Listener(2 ,activity as MainActivity))
+        binding.switch4.setOnCheckedChangeListener(timeSwitch_Listener(3 ,activity as MainActivity))
+        binding.switch5.setOnCheckedChangeListener(timeSwitch_Listener(4 ,activity as MainActivity))
+        binding.switch6.setOnCheckedChangeListener(timeSwitch_Listener(5 ,activity as MainActivity))
+        binding.switch7.setOnCheckedChangeListener(timeSwitch_Listener(6 ,activity as MainActivity))
+        binding.switch8.setOnCheckedChangeListener(timeSwitch_Listener(7 ,activity as MainActivity))
+        binding.switch9.setOnCheckedChangeListener(timeSwitch_Listener(8 ,activity as MainActivity))
+        binding.switch10.setOnCheckedChangeListener(timeSwitch_Listener(9 ,activity as MainActivity))
+        binding.switch11.setOnCheckedChangeListener(timeSwitch_Listener(10 ,activity as MainActivity))
+        binding.switch12.setOnCheckedChangeListener(timeSwitch_Listener(11 ,activity as MainActivity))
+        binding.switch13.setOnCheckedChangeListener(timeSwitch_Listener(12 ,activity as MainActivity))
+        binding.switch14.setOnCheckedChangeListener(timeSwitch_Listener(13 ,activity as MainActivity))
+        binding.switch15.setOnCheckedChangeListener(timeSwitch_Listener(14 ,activity as MainActivity))
+        binding.switch16.setOnCheckedChangeListener(timeSwitch_Listener(15 ,activity as MainActivity))
     }
 
     fun btn_back(){
@@ -249,6 +305,15 @@ class SelectTimerFragment : Fragment(){
         })
     }
 
+    fun ParseDataFromListToString(list: List<Boolean>): String {
+        var str: String = ""
+        for(ele in list){
+            if(ele) str += "1"
+            else str += "0"
+        }
+        return str
+    }
+
     suspend fun RoomDBUpdateWeekdayOfUserData(mc: MainActivity, updateIndex: Int, set: Boolean){
         val tmpId = mc.db.userDao().getUserData()!!.id
         var tmpList = mc.db.userDao().getUserData()!!.weekday.toMutableList()
@@ -256,11 +321,8 @@ class SelectTimerFragment : Fragment(){
         mc.db.userDao().updateUserDataWeekday(tmpId, tmpList.toList())
     }
 
-    suspend fun RoomDBUpdateHourOfUserData(mc: MainActivity, updateIndex: Int, set: Boolean){
-        val tmpId = mc.db.userDao().getUserData()!!.id
-        var tmpList = mc.db.userDao().getUserData()!!.hour.toMutableList()
-        tmpList[updateIndex] = set
-        mc.db.userDao().updateUserDataHour(tmpId, tmpList.toList())
+    suspend fun RoomDBGetUserIdOfUserData(mc: MainActivity):String{
+        return mc.db.userDao().getUserData()!!.id
     }
 
     suspend fun RoomDBGetWeekdayOfUserData(mc: MainActivity):List<Boolean>{
@@ -270,23 +332,64 @@ class SelectTimerFragment : Fragment(){
     suspend fun RoomDBGetHourOfUserData(mc: MainActivity):List<Boolean>{
         return mc.db.userDao().getUserData()!!.hour
     }
+
+    private fun ApiCallUpdateWeekdayOfUserData(updateWeekdayOfUserData: UpdateWeekdayOfUserData, mc: MainActivity):Int {
+        var responseCode: Int = 0
+        mc.supplementService.update_weekday(updateWeekdayOfUserData).enqueue(object: retrofit2.Callback<BeforeParsingUserData> {
+            override fun onResponse(call: Call<BeforeParsingUserData>, response: Response<BeforeParsingUserData>) {
+                if(response.code() == 200){
+                    Log.e("server","response 성공!!")
+                }
+                Log.e("response : ", response.body().toString())
+                Log.e("responsecode : ", response.code().toString())
+                responseCode = response.code()
+            }
+            override fun onFailure(call: Call<BeforeParsingUserData>, t: Throwable) {
+                Log.e("server","fail...")
+                Log.e("server_throwable",t.toString())
+                Log.e("server_call",call.toString())
+            }
+        })
+
+        Log.e("fun code",responseCode.toString())
+        return responseCode
+    }
 }
 
 class timeSwitch_Listener : CompoundButton.OnCheckedChangeListener{
     var idx : Int = 0
     var mc : MainActivity = MainActivity()
+    var listenerContext: Context
 
     constructor(idx : Int, context: Context){
         this.idx = idx
         mc.initRetrofit()
         mc.initRoomDB(context)
+        listenerContext = context
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCheckedChanged(btn : CompoundButton?, isChecked: Boolean) {
         user_timer[idx] = isChecked
         CoroutineScope(Dispatchers.IO).launch {
             RoomDBUpdateHourOfUserData(mc,idx,user_timer[idx])
+            val tmpHour :String = ParseDataFromListToString(RoomDBGetHourOfUserData(mc))
+            val updateHourOfUserData = UpdateHourOfUserData(
+                tmpHour,
+                RoomDBGetUserIdOfUserData(mc)
+            )
+            ApiCallUpdateHourOfUserData(updateHourOfUserData, mc)
         }
+        mc.setPosingAlarm(isChecked, idx, listenerContext)
+    }
+
+    private fun ParseDataFromListToString(list: List<Boolean>): String {
+        var str: String = ""
+        for(ele in list){
+            if(ele) str += "1"
+            else str += "0"
+        }
+        return str
     }
 
     suspend fun RoomDBUpdateHourOfUserData(mc: MainActivity, updateIndex: Int, set: Boolean){
@@ -295,4 +398,35 @@ class timeSwitch_Listener : CompoundButton.OnCheckedChangeListener{
         tmpList[updateIndex] = set
         mc.db.userDao().updateUserDataHour(tmpId, tmpList.toList())
     }
+
+    suspend fun RoomDBGetUserIdOfUserData(mc: MainActivity):String{
+        return mc.db.userDao().getUserData()!!.id
+    }
+
+    suspend fun RoomDBGetHourOfUserData(mc: MainActivity):List<Boolean>{
+        return mc.db.userDao().getUserData()!!.hour
+    }
+
+    private fun ApiCallUpdateHourOfUserData(updateHourOfUserData: UpdateHourOfUserData, mc: MainActivity):Int {
+        var responseCode: Int = 0
+        mc.supplementService.update_hour(updateHourOfUserData).enqueue(object: retrofit2.Callback<BeforeParsingUserData> {
+            override fun onResponse(call: Call<BeforeParsingUserData>, response: Response<BeforeParsingUserData>) {
+                if(response.code() == 200){
+                    Log.e("server","response 성공!!")
+                }
+                Log.e("response : ", response.body().toString())
+                Log.e("responsecode : ", response.code().toString())
+                responseCode = response.code()
+            }
+            override fun onFailure(call: Call<BeforeParsingUserData>, t: Throwable) {
+                Log.e("server","fail...")
+                Log.e("server_throwable",t.toString())
+                Log.e("server_call",call.toString())
+            }
+        })
+
+        Log.e("fun code",responseCode.toString())
+        return responseCode
+    }
+
 }

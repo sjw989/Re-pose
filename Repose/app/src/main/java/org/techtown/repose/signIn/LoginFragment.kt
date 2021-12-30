@@ -122,6 +122,11 @@ class LoginFragment : Fragment() {
                         }
                         CoroutineScope(Dispatchers.IO).launch {
                             RoomDBInsertUserData(mc, ParseUserData(response.body()!!))
+                            MainActivity.user_days = RoomDBGetWeekdayOfUserData(mc).toMutableList()
+                            MainActivity.user_timer = RoomDBGetHourOfUserData(mc).toMutableList()
+                            MainActivity.user_pose = RoomDBGetPoseOfUserData(mc).toMutableList()
+                            MainActivity.user_medal = RoomDBGetMedalOfUserData(mc).toMutableList()
+                            MainActivity.user_joinData = RoomDBGetJoinDateOfUserData(mc)
                             MoveMainFragment()
                         }
                     }
@@ -180,5 +185,25 @@ class LoginFragment : Fragment() {
 
     private fun ParseDataFromIntToBoolean(int: Int):Boolean{
         return int != 0
+    }
+
+    suspend fun RoomDBGetWeekdayOfUserData(mc: MainActivity):List<Boolean>{
+        return mc.db.userDao().getUserData()!!.weekday
+    }
+
+    suspend fun RoomDBGetHourOfUserData(mc: MainActivity):List<Boolean>{
+        return mc.db.userDao().getUserData()!!.hour
+    }
+
+    suspend fun RoomDBGetPoseOfUserData(mc: MainActivity):List<Boolean>{
+        return mc.db.userDao().getUserData()!!.pose
+    }
+
+    suspend fun RoomDBGetMedalOfUserData(mc: MainActivity):List<Boolean>{
+        return mc.db.userDao().getUserData()!!.medal
+    }
+
+    suspend fun RoomDBGetJoinDateOfUserData(mc: MainActivity):String{
+        return mc.db.userDao().getUserData()!!.joinDate
     }
 }

@@ -50,9 +50,13 @@ class AccountSettingFragment : Fragment() {
         //
 
         viewbinding.signUpBtn.setOnClickListener{
-            val newUserData = setNewUserData()
-            val newBeforeParsingUserData = setNewBeforeParsingUserData()
-            ApiCallInsertUserData(newBeforeParsingUserData,newUserData,mc)
+            if(viewbinding.pwEdittext.text.toString() == viewbinding.pwConfirmEdittext.text.toString()){
+                val newUserData = setNewUserData()
+                val newBeforeParsingUserData = setNewBeforeParsingUserData()
+                ApiCallInsertUserData(newBeforeParsingUserData,newUserData,mc)
+            }else{
+                Toast.makeText(requireContext(),"비밀번호를 일치여부를 확인해주세요.", Toast.LENGTH_SHORT).show()
+            }
         }
         viewbinding.btnCheckID.setOnClickListener{
             val newBeforeParsingUserData = setNewBeforeParsingUserData()
@@ -63,6 +67,7 @@ class AccountSettingFragment : Fragment() {
         viewbinding.btnBack4.setOnClickListener{
             navController.popBackStack()
         }
+
     }
 
     fun back_pressed(){
@@ -77,6 +82,10 @@ class AccountSettingFragment : Fragment() {
     suspend fun RoomDBInsertUserData(mc: MainActivity, newUserData: UserData){
         mc.db = AppDatabase.getInstance(requireContext())!!
         mc.db.userDao().insertUserData(newUserData)
+    }
+
+    suspend fun RoomDBGetJoinDateOfUserData(mc: MainActivity):String{
+        return mc.db.userDao().getUserData()!!.joinDate
     }
 
     private suspend fun MoveGuideFragment(){
@@ -94,6 +103,7 @@ class AccountSettingFragment : Fragment() {
     private fun ApiCallInsertUserData(beforeParasingUserData: BeforeParsingUserData, newUserData: UserData, mc: MainActivity):Int {
         var responseCode: Int = 0
         mc.supplementService.post_user(beforeParasingUserData).enqueue(object: retrofit2.Callback<BeforeParsingUserData> {
+            @RequiresApi(Build.VERSION_CODES.KITKAT)
             override fun onResponse(call: Call<BeforeParsingUserData>, response: Response<BeforeParsingUserData>) {
                 if(response.code() == 200){
                     Log.e("server","response 성공!!")
@@ -109,6 +119,8 @@ class AccountSettingFragment : Fragment() {
                         }
                         CoroutineScope(Dispatchers.IO).launch {
                             RoomDBInsertUserData(mc, newUserData)
+                            mc.setMedalAlarm(50, requireContext(),0)
+                            MainActivity.user_joinData = RoomDBGetJoinDateOfUserData(mc)
                             MoveGuideFragment()
                         }
                     }
@@ -150,16 +162,15 @@ class AccountSettingFragment : Fragment() {
 
                 when(responseCode){
                     200 -> { //유저 생성 성공
-                        viewbinding.idNotRedundancyTextview.visibility = View.INVISIBLE
-                        viewbinding.idRedundancyTextview.visibility = View.VISIBLE
+                        viewbinding.idNotRedundancyTextview.visibility = View.VISIBLE
+                        viewbinding.idRedundancyTextview.visibility = View.INVISIBLE
                     }
                     201 -> { //아이디 중복
                         CoroutineScope(Dispatchers.Main).launch {
                             Toast.makeText(requireContext(),"아이디가 중복되었습니다. 다시 입력해주세요.", Toast.LENGTH_SHORT).show()
                         }
-                        viewbinding.idNotRedundancyTextview.visibility = View.VISIBLE
-                        viewbinding.idRedundancyTextview.visibility = View.INVISIBLE
-                    }
+                        viewbinding.idNotRedundancyTextview.visibility = View.INVISIBLE
+                        viewbinding.idRedundancyTextview.visibility = View.VISIBLE}
                     else -> { //다른 에러 발생(서버)
                         CoroutineScope(Dispatchers.Main).launch {
                             Toast.makeText(requireContext(),"서버 에러가 발생하였습니다!", Toast.LENGTH_SHORT).show()
@@ -187,8 +198,8 @@ class AccountSettingFragment : Fragment() {
             tmpUserPw,
             tmpUserEmail,
             mutableListOf<Boolean>(false,false,false,false,false,false,false,false,false,false,false,false),
+            mutableListOf<Boolean>(true,false,false,false,false,false,false,false),
             mutableListOf<Boolean>(false,false,false,false,false,false,false),
-            mutableListOf<Boolean>(false,false,false,false,false,false,false,false),
             mutableListOf<Boolean>(false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false),
             0,
             false,
@@ -207,7 +218,7 @@ class AccountSettingFragment : Fragment() {
             tmpUserPw,
             tmpUserEmail,
             "000000000000",
-            "00000000",
+            "10000000",
             "0000000",
             "0000000000000000",
             0,
@@ -215,4 +226,6 @@ class AccountSettingFragment : Fragment() {
             tmpJoinDate
         )
     }
+
+
 }

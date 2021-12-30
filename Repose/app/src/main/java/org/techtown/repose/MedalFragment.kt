@@ -16,6 +16,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.dialog_medal_condition.*
 import kotlinx.android.synthetic.main.dialog_medal_condition.view.*
+import org.techtown.repose.MainActivity.Companion.user_joinData
 import org.techtown.repose.MainActivity.Companion.user_medal
 import org.techtown.repose.databinding.FragMedalBinding
 import org.techtown.repose.databinding.FragSelectPoseBinding
@@ -28,7 +29,7 @@ class MedalFragment : Fragment() {
 
     private val medal_list : List<String> = listOf("이런, 성한\n곳이 없군!", "건강해지는 소리가\n들리나요?","난 아직도 쌩쌩해!", "이제 시작이야",
                                                     "깃털 같은 몸", "균형 잡힌 몸", "난 완벽해", "든든한 동반자")
-    private val medal_condition : List<String> = listOf("XXXX-XX-XX부터\n리포즈와 함께하셨습니다.",
+    private val medal_condition : List<String> = listOf("${user_joinData}부터\n리포즈와 함께하셨습니다.",
                                                         "리포즈와 함께하신 지\n 100일이 지났습니다.",
                                                         "리포즈와 함께하신 지\n 300일이 지났습니다.",
                                                         "자세 교정 후, \n완료 버튼을 일정 시간 내 \n처음 클릭하셨습니다.",
