@@ -117,19 +117,18 @@ class ExerciseRecyclerViewAdapter(private val context : Context, private val dat
                         MainFragment.is_countDown = false
                         MainFragment.is_exercise_complete[MainFragment.time_idx] = true // 해당 시간에 운동 헀음을 표시 -> Timer 안뜨게 하기위함
                         user_confirmNum++ // 운동완료 버튼 누른 횟수 ++
+                        CoroutineScope(Dispatchers.IO).launch {
+                            var tmpConfirmNum = mc.db.userDao().getUserData()!!.confirmNum + 1
+                            RoomDBUpdateConfirmNumOfUserData(mc, tmpConfirmNum)
+                            ClassifyConfirmNumForSettingAlarm(mc, tmpConfirmNum, context)
+                            val updateConfirmNumOfUserData = UpdateConfirmNumOfUserData(
+                                tmpConfirmNum,
+                                RoomDBGetUserIdOfUserData(mc)
+                            )
+                            ApiCallUpdateConfirmNumOfUserData(updateConfirmNumOfUserData, mc)
+                        }
                     }
                     is_dialog = true
-
-                CoroutineScope(Dispatchers.IO).launch {
-                    var tmpConfirmNum = mc.db.userDao().getUserData()!!.confirmNum + 1
-                    RoomDBUpdateConfirmNumOfUserData(mc, tmpConfirmNum)
-                    ClassifyConfirmNumForSettingAlarm(mc, tmpConfirmNum, context)
-                    val updateConfirmNumOfUserData = UpdateConfirmNumOfUserData(
-                        tmpConfirmNum,
-                        RoomDBGetUserIdOfUserData(mc)
-                    )
-                    ApiCallUpdateConfirmNumOfUserData(updateConfirmNumOfUserData, mc)
-                }
 
                 val dialog = make_dialog(context)
 
@@ -190,10 +189,10 @@ class ExerciseRecyclerViewAdapter(private val context : Context, private val dat
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     suspend fun ClassifyConfirmNumForSettingAlarm(mc: MainActivity, tmpConfirmNum: Int, context: Context){
         when(tmpConfirmNum) {
-            7 -> mc.setMedalAlarm(50, context,3)
-            8 -> mc.setMedalAlarm(50, context,4)
-            9 -> mc.setMedalAlarm(50, context,5)
-            10 -> mc.setMedalAlarm(50, context,6)
+            1 -> mc.setMedalAlarm(50, context,3)
+            50 -> mc.setMedalAlarm(50, context,4)
+            300 -> mc.setMedalAlarm(50, context,5)
+            1000 -> mc.setMedalAlarm(50, context,6)
             else -> return
         }
     }
