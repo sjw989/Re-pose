@@ -2,16 +2,13 @@ var express = require('express');
 var mysql = require('mysql');
 const bodyParser = require('body-parser')
 var user = express.Router();
+var dontUpload = require('./../dontUpload');
+const nodemailer = require('nodemailer');
 
 user.use(bodyParser.urlencoded({extended: true}))
 user.use(bodyParser.json())
 
-var connection = mysql.createConnection({
-    user: 'repose_user1',
-    password: 'Qwer1234!',
-    database: 'repose',
-    host: 'localhost'
-});
+var connection = dontUpload.connection
 
 connection.connect();
 
@@ -78,6 +75,54 @@ user.post('/idcheck', function(req, res, next) {
             else {
                 res.status(201).json(error);
                 console.log("user Id: existence");
+            }
+        }else{
+            // console.log("error exist!! :",error);
+            res.status(503).json(error);
+        } 
+    });
+})
+
+user.post('/emailcheck', function(req, res, next) {
+    console.log(req.body);
+    console.log(req.body.userEmail);
+    connection.query('SELECT * FROM repose_user WHERE userEmail=?',
+    [req.body.userEmail],
+    function(error, info){
+        // console.log("info! :",info.length);
+        if(error == null){
+            if(info.length == 0) {
+                res.status(201).json(error);
+                console.log("user email: not existence");
+            }
+            else {
+                res.status(200).json(error);
+                console.log(info[0]);
+                //메일 보내는 코드 req.body.userEmail
+                const main = async () => {
+                    let transporter = nodemailer.createTransport(dontUpload.transporterInfo);
+                  
+                    // send mail with defined transport object
+                    let info_ = await transporter.sendMail({
+                      from: `"Re-pose Team" <'reposesender@gmail.com'>`,
+                      to: info[0].userEmail,
+                      subject: 'Repose Auth Information',
+                      text: `id: ${info[0].userId}\n pw: ${info[0].userPw}`,
+                      html: `<b>id: ${info[0].userId}\n pw: ${info[0].userPw}</b>`,
+                    });
+                  
+                    console.log('Message sent: %s', info_.messageId);
+                    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+                  
+                    // res.status(200).json({
+                    //   status: 'Success',
+                    //   code: 200,
+                    //   message: 'Sent Auth Email',
+                    // });
+                  };
+                  
+                  main().catch(console.error);
+                console.log("user email: existence");
             }
         }else{
             // console.log("error exist!! :",error);

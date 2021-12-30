@@ -15,6 +15,9 @@ interface RetrofitService {
     @POST("/user/idcheck")
     fun id_check(@Body user: BeforeParsingUserData): Call<BeforeParsingUserData>
 
+    @POST("/user/emailcheck")
+    fun email_check(@Body user: FindIdPwData): Call<BeforeParsingUserData>
+
     @POST("/user/update/pose")
     fun update_pose(@Body user: UpdatePoseOfUserData): Call<BeforeParsingUserData>
 
