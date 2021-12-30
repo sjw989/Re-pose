@@ -152,15 +152,14 @@ class SelectPoseFragment : Fragment() {
                 user_pose[4] = false
                 binding.SelectBtnPose5.setBackgroundResource(R.drawable.pose_not_selected)
                 CoroutineScope(Dispatchers.IO).launch {
-                    RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("장시간 전자기기 있기")])
+                    RoomDBUpdatePoseOfUserData(mc, 0, !user_pose[pose_list.indexOf("장시간 전자기기 사용")])
                 }
             }
              else if (!user_pose[4]) {
                 val bundle = Bundle()
                 bundle.putString("pose", "장시간 전자기기 사용")
                 findNavController().navigate(
-                    R.id.action_frag_select_pose_to_frag_disease,
-                    bundle
+                    R.id.action_frag_select_pose_to_frag_disease, bundle
                 )
             }
 
@@ -213,7 +212,6 @@ class SelectPoseFragment : Fragment() {
              else if (!user_pose[7]) {
                 val bundle = Bundle()
                 bundle.putString("pose", "장시간 운전")
-                print(456)
                 findNavController().navigate(
                     R.id.action_frag_select_pose_to_frag_disease,
                     bundle
@@ -232,7 +230,6 @@ class SelectPoseFragment : Fragment() {
             else if (!user_pose[8]) {
                 val bundle = Bundle()
                 bundle.putString("pose", "팔자걸음")
-                print(123)
                 findNavController().navigate(
                     R.id.action_frag_select_pose_to_frag_disease,
                     bundle
