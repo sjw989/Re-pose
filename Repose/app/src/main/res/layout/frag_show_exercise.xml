@@ -26,7 +26,7 @@
             android:layout_centerHorizontal="true"
             android:layout_weight="1"
             app:adSize="BANNER"
-            app:adUnitId="ca-app-pub-3940256099942544/6300978111" />
+            app:adUnitId="ca-app-pub-9133594708175780/8009317574" />
     </LinearLayout>
 
     <ImageButton
