@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MedalFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        android:orientation="vertical"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            tools:context=".MedalFragment">
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="이런, 성한\n 곳이 없군!"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_medal1"
+                app:layout_constraintStart_toStartOf="@+id/iv_medal1"
+                app:layout_constraintTop_toBottomOf="@+id/iv_medal1" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="든든한 동반자"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView25"
+                app:layout_constraintEnd_toEndOf="@+id/iv_medal8"
+                app:layout_constraintStart_toStartOf="@+id/iv_medal8"
+                app:layout_constraintTop_toTopOf="@+id/textView25" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
+                android:gravity="center"
+                android:text="난 완벽해!"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/iv_medal7"
+                app:layout_constraintStart_toStartOf="@+id/iv_medal7"
+                app:layout_constraintTop_toBottomOf="@+id/iv_medal7" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="균형 잡힌 몸"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_medal6"
+                app:layout_constraintStart_toStartOf="@+id/iv_medal6"
+                app:layout_constraintTop_toBottomOf="@+id/iv_medal6" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="깃털 같은 몸"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_medal5"
+                app:layout_constraintStart_toStartOf="@+id/iv_medal5"
+                app:layout_constraintTop_toBottomOf="@+id/iv_medal5" />
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="이제 시작이야"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_medal4"
+                app:layout_constraintStart_toStartOf="@+id/iv_medal4"
+                app:layout_constraintTop_toBottomOf="@+id/iv_medal4" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="건강해지는 소리가\n 들리나요?"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_medal2"
+                app:layout_constraintStart_toStartOf="@+id/iv_medal2"
+                app:layout_constraintTop_toBottomOf="@+id/iv_medal2" />
+
+            <ImageView
+                android:id="@+id/iv_medal2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_medal1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/iv_medal1"
+                app:layout_constraintTop_toTopOf="@+id/iv_medal1"
+                app:srcCompat="@drawable/medal2_off" />
+
+            <ImageView
+                android:id="@+id/iv_medal8"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_medal7"
+                app:layout_constraintEnd_toEndOf="@+id/iv_medal6"
+                app:layout_constraintStart_toStartOf="@+id/iv_medal6"
+                app:layout_constraintTop_toTopOf="@+id/iv_medal7"
+                app:srcCompat="@drawable/medal8_off" />
+
+            <ImageView
+                android:id="@+id/iv_medal7"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="@+id/iv_medal5"
+                app:layout_constraintStart_toStartOf="@+id/iv_medal5"
+                app:layout_constraintTop_toBottomOf="@+id/textView27"
+                app:srcCompat="@drawable/medal7_off" />
+
+            <ImageView
+                android:id="@+id/iv_medal6"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="@+id/iv_medal4"
+                app:layout_constraintStart_toStartOf="@+id/iv_medal4"
+                app:layout_constraintTop_toBottomOf="@+id/textView28"
+                app:srcCompat="@drawable/medal6_off" />
+
+            <ImageView
+                android:id="@+id/iv_medal5"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="@+id/iv_medal3"
+                app:layout_constraintStart_toStartOf="@+id/iv_medal3"
+                app:layout_constraintTop_toBottomOf="@+id/textView22"
+                app:srcCompat="@drawable/medal5_off" />
+
+            <ImageView
+                android:id="@+id/iv_medal4"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="@+id/iv_medal2"
+                app:layout_constraintStart_toStartOf="@+id/iv_medal2"
+                app:layout_constraintTop_toBottomOf="@+id/textView29"
+                app:srcCompat="@drawable/medal4_off" />
+
+            <ImageView
+                android:id="@+id/iv_medal3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="@+id/iv_medal1"
+                app:layout_constraintStart_toStartOf="@+id/iv_medal1"
+                app:layout_constraintTop_toBottomOf="@+id/textView23"
+                app:srcCompat="@drawable/medal3_off" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="메달"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btn_back3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/white"
+                android:scaleType="fitCenter"
+                android:src="@drawable/direction"
+                app:layout_constraintBottom_toBottomOf="@+id/textView21"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView21" />
+
+            <ImageView
+                android:id="@+id/iv_medal1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="40dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toStartOf="@+id/iv_medal2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView21"
+                app:srcCompat="@drawable/medal1_off" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="난 아직도 쌩쌩해!"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_medal3"
+                app:layout_constraintStart_toStartOf="@+id/iv_medal3"
+                app:layout_constraintTop_toBottomOf="@+id/iv_medal3" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</ScrollView>

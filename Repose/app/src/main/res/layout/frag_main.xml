@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frag_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:background="#F8F8F5 "
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ad_layout">
+
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_poseViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:layout_constraintBottom_toTopOf="@+id/pose_indicator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+        <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
+            android:id="@+id/pose_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="60dp"
+            app:dotsColor="#8cc458"
+            app:dotsCornerRadius="20dp"
+            app:dotsSize="8dp"
+            app:dotsSpacing="4dp"
+            app:dotsStrokeColor="#d6efbf                 "
+            app:dotsWidthFactor="2.5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/vp_poseViewPager"
+            app:layout_constraintStart_toStartOf="@+id/vp_poseViewPager"
+            app:layout_constraintTop_toBottomOf="@+id/vp_poseViewPager"
+            app:progressMode="true">
+
+        </com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="41dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/green_border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_seconds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="00"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="@+id/textView34"
+                app:layout_constraintEnd_toStartOf="@+id/textView35"
+                app:layout_constraintStart_toEndOf="@+id/textView34"
+                app:layout_constraintTop_toTopOf="@+id/textView34" />
+
+            <TextView
+                android:id="@+id/tv_miniutes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="00"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="분"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_miniutes"
+                app:layout_constraintEnd_toStartOf="@+id/tv_seconds"
+                app:layout_constraintStart_toEndOf="@+id/tv_miniutes"
+                app:layout_constraintTop_toTopOf="@+id/tv_miniutes" />
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="초"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_seconds"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_seconds"
+                app:layout_constraintTop_toTopOf="@+id/tv_seconds" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ad_layout"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adView"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                app:adSize="BANNER"
+                app:adUnitId="ca-app-pub-9133594708175780/8009317574"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/nav_border"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="자세"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="@+id/btn_SelectPose"
+            app:layout_constraintStart_toStartOf="@+id/btn_SelectPose"
+            app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="알람"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/btn_setTimer"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/btn_setTimer"
+            app:layout_constraintTop_toBottomOf="@+id/btn_setTimer" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="메달"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="@+id/btn_medal"
+            app:layout_constraintStart_toStartOf="@+id/btn_medal"
+            app:layout_constraintTop_toTopOf="@+id/textView" />
+
+        <ImageButton
+            android:id="@+id/btn_SelectPose"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="#FFFFFF"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_medal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_medal"
+            app:layout_constraintTop_toTopOf="@+id/btn_medal"
+            app:srcCompat="@drawable/pose"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/btn_setTimer"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="#FFFFFF"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintEnd_toStartOf="@+id/btn_medal"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/alarm"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/btn_medal"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="#FFFFFF"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_setTimer"
+            app:layout_constraintEnd_toStartOf="@+id/btn_SelectPose"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_setTimer"
+            app:layout_constraintTop_toTopOf="@+id/btn_setTimer"
+            app:srcCompat="@drawable/medal"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

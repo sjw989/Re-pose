@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/frag_splash">
+
+    <fragment
+        android:id="@+id/frag_main"
+        android:name="org.techtown.repose.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/frag_main">
+        <action
+            android:id="@+id/action_frag_main_to_frag_select_pose"
+            app:destination="@id/frag_select_pose"
+            app:enterAnim="@anim/ani_from_right_to_left_in"
+            app:popExitAnim="@anim/ani_from_left_to_right_out" />
+        <action
+            android:id="@+id/action_frag_main_to_frag_show_exercise"
+            app:destination="@id/frag_show_exercise"
+            app:enterAnim="@anim/ani_from_right_to_left_in"
+            app:popExitAnim="@anim/ani_from_left_to_right_out" />
+        <action
+            android:id="@+id/action_frag_main_to_selectTimerFragment"
+            app:destination="@id/selectTimerFragment"
+            app:enterAnim="@anim/ani_from_left_to_right_in"
+            app:popExitAnim="@anim/ani_from_right_to_left_out" />
+        <action
+            android:id="@+id/action_frag_main_to_medalFragment"
+            app:destination="@id/medalFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/frag_select_pose"
+        android:name="org.techtown.repose.SelectPoseFragment"
+        android:label="frag_select_pose"
+        tools:layout="@layout/frag_select_pose" >
+        <action
+            android:id="@+id/action_frag_select_pose_to_frag_disease"
+            app:destination="@id/frag_disease"
+            app:enterAnim="@anim/ani_from_right_to_left_in"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/frag_disease"
+        android:name="org.techtown.repose.DiseaseFragment"
+        android:label="frag_disease"
+        tools:layout="@layout/frag_disease" />
+
+    <fragment
+        android:id="@+id/frag_show_exercise"
+        android:name="org.techtown.repose.ShowExerciseFragment"
+        android:label="frag_exercise"
+        tools:layout="@layout/frag_show_exercise"/>
+    <fragment
+        android:id="@+id/frag_start"
+        android:name="org.techtown.repose.signIn.StartFragment"
+        tools:layout="@layout/frag_start" >
+        <action
+            android:id="@+id/action_frag_start_to_frag_login"
+            app:destination="@id/frag_login" />
+        <action
+            android:id="@+id/action_frag_start_to_frag_account_setting"
+            app:destination="@id/frag_account_setting" />
+    </fragment>
+    <fragment
+        android:id="@+id/frag_login"
+        android:name="org.techtown.repose.signIn.LoginFragment"
+        tools:layout="@layout/frag_login" >
+        <action
+            android:id="@+id/action_frag_login_to_frag_find_id"
+            app:destination="@id/frag_find_id" />
+        <action
+            android:id="@+id/action_frag_login_to_frag_main"
+            app:destination="@id/frag_main" />
+        <action
+            android:id="@+id/action_frag_login_to_fragment_retrofit_test"
+            app:destination="@id/fragment_retrofit_test" />
+    </fragment>
+    <fragment
+        android:id="@+id/frag_find_id"
+        android:name="org.techtown.repose.signIn.FindIdFragment"
+        tools:layout="@layout/frag_find_id" >
+    <action
+        android:id="@+id/action_frag_find_id_to_frag_find_success"
+        app:destination="@id/frag_find_success" />
+    </fragment>
+    <fragment
+        android:id="@+id/frag_find_success"
+        android:name="org.techtown.repose.signIn.FindSuccessFragment"
+        tools:layout="@layout/frag_find_success" >
+        <action
+            android:id="@+id/action_frag_find_success_to_frag_login"
+            app:destination="@id/frag_login" />
+    </fragment>
+    <fragment
+        android:id="@+id/frag_account_setting"
+        android:name="org.techtown.repose.signIn.AccountSettingFragment"
+        tools:layout="@layout/frag_account_setting" >
+        <action
+            android:id="@+id/action_frag_account_setting_to_guideFragment"
+            app:destination="@id/frag_guide" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_retrofit_test"
+        android:name="org.techtown.repose.server.RetrofitTestFragment"
+        tools:layout="@layout/fragment_retrofit_test" />
+    <fragment
+        android:id="@+id/selectTimerFragment"
+        android:name="org.techtown.repose.SelectTimerFragment"
+        android:label="frag_select_timer"
+        tools:layout="@layout/frag_select_timer" />
+    <fragment
+        android:id="@+id/frag_splash"
+        android:name="org.techtown.repose.SplashFragment"
+        android:label="frag_splash"
+        tools:layout="@layout/frag_splash" >
+        <action
+            android:id="@+id/action_frag_splash_to_frag_start"
+            app:destination="@id/frag_start" />
+        <action
+            android:id="@+id/action_frag_splash_to_frag_main"
+            app:destination="@id/frag_main" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/medalFragment"
+        android:name="org.techtown.repose.MedalFragment"
+        android:label="frag_medal"
+        tools:layout="@layout/frag_medal" />
+    <fragment
+        android:id="@+id/frag_guide"
+        android:name="org.techtown.repose.GuideFragment"
+        android:label="frag_guide"
+        tools:layout="@layout/frag_guide" >
+        <action
+            android:id="@+id/action_frag_guide_to_frag_main"
+            app:destination="@id/frag_main"
+            app:enterAnim="@anim/ani_dialog_open" />
+    </fragment>
+
+
+</navigation>
+
+
