@@ -1,4 +1,5 @@
 # Re-pose
+당신의 안 좋은 자세습관을 고쳐주는 헬스케어 서비스 </p>
 Android app &amp; node.js server PROJECT
 <br></br>
 
