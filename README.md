@@ -38,6 +38,12 @@ Android app &amp; node.js server PROJECT
 			</td>
 			<td>
 				<img
+					src="https://user-images.githubusercontent.com/82700895/171019896-ba263ab2-0a3c-4f15-9b0c-120f52654ff9.png"
+					width="230"
+				/>
+			</td>
+			<td>
+				<img
 					src="https://user-images.githubusercontent.com/82700895/170947493-42991d38-39e7-47a5-aa9c-8e6cb7d84e9e.png"
 					width="230"
 				/>
