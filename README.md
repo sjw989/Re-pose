@@ -10,17 +10,18 @@ Android app &amp; node.js server PROJECT
 - 사용자가 선택한 요일, 시간에 푸쉬알림을 전송하여 운동시간을 알려준다.
 
 <br></br>
-# 사용 언어 및 기술
+# 개발 환경
   <h><img src="https://img.shields.io/badge/Android-3DDC84?style=flat-square&logo=Android&logoColor=white"/>
    <img src="https://img.shields.io/badge/AndroidStudio-3DDC84?style=flat-square&logo=AndroidStudio&logoColor=white"/>
   <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=Kotlin&logoColor=white"/>
   <img src="https://img.shields.io/badge/Node.js-00599C?style=flat-square&logo=Node.js&logoColor=white"/> </h>
   
-<br></br>
-# 역할
-- 전체적인 Front-end 개발
-- 타이머 기능 개발
-<br></br>
+ <br></br>
+ # 사용 기술
+ - ViewPager2
+ - JetPack Navigation Component
+ - Handler
+  
 
 <br></br>
 # 로그인 화면
